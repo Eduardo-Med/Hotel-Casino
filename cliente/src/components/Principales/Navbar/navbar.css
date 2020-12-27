@@ -1,0 +1,52 @@
+
+.navbar{
+    background-color: #f4f4f4 !important;
+}
+
+
+/* rgb(252, 127, 47) */
+
+@media (min-width: 320px){
+
+    .opciones{
+        margin-left: 40%;
+    }
+
+}
+
+
+
+
+
+
+
+@media (min-width: 480px){
+    .opciones{
+        margin-left: 43%;
+    }
+}
+
+
+
+
+
+
+
+
+@media (min-width: 768px){
+    .opciones{
+        margin-left: 46%;
+    }
+
+}
+@media (min-width: 993px){
+    .opciones{
+        margin-left: 20%;
+    }
+}
+
+@media (min-width: 1400px){
+    .opciones{
+        margin-left: 28%;
+    }
+}

@@ -1,0 +1,143 @@
+@media (min-width: 320px){
+    .hotel-casino p{
+        text-align: justify;
+    }
+
+    .imagenes-casino{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .imagenes-casino img{
+        margin: 10px;
+        margin-left: 0px;
+        background-repeat: no-repeat; 
+        background-position: center; 
+        background-size: contain;
+        width: 100%;
+        height: 20vh;
+    }
+
+    .boton-informacion{
+        display: block;
+        width: 100%;
+    }
+
+    .restaurante-informacion{
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .boton-informacion2{
+        visibility: hidden;
+    }
+
+}
+
+
+
+
+
+
+
+@media (min-width: 480px){
+    .imagenes-casino{
+        align-items: center;
+    }
+
+    .imagenes-casino img{
+        width: 60vw;
+        height: 30vh;
+    }
+
+    .boton-informacion{
+        display: block;
+        width: 60vw;
+
+    }
+
+    .restaurante-informacion p{
+        width: 60vw;
+    }
+}
+
+
+
+
+
+
+
+
+@media (min-width: 768px){
+  
+
+}
+@media (min-width: 1024px){
+    .imagenes-restaurant{
+        align-items: center;
+    }
+
+    .imagenes-restaurant img{
+        width: 394px;
+        height: 30vh;
+    }
+
+    .boton-informacion{
+        visibility: hidden;
+    }
+
+    .boton-informacion2{
+        visibility: visible;
+    }
+
+    .conjunto-imagenes{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 30px;
+        width: 900px;
+    }
+
+    .boton-informacion2{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 22% !important;
+        padding-right: 22% !important;
+        margin-top: -90px;      
+    }
+
+}
+
+@media (min-width: 1680px){
+    .restaurante-informacion p{
+        width: 55vw;
+    }
+
+    .imagenes-restaurant img{
+        width: 524px;
+        height: 35vh;
+    }
+
+    .conjunto-imagenes{
+        width: 1300px;
+    }
+
+    .boton-informacion2{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 22% !important;
+        padding-right: 22% !important;
+        margin-top: -90px;      
+    }
+}
+
+
+.hotel-casino{
+    
+}

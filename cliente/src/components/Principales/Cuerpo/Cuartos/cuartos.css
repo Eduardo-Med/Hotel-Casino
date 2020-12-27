@@ -1,0 +1,124 @@
+@media (min-width: 320px){
+    .inicio-contenido{
+        color: black;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card-body{
+        height: 10rem !important;
+        width: 300px;
+    }
+
+    .precio{
+        width: 130px;
+        height: 130px;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        background: rgb(252, 127, 47);
+        position: relative;
+        bottom: 190px;
+        left: 68px;
+        color: white;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 30px;
+        text-align: center;
+
+
+        border: solid 3px white;
+    }
+
+    .titulo-tarjeta{
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .titulo-detalles{
+        color: white;
+        margin: 2rem;
+    }
+
+    .detalles{
+
+        color: white;
+    }
+
+    .detalles ul li{
+        margin: 10px;
+        margin-top: 0;
+    }
+
+    .nav-link{
+        color: white;
+    }
+    
+    .nav-link:hover{
+        color: white;
+    }
+
+
+
+}
+
+
+
+
+
+
+
+@media (min-width: 480px){
+    .titulo-detalles{
+        color: white;
+        margin: 2rem;
+        margin-right: 14rem;
+        margin-bottom: 20px;
+    }
+}
+
+
+
+
+
+
+
+
+@media (min-width: 768px){
+    .inicio-contenido{
+        flex-direction: row;
+        margin-top: 25px;
+    }
+
+    .titulo-detalles{
+        color: white;
+        margin: 2rem;
+    }
+
+    .detalles-habitacion{
+        margin-left: 5rem;
+    }
+}
+
+
+@media (min-width: 1024px){
+    .hotel-habitaciones .nav-tabs{
+        margin-top: 30px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 1680px){
+
+}
+
+
+.hotel-habitaciones{
+    background-color: #3e3f3a;
+    color: white;
+}

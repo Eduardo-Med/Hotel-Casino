@@ -1,0 +1,22 @@
+/* rgb(252, 127, 47) */
+
+.btn-success{
+  background-color: rgb(252, 127, 47) !important;
+  border-color: rgb(252, 127, 47) !important
+}
+.btn-success.focus, .btn-success:focus{
+  box-shadow: 0 0 0 0.2rem rgba(252,127,47,.5);
+}
+
+.border-succeess{
+  border-color: rgb(252, 127, 47) !important
+}
+
+.fotos{
+  background-repeat: no-repeat; 
+  background-position: center; 
+  background-size: contain;
+  width: 100vw;
+  height: 60vh;
+}
+

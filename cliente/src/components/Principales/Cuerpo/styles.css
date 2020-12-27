@@ -1,0 +1,72 @@
+@media (min-width: 320px){
+    .hotel{
+        display: grid;
+        grid-template-rows: repeat(10,auto);
+
+    }
+}
+
+
+
+
+
+
+
+@media (min-width: 480px){
+
+}
+
+
+
+
+
+
+
+
+@media (min-width: 768px){
+
+
+ 
+
+
+
+
+}
+@media (min-width: 1024px){
+
+
+}
+
+@media (min-width: 1680px){
+
+}
+
+
+
+
+
+.hotel-texto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+.hotel-eventos{
+    background-color: rgb(169, 245, 83)
+}
+
+
+
+.hotel-reservacion{
+    background-color: rgb(230, 62, 62)
+}
+
+.hotel-footer{
+    background-color: #3e3f3a;
+    color: white;
+}

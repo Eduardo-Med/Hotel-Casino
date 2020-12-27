@@ -1,0 +1,140 @@
+@media (min-width: 320px){
+    .hotel-alberca p{
+        text-align: justify;
+    }
+
+    .imagenes-alberca{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .imagenes-alberca img{
+        margin: 10px;
+        margin-left: 0px;
+        background-repeat: no-repeat; 
+        background-position: center; 
+        background-size: contain;
+        width: 100%;
+        height: 20vh;
+    }
+
+    .boton-informacion{
+        display: block;
+        width: 100%;
+    }
+
+    .alberca-informacion{
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .boton-informacion2{
+        visibility: hidden;
+    }
+
+    
+
+}
+
+
+
+
+
+
+
+@media (min-width: 480px){
+    .imagenes-alberca{
+        align-items: center;
+    }
+
+    .imagenes-alberca img{
+        width: 60vw;
+        height: 30vh;
+    }
+
+    .boton-informacion{
+        display: block;
+        width: 60vw;
+
+    }
+
+    .alberca-informacion p{
+        width: 60vw;
+    }
+}
+
+
+
+
+
+
+
+
+@media (min-width: 768px){
+  
+
+}
+@media (min-width: 1024px){
+    .imagenes-alberca{
+        align-items: center;
+    }
+
+    .imagenes-alberca img{
+        width: 394px;
+        height: 30vh;
+    }
+
+    .boton-informacion{
+        visibility: hidden;
+    }
+
+    .boton-informacion2{
+        visibility: visible;
+    }
+
+    .conjunto-imagenes{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 30px;
+        width: 900px;
+    }
+
+    .boton-informacion2{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 22% !important;
+        padding-right: 22% !important;
+        margin-top: -90px;      
+    }
+
+}
+
+@media (min-width: 1680px){
+    .alberca-informacion p{
+        width: 55vw;
+    }
+
+    .imagenes-alberca img{
+        width: 524px;
+        height: 35vh;
+    }
+
+    .conjunto-imagenes{
+        width: 1300px;
+    }
+
+    .boton-informacion2{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 22% !important;
+        padding-right: 22% !important;
+        margin-top: -90px;      
+    }
+}
