@@ -8,7 +8,7 @@ export default function Administacion() {
             <Menu/>
             <div className="contenido">
                 <div style={{background: "white"}}>
-                    hola
+                    hola 
                 </div>
             </div>
         </div>
