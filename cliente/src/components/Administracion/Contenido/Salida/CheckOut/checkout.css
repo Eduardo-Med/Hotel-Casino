@@ -1,0 +1,61 @@
+@media (min-width: 320px){
+    .titulo-check{
+        padding: 50px;
+        padding-bottom: 0;
+        padding-top: 10px;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .formulario input{
+        pointer-events: none;
+        background-color: rgb(212, 213, 214) !important;
+    }
+
+    .botones-check button{
+        width: 100% !important;
+    }
+
+}
+
+
+@media (min-width: 480px){
+    .botones-check button{
+        width: 48% !important;
+
+    }
+    .botones-check{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .botones-check button:nth-child(1){
+        margin-right: 4%;
+    }
+}
+
+@media (min-width: 920px){
+
+}
+
+
+
+
+@media (min-width: 1300px){
+    .fechas-tarjeta{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .fechas-tarjeta div{
+        width: 33.333%;
+
+    }
+    
+}
+
+@media (min-width: 1680px){
+
+}
