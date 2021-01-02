@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import OpcionMenu from './OpcionMenu'
 import logo from '../../../images/Logo.png'
+import './menu.css'
 
 export default function Menu() {
     const [oculatarMenu, setOcultarMenu] = useState(true)
