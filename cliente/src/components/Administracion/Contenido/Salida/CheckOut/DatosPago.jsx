@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {alerta} from '../../../../../middleware/alertas'
 export default function DatosPago({mostrar,cancelar}) {
     return (
         <div className={`pago-servicio ${!mostrar ? 'd-none' : '' }`} >
@@ -57,7 +57,7 @@ export default function DatosPago({mostrar,cancelar}) {
             </div>
         </div>
         <div className="input-contenido botones-check">
-            <button className="btn btn-success">Confirmar</button>
+            <button className="btn btn-success" onClick={()=>alerta('Pago Correcto','Pago Realizado Correctamente','success','Aceptar')}>Confirmar</button>
             <button className="btn btn-danger" onClick={()=>cancelar()}>Cancelar</button>
         </div>
     </div>

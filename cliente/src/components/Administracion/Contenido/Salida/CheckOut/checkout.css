@@ -9,7 +9,7 @@
 
     .formulario input{
         pointer-events: none;
-        background-color: rgb(212, 213, 214) !important;
+        background-color: rgb(224, 228, 233) !important;
     }
 
     .botones-check button{

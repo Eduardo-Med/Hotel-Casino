@@ -1,21 +1,23 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './registro.css'
+import {alerta} from '../../../../middleware/alertas'
 
 export default function Registro() {
+    const [errorReservacion, setErrorReservacion] = useState(false)
     return (
         <div className="registro">
             <h2>Registro</h2>
             <div className="contenido-registro">
-                <div className="titulo-registro">
-                    
+                <div className="titulo-registro">            
                 </div>
                 <div className="formulario-registro">
                     <div className="input-contenido">
                         <label htmlFor="">Numero de Reservacion</label>
                         <input className="form-control" type="text" placeholder="No. Reservacion"/>
-                        <button className="btn btn-success">Comprobar</button>
+                        <label htmlFor="" className={`mensaje-error ${errorReservacion ? '' : 'd-none'}`}>Numero de Reservacion Incorrecto, Intentelo de nuevo mas tarde</label>
+                        <button className="btn btn-success" onClick={()=> setErrorReservacion(true)}>Comprobar</button>
                     </div>
-                    <div className="informacion">
+                    <div className="informacion formulario">
                         <div className="input-contenido">
                             <label htmlFor="">Nombre Cliente</label>
                             <input className="form-control" type="text" placeholder="Nombre"/>
@@ -44,7 +46,7 @@ export default function Registro() {
                             <input className="form-control" type="number" placeholder="Cantidad de Personas"/>
                         </div>
                         <div className="boton-registrar">
-                        <button className="btn btn-success">Registrar</button>
+                        <button className="btn btn-success" onClick={()=>alerta('Registro', 'Registro Correcto', 'success', 'Cerrar')}>Registrar</button>
                         </div>
                     </div>
                 </div>

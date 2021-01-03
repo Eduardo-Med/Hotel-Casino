@@ -41,8 +41,9 @@
 }
 
 @media (min-width: 720px){
-
-
+    .swal-modal {
+        margin-left: 200px;
+      }
 }
 
 
@@ -98,4 +99,14 @@
 
 }
 
+.swal-button {
+   background-color: rgb(252, 127, 47) !important
+}
+
+.mensaje-error{
+    color: red;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+}
 
