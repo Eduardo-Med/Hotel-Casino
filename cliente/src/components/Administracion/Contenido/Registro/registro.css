@@ -54,11 +54,11 @@
     .contenido-registro{
         display: flex;
         flex-direction: row-reverse;
+        
     }
     .titulo-registro{
         display: flex;
         justify-content: center;
-        background-color: rgb(83, 83, 218);
         width: 100%;
         height: auto;
         margin: 20px;
@@ -71,6 +71,7 @@
         -webkit-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.75);
         -moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.75);
         box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.75);
+        border-bottom-right-radius: 2%;
     }
 
     .titulo-registro h1{
@@ -110,3 +111,23 @@
     font-size: 16px;
 }
 
+.loader{
+    border: 5px solid;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border-color: rgb(252, 127, 47) rgb(252, 127, 47) transparent;
+    animation: spin 2s linear infinite;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+@keyframes spin{
+    100%{transform: rotate(360deg);filter:rotate(360deg);}
+}
+
+
+.boton-verificar{
+    display: flex;
+    flex-direction: row;
+}
