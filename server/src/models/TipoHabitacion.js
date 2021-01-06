@@ -5,7 +5,7 @@ const TipoHabitacionSchema = new Schema({
         type: String,
         required: true
     },
-    Cantidad: {
+    cantidad: {
         type: Number,
         required: true,
         default: 1,

@@ -13,14 +13,31 @@ checkInCtrl.getClient = async (req, res) => {
 
 //Data save client
 checkInCtrl.saveClient = async (req, res) => {
-    const { nombre, telefono, correo } = req.body;
+    const { 
+        nombre, 
+        telefono, 
+        correo, 
+        fechaEntrada, 
+        fechaSalida, 
+        hora, 
+        precio, 
+        cantPersonas 
+    } = req.body;
     const newSaveClient = new Cliente({
         nombre,
         telefono,
         correo
     });
+    const newSaveRental = new Alquiler({
+        fechaEntrada, 
+        fechaSalida, 
+        hora, 
+        precio, 
+        cantPersonas
+    })
     await newSaveClient.save();
-    res.json({ message: 'Client saved' });
+    await newSaveRental.save();
+    res.status(200).json({ message: 'Client and rental saved' });
 }
 
 //Find a client with Id

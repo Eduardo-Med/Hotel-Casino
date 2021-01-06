@@ -3,7 +3,9 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
 
-const checkIn = require('./routes/Interno/checkIn')
+const checkIn = require('./routes/Interno/checkIn');
+const tipoHabitacion = require('./routes/Interno/tipoHabitacion');
+const habitacion = require('./routes/Interno/habitacion');
 
 //settings
 app.set('port', process.env.PORT || 4000);
@@ -16,5 +18,7 @@ app.use(bodyParser.json({limit: '300kb'}));
 
 //routes
 app.use('/api/checkIn', checkIn);
+app.use('/api/tipoHabitacion', tipoHabitacion);
+app.use('/api/habitacion', habitacion);
 
 module.exports = app;
