@@ -24,13 +24,13 @@ const alquilerSchema = new Schema({
     idCliente: {
         type: Schema.ObjectId,
         required: true,
-        ref: 'Cliente',
+        ref: 'clientes',
     },
     idHabitacion: {
         type: Schema.ObjectId,
         required: true,
-        ref: 'Habitacion',
+        ref: 'habitaciones',
     }
 });
 
-module.exports = model('Alquiler', alquilerSchema);
+module.exports = model('alquileres', alquilerSchema);

@@ -12,4 +12,4 @@ const TipoHabitacionSchema = new Schema({
     }
 });
 
-module.exports = model('TipoHabitacion', TipoHabitacionSchema);
+module.exports = model('tipohabitaciones', TipoHabitacionSchema);

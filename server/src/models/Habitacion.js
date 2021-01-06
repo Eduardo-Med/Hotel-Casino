@@ -21,4 +21,4 @@ const habitacionSchema = new Schema({
     }
 });
 
-module.exports = model('Habitacion', habitacionSchema);
+module.exports = model('habitaciones', habitacionSchema);

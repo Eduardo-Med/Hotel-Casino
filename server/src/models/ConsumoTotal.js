@@ -16,13 +16,13 @@ const ConsumoTotalSchema = new Schema({
     idHabitacion: {
         type: Schema.ObjectId,
         required: true,
-        ref: 'Habitacion',
+        ref: 'habitaciones',
     },
     idServicio: {
         type: Schema.ObjectId,
         required: true,
-        ref: 'ConsumoServicio',
+        ref: 'consumoservicios',
     }
 });
 
-module.exports = model('ConsumoTotal', ConsumoTotalSchema);
+module.exports = model('consumototales', ConsumoTotalSchema);

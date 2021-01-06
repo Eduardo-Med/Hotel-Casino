@@ -20,8 +20,8 @@ const ConsumoServicioSchema = new Schema({
     idHabitacion: {
         type: Schema.ObjectId,
         required: true,
-        ref: 'Habitacion',
+        ref: 'habitaciones',
     }
 });
 
-module.exports = model('ConsumoServicio', ConsumoServicioSchema);
+module.exports = model('consumoservicios', ConsumoServicioSchema);

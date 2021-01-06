@@ -17,7 +17,7 @@ const clienteSchema = new Schema({
     idAlquiler: {
         type: Schema.ObjectId,
 
-        ref: 'Alquiler',
+        ref: 'alquileres',
     },
     noReservacion: {
         type: Schema.ObjectId,
@@ -26,4 +26,4 @@ const clienteSchema = new Schema({
     }
 });
 
-module.exports = model("Cliente", clienteSchema);
+module.exports = model("clientes", clienteSchema);
