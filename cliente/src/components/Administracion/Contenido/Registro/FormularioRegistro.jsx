@@ -15,7 +15,7 @@ export default function FormularioRegistro() {
         : alerta('Registro Incorrecto', 'Ocurrio un error al realizar el registro', 'error', 'Aceptar') 
         console.log(!resultadoRegistro.error)
     }
-
+ 
     return (
         <div className="informacion formulario">
             <div className="input-contenido">
