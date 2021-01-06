@@ -17,7 +17,7 @@ const habitacionSchema = new Schema({
     idTipo: { 
         type: Schema.ObjectId,
         required: true,
-        ref: 'TipoHabitacion',
+        ref: 'tipohabitaciones',
     }
 });
 
