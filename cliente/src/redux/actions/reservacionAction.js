@@ -8,7 +8,7 @@ export const FETCH_RESERVACION_FAILURE = 'FETCH_RESERVACION_FAILURE'
 
 export const fetchReservacionRequest = () =>{
     return {
-        type: FETCH_RESERVACION_REQUEST
+        type: FETCH_RESERVACION_REQUEST,
     }
 }
 
@@ -30,7 +30,7 @@ export const fetchReservacionFailure = (error) =>{
 
 const fetchReservacion = (reservacion) =>{
     return (dispatch) => {
-        dispatch(fetchReservacionRequest);
+        dispatch(fetchReservacionRequest());
         axios.get(`http://localhost:5000/api/v1/reservacion/${reservacion}`)
         .then(response =>{
             dispatch(fetchReservacionSuccess([response.data.datosHuesped]))

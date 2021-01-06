@@ -7,7 +7,6 @@ import FormularioRegistro from './FormularioRegistro'
 
 export default function Registro() {
     const dispatch = useDispatch()
-    const [errorReservacion, setErrorReservacion] = useState(false)
     const [noReservacion, setNoReservacion] = useState('')
     const reservacion = useSelector((state) => state.reservacion)
 
@@ -32,12 +31,12 @@ export default function Registro() {
                                     setNoReservacion(event.target.value)
                                 }
                             }
+                            autoComplete={'off'}
                         />
-                        <label htmlFor="" className={`mensaje-error ${errorReservacion ? '' : 'd-none'}`}>Numero de Reservacion Incorrecto, Intentelo de nuevo mas tarde</label>
-                        {/* <button className="btn btn-success" onClick={()=> setErrorReservacion(true)}>Comprobar</button> */}
+                        <label htmlFor="" className={`mensaje-error ${reservacion.error ? '' : 'd-none'}`}>Numero de Reservacion Incorrecto, Intentelo de nuevo mas tarde</label>
                         <div className="boton-verificar">
                             <button className="btn btn-success" onClick={()=> dispatch(fetchReservacion(noReservacion))}>Comprobar</button>
-                            <div className={`loader ${reservacion.loading ? '' : 'd-none'}`}></div>
+                            {reservacion.loading && <div className="loader"></div>}
                         </div>
                     </div>
                     <FormularioRegistro/>

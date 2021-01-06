@@ -1,11 +1,20 @@
 import React from 'react'
 import {alerta} from '../../../../middleware/alertas'
-import {useSelector } from 'react-redux'
+import {useDispatch, useSelector } from 'react-redux'
+import fetchRegistro from '../../../../redux/actions/registroAction'
 
 
 
 export default function FormularioRegistro() {
+    const dispatch = useDispatch()
     const reservacion = useSelector((state) => state.reservacion.reservacion[0])
+    const resultadoRegistro = useSelector((state) => state.registro)
+    function registrar() {
+        dispatch(fetchRegistro(reservacion))
+        !resultadoRegistro.error ? alerta('Registro Correcto', 'Registro realizado correctamente', 'success', 'Aceptar') 
+        : alerta('Registro Incorrecto', 'Ocurrio un error al realizar el registro', 'error', 'Aceptar') 
+        console.log(!resultadoRegistro.error)
+    }
 
     return (
         <div className="informacion formulario">
@@ -37,7 +46,7 @@ export default function FormularioRegistro() {
                 <input className="form-control" type="number" placeholder="Cantidad de Personas" value={reservacion ? reservacion.cantidadPersonas : ''}/>
             </div>
             <div className="boton-registrar">
-            <button className="btn btn-success" onClick={()=>alerta('Registro', 'Registro Correcto', 'success', 'Cerrar')}>Registrar</button>
+            <button className="btn btn-success" onClick={ ()=> registrar()} >Registrar</button>
             </div>
         </div>
     )
