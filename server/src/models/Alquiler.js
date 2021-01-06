@@ -5,11 +5,19 @@ const alquilerSchema = new Schema({
         type: Date,
         required: true,
     },
-    fechaSalida:{
+    fechaSalida: {
+        type: Date,
+        required: true,
+    },
+    hora: {
         type: Date,
         required: true,
     },
     precio: {
+        type: Number,
+        required: true,
+    },
+    cantPersonas: {
         type: Number,
         required: true,
     },
