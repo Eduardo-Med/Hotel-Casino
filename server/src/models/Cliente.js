@@ -6,11 +6,11 @@ const clienteSchema = new Schema({
         required: true,
         trim: true,
     },
-    apellidoPaterno: {
-        type: String,
+    telefono: {
+        type: Number,
         required: true,
     },
-    apellidoMaterno: {
+    correo: {
         type: String,
         required: true,
     },
