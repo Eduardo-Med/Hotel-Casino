@@ -12,9 +12,10 @@ const habitacionSchema = new Schema({
     },
     noCuarto: {
         type: String,
+        unique: true,
         required: true,
     },
-    idTipo: { 
+    idTipo: {
         type: Schema.ObjectId,
         required: true,
         ref: 'tipohabitaciones',
