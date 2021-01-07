@@ -16,10 +16,12 @@ const clienteSchema = new Schema({
     },
     idAlquiler: {
         type: Schema.ObjectId,
+        required: true,
         ref: 'alquileres',
     },
     noReservacion: {
         type: Schema.ObjectId,
+        required: true,
         ref: 'Reservation'
     }
 });
