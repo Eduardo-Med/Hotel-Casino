@@ -28,8 +28,6 @@ checkInCtrl.saveClient = async(req, res) => {
         noHabSuite,
         precio,
         cantPersonas,
-        idCliente,
-        idHabitacion
     } = req.body;
     const newSaveClient = new Cliente({
         nombre,
@@ -37,6 +35,7 @@ checkInCtrl.saveClient = async(req, res) => {
         correo,
         noReservacion,
     });
+    await newSaveClient.save();
     const newSaveRental = new Alquiler({
         fechaEntrada,
         fechaSalida,
@@ -46,10 +45,8 @@ checkInCtrl.saveClient = async(req, res) => {
         noHabSuite,
         precio,
         cantPersonas,
-        idCliente,
-        idHabitacion
+        idCliente: newSaveClient._id
     })
-    await newSaveClient.save();
     await newSaveRental.save();
     res.status(200).json({ message: 'Client and rental saved' });
 }
