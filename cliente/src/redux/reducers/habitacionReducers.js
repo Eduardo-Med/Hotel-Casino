@@ -1,33 +1,33 @@
-import {FETCH_REGISTRO_REQUEST,FETCH_REGISTRO_SUCCESS,FETCH_REGISTRO_FAILURE} from '../actions/registroAction'
+import {FETCH_HABITACION_FAILURE,FETCH_HABITACION_SUCCESS,FETCH_HABITACION_REQUEST} from '../actions/habitacionAction'
 
 const initialState = {
     loading: false,
-    registro: [],
+    habitacion: [],
     error: ''
 }
 
 
-const registro = (state = initialState, action) => {
+const habitacion = (state = initialState, action) => {
     switch(action.type){
-        case FETCH_REGISTRO_REQUEST:
+        case FETCH_HABITACION_REQUEST:
             return{
                 ...state,
                 loading:true
             }
-        case FETCH_REGISTRO_SUCCESS:
+        case FETCH_HABITACION_SUCCESS:
             return {
                 loading: false,
-                registro: action.payload,
+                habitacion: action.payload,
                 error: ''
             }
-        case FETCH_REGISTRO_FAILURE:
+        case FETCH_HABITACION_FAILURE:
             return {
                 loading: false,
-                registro: [],
+                habitacion: [],
                 error: action.payload
             }
         default: return state
     }
 }
 
-export default registro
+export default habitacion

@@ -1,27 +1,71 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Habitacion from './Habitacion/Habitacion'
+import {useSelector } from 'react-redux'
+import {verTipoHabitacion} from '../../../../middleware/tipoHabitacion'
 import './salida.css'
 
+
 export default function Salida() {
+    const habitaciones = useSelector((state) => state.habitacion.habitacion[0])
+    const [tipoHabitacion, setTipoHabitacion] = useState(1) 
     return (
         <div className="contenido-salida">
             <div className="salida-titulo"><h5>Habitaciones</h5></div>
-            <Habitacion numero={1} tipo="Sencilla" estado={0}/>
-            <Habitacion numero={2} tipo="Sencilla" estado={1}/>
-            <Habitacion numero={3} tipo="Sencilla" estado={1}/>
-            <Habitacion numero={4} tipo="Sencilla" estado={1}/>
-            <Habitacion numero={5} tipo="Sencilla" estado={0}/>
-            <Habitacion numero={6} tipo="Doble" estado={1}/>
-            <Habitacion numero={7} tipo="Doble" estado={1}/>
-            <Habitacion numero={8} tipo="Doble" estado={1}/>
-            <Habitacion numero={9} tipo="Doble" estado={0}/>
-            <Habitacion numero={10} tipo="Suit" estado={1}/>
-            <Habitacion numero={11} tipo="Suit" estado={1}/>
-            <Habitacion numero={12} tipo="Suit" estado={1}/>
-            <Habitacion numero={13} tipo="Suit" estado={0}/>
-            <Habitacion numero={14} tipo="Sencilla" estado={1}/>
-            <Habitacion numero={15} tipo="Sencilla" estado={1}/>
-            <Habitacion numero={16} tipo="Sencilla" estado={1}/>
+            <div className="salida-filtro">
+                <div className={`opcion-filtro ${tipoHabitacion === 0 ? 'opcion-filtro-seleccionado' : ''}`} onClick={()=> setTipoHabitacion(0)}>
+                    <h6>Todas</h6>
+                </div>
+                <div className={`opcion-filtro ${tipoHabitacion === 1 ? 'opcion-filtro-seleccionado' : ''}`} onClick={()=> setTipoHabitacion(1)}>
+                    <h6>Sencilla</h6>
+                </div>
+                <div className={`opcion-filtro ${tipoHabitacion === 2 ? 'opcion-filtro-seleccionado' : ''}`} onClick={()=> setTipoHabitacion(2)}>
+                    <h6>Doble</h6>
+                </div>
+                <div className={`opcion-filtro ${tipoHabitacion === 3 ? 'opcion-filtro-seleccionado' : ''}`} onClick={()=> setTipoHabitacion(3)}>
+                    <h6>Matrimonial</h6>
+                </div>
+                <div className={`opcion-filtro ${tipoHabitacion === 4 ? 'opcion-filtro-seleccionado' : ''}`} onClick={()=> setTipoHabitacion(4)}> 
+                    <h6>Suit</h6>
+                </div>
+            </div>
+            
+            <Habitacion numero={'S21'} tipo="Prueba" estado={0}/>
+            {
+                habitaciones
+                ?
+                habitaciones.map((habitacion, index)=>{
+                    if(tipoHabitacion === 0){
+                        return(
+                            <Habitacion key={index} numero={habitacion.noCuarto} tipo={verTipoHabitacion(habitacion.idTipo)} estado={habitacion.disponible}/>
+                        )
+                    }else if(tipoHabitacion === 1 && verTipoHabitacion(habitacion.idTipo) === 'Sencilla'){
+                        return(
+                            <Habitacion key={index} numero={habitacion.noCuarto} tipo={verTipoHabitacion(habitacion.idTipo)} estado={habitacion.disponible}/>
+                        )
+                    }else if(tipoHabitacion === 2 && verTipoHabitacion(habitacion.idTipo) === 'Doble'){
+                        return(
+                            <Habitacion key={index} numero={habitacion.noCuarto} tipo={verTipoHabitacion(habitacion.idTipo)} estado={habitacion.disponible}/>
+                        )
+                    }else if(tipoHabitacion === 3 && verTipoHabitacion(habitacion.idTipo) === 'Matrimonial'){
+                        return(
+                            <Habitacion key={index} numero={habitacion.noCuarto} tipo={verTipoHabitacion(habitacion.idTipo)} estado={habitacion.disponible}/>
+                        )
+                    }else if(tipoHabitacion === 4 && verTipoHabitacion(habitacion.idTipo) === 'Suite'){
+                        return(
+                            <Habitacion key={index} numero={habitacion.noCuarto} tipo={verTipoHabitacion(habitacion.idTipo)} estado={habitacion.disponible}/>
+                        )
+                    }else{
+                        return(
+                            <div></div>
+                        )
+                    }
+ 
+                })
+                :
+                <div>
+                    No se encontro Nada
+                </div>
+            }
         </div>
     )
 }

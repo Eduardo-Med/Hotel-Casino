@@ -1,10 +1,17 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+import { useDispatch } from "react-redux";
+import fetchHabitacion from "../../../redux/actions/habitacionAction";
 import Registro from "./Registro/Registro";
 import Salida from "./Salida/Salida";
 
 export default function Contenido() {
+    const dispatch = useDispatch()
     const [pestanaActiva, setPestanaActiva] = useState(false)
 
+    useEffect(() => {
+      dispatch(fetchHabitacion()) 
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
   return (
     <div className="contenido">
       <div className="">

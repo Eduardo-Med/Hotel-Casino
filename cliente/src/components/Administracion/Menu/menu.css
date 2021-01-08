@@ -41,13 +41,13 @@
     .mobile-opcion-activado{
         position: relative;
         left: 0px;
-        transition: all 1s;
+        transition: all .4s;
     }
 
     .mobile-opcion-desactivado{
         position: relative;
         left: -500px;
-        transition: all 1s;
+        transition: all .4s;
         height: 0px !important;
         width: 0px !important;
     }
@@ -125,7 +125,7 @@
     .menu_1{
         width: 200px;
         height: 12.5vh;   
-        transition: .5s width;
+        transition: .1s width;
         position: relative;
         opacity: 1;
     }
@@ -140,15 +140,20 @@
     
     .menu_1:hover img{
         width: 245px;
-        transition: .5s;
+        transition: .1s;
         opacity: 1;
     }
     
     
     .menu_1:hover{
         width: 245px;
-        transition: 2s;
+        transition: .1s;
         cursor: pointer;
+    }
+
+        
+    .menu_1 h3{
+        font-size: 30px;
     }
 
 }
@@ -157,6 +162,9 @@
 
 
 @media (min-width: 1024px){
+    .menu_1 h3{
+        font-size: 36px;
+    }
     .menu{
         width: 250px;
     }
