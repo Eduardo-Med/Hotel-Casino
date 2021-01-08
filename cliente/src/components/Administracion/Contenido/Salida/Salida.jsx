@@ -31,7 +31,7 @@ export default function Salida() {
             
             <Habitacion numero={'S21'} tipo="Prueba" estado={0}/>
             {
-                habitaciones
+                !habitaciones
                 ?
                 habitaciones.map((habitacion, index)=>{
                     if(tipoHabitacion === 0){
@@ -62,8 +62,9 @@ export default function Salida() {
  
                 })
                 :
-                <div>
-                    No se encontro Nada
+                <div className="screen-loader2">
+                    <div className="loader2"></div>
+                    <h4>Cargando Habitaciones</h4>
                 </div>
             }
         </div>
