@@ -1,39 +1,53 @@
 const checkInCtrl = {};
 
+const moment = require('moment')
+
 const Cliente = require('../../models/Cliente');
 const Alquiler = require('../../models/Alquiler');
 
 //-------------------------CHECKIN------------------------------------
 //Find all client
-checkInCtrl.getClient = async (req, res) => {
+checkInCtrl.getClient = async(req, res) => {
     const client = await Cliente.find();
     const rental = await Alquiler.find();
-    res.json({client, rental});
+    res.json({ client, rental });
 }
 
 //Data save client
-checkInCtrl.saveClient = async (req, res) => {
-    const { 
-        nombre, 
-        telefono, 
-        correo, 
-        fechaEntrada, 
-        fechaSalida, 
-        hora, 
-        precio, 
-        cantPersonas 
+checkInCtrl.saveClient = async(req, res) => {
+    const {
+        nombre,
+        telefono,
+        correo,
+        noReservacion,
+        fechaEntrada,
+        fechaSalida,
+        noHabSencilla,
+        noHabDoble,
+        noHabMatrimonial,
+        noHabSuite,
+        precio,
+        cantPersonas,
+        idCliente,
+        idHabitacion
     } = req.body;
     const newSaveClient = new Cliente({
         nombre,
         telefono,
-        correo
+        correo,
+        noReservacion,
     });
     const newSaveRental = new Alquiler({
-        fechaEntrada, 
-        fechaSalida, 
-        hora, 
-        precio, 
-        cantPersonas
+        fechaEntrada,
+        fechaSalida,
+        noHabSencilla,
+        noHabDoble,
+        noHabMatrimonial,
+        noHabSuite,
+        precio,
+        cantPersonas,
+        idCliente,
+        idHabitacion
     })
     await newSaveClient.save();
     await newSaveRental.save();
@@ -41,16 +55,16 @@ checkInCtrl.saveClient = async (req, res) => {
 }
 
 //Find a client with Id
-checkInCtrl.getClientId = async (req, res) => {
+checkInCtrl.getClientId = async(req, res) => {
     const client = await Cliente.findById(req.params.id);
     res.json(client);
 }
 
 //Delete client with Id
-checkInCtrl.deleteClient = async (req, res) => {
-    await Cliente.findByIdAndDelete(req.params.id);
-    res.send("Client deleted")
-}
-//--------------------------------------------------------------------
+checkInCtrl.deleteClient = async(req, res) => {
+        await Cliente.findByIdAndDelete(req.params.id);
+        res.send("Client deleted")
+    }
+    //--------------------------------------------------------------------
 
 module.exports = checkInCtrl;

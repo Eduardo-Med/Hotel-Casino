@@ -6,21 +6,21 @@ export const FETCH_REGISTRO_FAILURE = 'FETCH_REGISTRO_FAILURE'
 
 //actions
 
-export const fetchRegistroRequest = () =>{
+export const fetchRegistroRequest = () => {
     return {
         type: FETCH_REGISTRO_REQUEST
     }
 }
 
 
-export const fetchRegistroSuccess = (registro) =>{
+export const fetchRegistroSuccess = (registro) => {
     return {
         type: FETCH_REGISTRO_SUCCESS,
         payload: registro
     }
 }
 
-export const fetchRegistroFailure = (error) =>{
+export const fetchRegistroFailure = (error) => {
     return {
         type: FETCH_REGISTRO_FAILURE,
         payload: error
@@ -28,40 +28,46 @@ export const fetchRegistroFailure = (error) =>{
 }
 
 
-const fetchRegistro = (registro) =>{
+const fetchRegistro = (registro) => {
     const {
         nombre,
-        correo,
         telefono,
-        fechaInicio,
+        correo,
+        fechaEntrada,
         fechaSalida,
-        hora,
-        noHabitacion,
-        cantidadPersonas
+        noHabSencilla,
+        noHabDoble,
+        noHabMatrimonial,
+        noHabSuite,
+        precio,
+        cantPersonas,
     } = registro
 
     return (dispatch) => {
         dispatch(fetchRegistroRequest());
         axios({
-            method: 'post',
-            url: `http://localhost:5000/api/v1/registro`,
-            data:{
-                nombre,
-                correo,
-                telefono,
-                fechaInicio,
-                fechaSalida,
-                hora,
-                noHabitacion,
-                cantidadPersonas
-            }
-        })
-        .then(response =>{
-            dispatch(fetchRegistroSuccess([response]))
-        })
-        .catch(error => {
-            dispatch(fetchRegistroFailure([error]))
-        })
+                method: 'post',
+                url: `http://localhost:5000/api/checkIn`,
+                data: {
+                    nombre,
+                    telefono,
+                    correo,
+                    fechaEntrada,
+                    fechaSalida,
+                    noHabSencilla,
+                    noHabDoble,
+                    noHabMatrimonial,
+                    noHabSuite,
+                    precio,
+                    cantPersonas,
+                }
+            })
+            .then(response => {
+                dispatch(fetchRegistroSuccess([response]))
+            })
+            .catch(error => {
+                dispatch(fetchRegistroFailure([error]))
+            })
     }
 }
 

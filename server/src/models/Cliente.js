@@ -14,16 +14,10 @@ const clienteSchema = new Schema({
         type: String,
         required: true,
     },
-    idAlquiler: {
-        type: Schema.ObjectId,
-        required: true,
-        ref: 'alquileres',
-    },
     noReservacion: {
-        type: Schema.ObjectId,
+        type: String,
         required: true,
-        ref: 'Reservation'
-    }
+    },
 });
 
 module.exports = model("clientes", clienteSchema);

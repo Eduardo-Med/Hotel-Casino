@@ -9,13 +9,30 @@ const alquilerSchema = new Schema({
         type: Date,
         required: true,
     },
-    hora: {
-        type: Date,
+    noHabSencilla: {
+        type: Number,
         required: true,
+        default: 0,
+    },
+    noHabDoble: {
+        type: Number,
+        required: true,
+        default: 0,
+    },
+    noHabMatrimonial: {
+        type: Number,
+        required: true,
+        default: 0,
+    },
+    noHabSuite: {
+        type: Number,
+        required: true,
+        default: 0,
     },
     precio: {
         type: Number,
         required: true,
+        default: 0
     },
     cantPersonas: {
         type: Number,
@@ -23,12 +40,12 @@ const alquilerSchema = new Schema({
     },
     idCliente: {
         type: Schema.ObjectId,
-        required: true,
+        // required: true,
         ref: 'clientes',
     },
     idHabitacion: {
         type: Schema.ObjectId,
-        required: true,
+        // required: true,
         ref: 'habitaciones',
     }
 });
