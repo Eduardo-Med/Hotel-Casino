@@ -28,10 +28,18 @@
     }
 
     .salida-filtro{
-        border-bottom: 2px solid black;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        padding: 10px;
+        padding-bottom: 10px;
+    }
+
+    .salida-filtro-disponibilidad{
+        border-bottom: 2px solid black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         padding: 10px;
         padding-bottom: 10px;
     }
@@ -87,6 +95,17 @@
         flex-direction: row;
         justify-content: space-between;
     }
+
+    .salida-filtro-disponibilidad{
+        flex-direction: row;
+        justify-content: center;
+    }
+    .salida-filtro-disponibilidad .opcion-filtro{
+        margin: 20px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
 
     .opcion-filtro{
         width: 15%;

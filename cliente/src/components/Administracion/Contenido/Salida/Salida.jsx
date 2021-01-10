@@ -8,6 +8,7 @@ import './salida.css'
 export default function Salida() {
     const habitaciones = useSelector((state) => state.habitacion.habitacion[0])
     const [tipoHabitacion, setTipoHabitacion] = useState(1) 
+    const [disponibilidad, setDisponibilidad] = useState(1)
     return (
         <div className="contenido-salida">
             <div className="salida-titulo"><h5>Habitaciones</h5></div>
@@ -28,32 +29,72 @@ export default function Salida() {
                     <h6>Suit</h6>
                 </div>
             </div>
+            <div className="salida-filtro-disponibilidad">
+                <div className={`opcion-filtro ${disponibilidad === 0 ? 'opcion-filtro-seleccionado' : ''}`} onClick={()=> setDisponibilidad(0)}>
+                    <h6>Disponibles</h6>
+                </div>
+                <div className={`opcion-filtro ${disponibilidad === 1 ? 'opcion-filtro-seleccionado' : ''}`} onClick={()=> setDisponibilidad(1)}>
+                    <h6>Ocupadas</h6>
+                </div>
+            </div>
             
             <Habitacion numero={'S21'} tipo="Prueba" estado={0}/>
             {
-                !habitaciones
+                habitaciones
                 ?
                 habitaciones.map((habitacion, index)=>{
-                    if(tipoHabitacion === 0){
-                        return(
-                            <Habitacion key={index} numero={habitacion.noCuarto} tipo={verTipoHabitacion(habitacion.idTipo)} estado={habitacion.disponible}/>
-                        )
-                    }else if(tipoHabitacion === 1 && verTipoHabitacion(habitacion.idTipo) === 'Sencilla'){
-                        return(
-                            <Habitacion key={index} numero={habitacion.noCuarto} tipo={verTipoHabitacion(habitacion.idTipo)} estado={habitacion.disponible}/>
-                        )
-                    }else if(tipoHabitacion === 2 && verTipoHabitacion(habitacion.idTipo) === 'Doble'){
-                        return(
-                            <Habitacion key={index} numero={habitacion.noCuarto} tipo={verTipoHabitacion(habitacion.idTipo)} estado={habitacion.disponible}/>
-                        )
-                    }else if(tipoHabitacion === 3 && verTipoHabitacion(habitacion.idTipo) === 'Matrimonial'){
-                        return(
-                            <Habitacion key={index} numero={habitacion.noCuarto} tipo={verTipoHabitacion(habitacion.idTipo)} estado={habitacion.disponible}/>
-                        )
-                    }else if(tipoHabitacion === 4 && verTipoHabitacion(habitacion.idTipo) === 'Suite'){
-                        return(
-                            <Habitacion key={index} numero={habitacion.noCuarto} tipo={verTipoHabitacion(habitacion.idTipo)} estado={habitacion.disponible}/>
-                        )
+                    if(disponibilidad === 0 && habitacion.disponible){
+                        if(tipoHabitacion === 0){
+                            return(
+                                <Habitacion key={index} numero={habitacion.noCuarto} tipo={verTipoHabitacion(habitacion.idTipo)} estado={habitacion.disponible}/>
+                            )
+                        }else if(tipoHabitacion === 1 && verTipoHabitacion(habitacion.idTipo) === 'Sencilla'){
+                            return(
+                                <Habitacion key={index} numero={habitacion.noCuarto} tipo={verTipoHabitacion(habitacion.idTipo)} estado={habitacion.disponible}/>
+                            )
+                        }else if(tipoHabitacion === 2 && verTipoHabitacion(habitacion.idTipo) === 'Doble'){
+                            return(
+                                <Habitacion key={index} numero={habitacion.noCuarto} tipo={verTipoHabitacion(habitacion.idTipo)} estado={habitacion.disponible}/>
+                            )
+                        }else if(tipoHabitacion === 3 && verTipoHabitacion(habitacion.idTipo) === 'Matrimonial'){
+                            return(
+                                <Habitacion key={index} numero={habitacion.noCuarto} tipo={verTipoHabitacion(habitacion.idTipo)} estado={habitacion.disponible}/>
+                            )
+                        }else if(tipoHabitacion === 4 && verTipoHabitacion(habitacion.idTipo) === 'Suite'){
+                            return(
+                                <Habitacion key={index} numero={habitacion.noCuarto} tipo={verTipoHabitacion(habitacion.idTipo)} estado={habitacion.disponible}/>
+                            )
+                        }else{
+                            return(
+                                <div></div>
+                            )
+                        }
+                    }else if(disponibilidad === 1 && !habitacion.disponible){
+                        if(tipoHabitacion === 0){
+                            return(
+                                <Habitacion key={index} numero={habitacion.noCuarto} tipo={verTipoHabitacion(habitacion.idTipo)} estado={habitacion.disponible}/>
+                            )
+                        }else if(tipoHabitacion === 1 && verTipoHabitacion(habitacion.idTipo) === 'Sencilla'){
+                            return(
+                                <Habitacion key={index} numero={habitacion.noCuarto} tipo={verTipoHabitacion(habitacion.idTipo)} estado={habitacion.disponible}/>
+                            )
+                        }else if(tipoHabitacion === 2 && verTipoHabitacion(habitacion.idTipo) === 'Doble'){
+                            return(
+                                <Habitacion key={index} numero={habitacion.noCuarto} tipo={verTipoHabitacion(habitacion.idTipo)} estado={habitacion.disponible}/>
+                            )
+                        }else if(tipoHabitacion === 3 && verTipoHabitacion(habitacion.idTipo) === 'Matrimonial'){
+                            return(
+                                <Habitacion key={index} numero={habitacion.noCuarto} tipo={verTipoHabitacion(habitacion.idTipo)} estado={habitacion.disponible}/>
+                            )
+                        }else if(tipoHabitacion === 4 && verTipoHabitacion(habitacion.idTipo) === 'Suite'){
+                            return(
+                                <Habitacion key={index} numero={habitacion.noCuarto} tipo={verTipoHabitacion(habitacion.idTipo)} estado={habitacion.disponible}/>
+                            )
+                        }else{
+                            return(
+                                <div></div>
+                            )
+                        }
                     }else{
                         return(
                             <div></div>
