@@ -46,7 +46,7 @@ checkInCtrl.saveClient = async(req, res) => {
     ocuparHabitacion(
         fechaEntrada,
         fechaSalida,
-        2,
+        noHabSencilla,
         noHabDoble,
         noHabMatrimonial,
         noHabSuite,
