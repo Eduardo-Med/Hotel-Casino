@@ -4,6 +4,10 @@ const moment = require('moment')
 
 const Cliente = require('../../models/Cliente');
 const Alquiler = require('../../models/Alquiler');
+const Habitacion = require('../../models/Habitacion');
+const TipoHabitacion = require('../../models/TipoHabitacion')
+
+const ocuparHabitacion = require('../../middleware/ocuparHabitacion');
 
 //-------------------------CHECKIN------------------------------------
 //Find all client
@@ -13,7 +17,7 @@ checkInCtrl.getClient = async(req, res) => {
     res.json({ client, rental });
 }
 
-//Data save client
+//Data save client and reantal
 checkInCtrl.saveClient = async(req, res) => {
     const {
         nombre,
@@ -36,18 +40,21 @@ checkInCtrl.saveClient = async(req, res) => {
         noReservacion,
     });
     await newSaveClient.save();
-    const newSaveRental = new Alquiler({
+
+    const habitaciones = await Habitacion.find({}, { "_id": 1 });
+
+    ocuparHabitacion(
         fechaEntrada,
         fechaSalida,
-        noHabSencilla,
+        2,
         noHabDoble,
         noHabMatrimonial,
         noHabSuite,
         precio,
         cantPersonas,
-        idCliente: newSaveClient._id
-    })
-    await newSaveRental.save();
+        newSaveClient._id
+    );
+
     res.status(200).json({ message: 'Client and rental saved' });
 }
 
