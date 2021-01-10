@@ -4,8 +4,6 @@ const moment = require('moment')
 
 const Cliente = require('../../models/Cliente');
 const Alquiler = require('../../models/Alquiler');
-const Habitacion = require('../../models/Habitacion');
-const TipoHabitacion = require('../../models/TipoHabitacion')
 
 const ocuparHabitacion = require('../../middleware/ocuparHabitacion');
 
