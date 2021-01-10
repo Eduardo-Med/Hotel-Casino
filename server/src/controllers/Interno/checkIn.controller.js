@@ -33,15 +33,15 @@ checkInCtrl.saveClient = async(req, res) => {
         precio,
         cantPersonas,
     } = req.body;
+
     const newSaveClient = new Cliente({
         nombre,
         telefono,
         correo,
         noReservacion,
     });
-    await newSaveClient.save();
 
-    const habitaciones = await Habitacion.find({}, { "_id": 1 });
+    await newSaveClient.save();
 
     ocuparHabitacion(
         fechaEntrada,
