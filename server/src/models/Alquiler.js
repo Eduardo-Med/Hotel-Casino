@@ -9,26 +9,6 @@ const alquilerSchema = new Schema({
         type: Date,
         required: true,
     },
-    noHabSencilla: {
-        type: Number,
-        required: true,
-        default: 0,
-    },
-    noHabDoble: {
-        type: Number,
-        required: true,
-        default: 0,
-    },
-    noHabMatrimonial: {
-        type: Number,
-        required: true,
-        default: 0,
-    },
-    noHabSuite: {
-        type: Number,
-        required: true,
-        default: 0,
-    },
     precio: {
         type: Number,
         required: true,
