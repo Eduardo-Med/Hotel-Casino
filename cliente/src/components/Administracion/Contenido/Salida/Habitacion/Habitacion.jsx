@@ -1,18 +1,31 @@
 import React, {useState} from "react";
 import './habitacion.css'
 import InfoHabitacion from "./InfoHabitacion";
-import { useDispatch,useSelector} from "react-redux";
-import fetchInformacion from "../../../../../redux/actions/informacionAction";
+import {obtenerInformacionHuesped} from '../../../../../middleware/obtenerInformacionHuesped'
 
 export default function Habitacion({numero, tipo, estado}) {
-    const dispatch = useDispatch()
     const [ocultarInfo, setOcultarInfo] = useState(true)
-    const informacion = useSelector((state) => state.informacion)
+    const [cargarDatos, setCargarDatos] = useState(false)
+    const [screenLoader, setScreenLoader] = useState(false)
+    const [datos, setDatos] = useState({noReservacion: '', nombre:'', fechaEntrada: '',fechaSalida: '',cantPersonas: '',correo: '',telefono: ''})
 
-    const mostrarInformacion =()=>{
+    const mostrarInformacion = async ()=>{
         setOcultarInfo(!ocultarInfo)
-        console.log(informacion.informacion)
-        if(!informacion.informacion[0]) dispatch(fetchInformacion('1646545123'))
+        if(!cargarDatos && !estado){
+            setScreenLoader(true)
+            const resultado = await obtenerInformacionHuesped(numero)
+            setScreenLoader(false)
+            setDatos({
+                noReservacion: resultado.data[0].idCliente.noReservacion,
+                nombre: resultado.data[0].idCliente.nombre,
+                fechaEntrada: resultado.data[0].fechaEntrada,
+                fechaSalida: resultado.data[0].fechaSalida,
+                cantPersonas: resultado.data[0].cantPersonas,
+                correo: resultado.data[0].idCliente.correo,
+                telefono: resultado.data[0].idCliente.telefono,
+            })
+            setCargarDatos(true)
+        }
     }
 
   return (
@@ -35,7 +48,7 @@ export default function Habitacion({numero, tipo, estado}) {
         ?
          <></>
         :
-         <InfoHabitacion ocultarInfo={ocultarInfo} tipo={tipo}/>
+         <InfoHabitacion ocultarInfo={ocultarInfo} tipo={tipo} informacion={datos} carga={screenLoader}/>
         }
     </div>
 
