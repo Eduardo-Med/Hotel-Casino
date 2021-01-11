@@ -98,15 +98,29 @@
         font-family: 'Rubik', sans-serif;
     }
 
+    .pantalla-carga{
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
 }
 
 
-@media (min-width: 480px){
-
+@media (min-width: 720px){
+    .pantalla-carga{
+        padding-right: 200px;
+    }
+    .pantalla-carga h5{
+        margin-left: 225px;
+        margin-top: 10px;
+    }
 }
 
 @media (min-width: 920px){
-    
+
+
     .info-extendida{
         display: flex;
         flex-direction: row;
@@ -123,7 +137,7 @@
 
     .titulo-informacion-huesped{
         text-align: left;
-        margin-bottom: 0px;   
+        margin-bottom: 10px;   
     }
 
     .info-extendida br{

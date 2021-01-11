@@ -1,10 +1,21 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import fetchRegistro from "../../../../redux/actions/registroAction";
 
-export default function FormularioRegistro() {
+export default function FormularioRegistro({noReservacion}) {
   const dispatch = useDispatch();
   const reservacion = useSelector((state) => state.reservacion.reservacion[0]);
+  const [datos,setDatos] = useState({info: reservacion,num: noReservacion,precio:0})
+
+  useEffect(() => {
+    setDatos({
+      reservacion,
+      noReservacion,
+      precio: 5600
+    })
+    // eslint-disable-next-line
+  }, [reservacion])
+
 
   return (
     <div className="informacion formulario">
@@ -50,7 +61,7 @@ export default function FormularioRegistro() {
           type="date"
           tabIndex="-1"
           placeholder="Fecha de Inicio"
-          defaultValue={reservacion ? reservacion.fechaInicio : ""}
+          defaultValue={reservacion ? reservacion.fechaEntrada : ""}
         />
         <label htmlFor="">Fin de Estadia</label>
         <input
@@ -71,7 +82,7 @@ export default function FormularioRegistro() {
           tabIndex="-1"
           autoComplete="off"
           placeholder="Sencilla"
-          defaultValue={reservacion ? reservacion.noHabitacion : ""}
+          defaultValue={reservacion ? reservacion.noHabSencilla : ""}
         />
         <label htmlFor="">Numero de Habitaciones Dobles</label>
         <input
@@ -82,7 +93,7 @@ export default function FormularioRegistro() {
           tabIndex="-1"
           autoComplete="off"
           placeholder="Doble"
-          defaultValue={reservacion ? reservacion.noHabitacion : ""}
+          defaultValue={reservacion ? reservacion.noHabDoble : ""}
         />
         <label htmlFor="">Numero de Habitaciones Matrimoniales</label>
         <input
@@ -93,7 +104,7 @@ export default function FormularioRegistro() {
           maxLength="2"
           autoComplete="off"
           placeholder="Matrimoniales"
-          defaultValue={reservacion ? reservacion.noHabitacion : ""}
+          defaultValue={reservacion ? reservacion.noHabMatrimonial : ""}
         />
         <label htmlFor="">Numero de Habitaciones Suit</label>
         <input
@@ -104,24 +115,24 @@ export default function FormularioRegistro() {
           tabIndex="-1"
           autoComplete="off"
           placeholder="Suit"
-          defaultValue={reservacion ? reservacion.noHabitacion : ""}
+          defaultValue={reservacion ? reservacion.noHabSuite : ""}
         />
         <label htmlFor="">Cantidad de Personas</label>
         <input
           className="form-control"
           type="number"
           required="required"
-          maxLength="2"
+          maxLength="10"
           autoComplete="off"
           tabIndex="-1"
           placeholder="Cantidad de Personas"
-          defaultValue={reservacion ? reservacion.cantidadPersonas : ""}
+          defaultValue={reservacion ? reservacion.cantPersonas : ""}
         />
       </div>
       <div className="boton-registrar">
         <button
           className="btn btn-success"
-          onClick={() => dispatch(fetchRegistro(reservacion))}
+          onClick={() => dispatch(fetchRegistro(datos))}
           disabled={reservacion ? false : true}
         >
           Registrar

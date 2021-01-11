@@ -40,16 +40,18 @@ const fetchRegistro = (registro) => {
         noHabDoble,
         noHabMatrimonial,
         noHabSuite,
-        precio,
         cantPersonas,
-    } = registro
+    } = registro.reservacion
+    const {noReservacion, precio} = registro
 
     return (dispatch) => {
         dispatch(fetchRegistroRequest());
+        console.log(registro.reservacion)
         axios({
                 method: 'post',
-                url: `http://localhost:5000/api/checkIn`,
+                url: `http://localhost:4000/api/checkIn`,
                 data: {
+                    noReservacion,
                     nombre,
                     telefono,
                     correo,

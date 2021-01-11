@@ -1,23 +1,28 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, {useState,useEffect} from "react";
 import CheckOut from "../CheckOut/CheckOut";
 import Actividades from "./Actividades";
 import InfoCliente from "./InfoCliente";
 
-export default function InfoHabitacion({ ocultarInfo, tipo }) {
+export default function InfoHabitacion({ ocultarInfo, tipo, informacion,carga }) {
   const [mostrarSalida, setMostrarSalida] = useState(false);
-  const informacion = useSelector((state) => state.informacion.informacion[0]);
+  useEffect(() => {
+
+  }, [informacion])
+
   return (
     <>
       {!mostrarSalida ? (
-        <div className={`info-extendida mt-2 ${ocultarInfo ? "d-none" : ""}`}>
+        !carga ? (
+          <div className={`info-extendida mt-2 ${ocultarInfo ? "d-none" : ""}`}>
           <InfoCliente
             noReservacion={informacion ? informacion.noReservacion : ''}
             nombre={informacion ? informacion.nombre : ''}
             tipoHabitacion={tipo}
-            fechaRegistro={informacion ? informacion.fechaInicio : ''}
+            fechaRegistro={informacion ? informacion.fechaEntrada : ''}
             fechaSalida={informacion ? informacion.fechaSalida : ''}
-            numeroPersonas={5}
+            numeroPersonas={informacion ? informacion.cantPersonas : ''}
+            correo={informacion ? informacion.correo : ''}
+            telefono={informacion ? informacion.telefono : ''}
           />
           <div className="registro-actividades">
             <h4>
@@ -39,6 +44,11 @@ export default function InfoHabitacion({ ocultarInfo, tipo }) {
               <strong>Realizar Check-out</strong>
             </button>
           </div>
+        </div>
+        ) :
+        <div className="pantalla-carga">
+          <div className="loader3"></div>
+          <h5>Cargando Informacion</h5>
         </div>
       ) : (
         <div className={`${ocultarInfo ? "d-none" : ""}`}>

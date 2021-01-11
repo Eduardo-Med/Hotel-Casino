@@ -36,9 +36,7 @@ export default function Salida() {
                 <div className={`opcion-filtro ${disponibilidad === 1 ? 'opcion-filtro-seleccionado' : ''}`} onClick={()=> setDisponibilidad(1)}>
                     <h6>Ocupadas</h6>
                 </div>
-            </div>
-            
-            <Habitacion numero={'S21'} tipo="Prueba" estado={0}/>
+            </div> 
             {
                 habitaciones
                 ?

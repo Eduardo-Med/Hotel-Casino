@@ -11,7 +11,7 @@ export default function Registro() {
     const reservacion = useSelector((state) => state.reservacion)
     const registro = useSelector((state) => state.registro)
 
-
+    
     return (
         <div className="registro">
             <h2>Registro</h2>
@@ -40,7 +40,7 @@ export default function Registro() {
                             <button className="btn btn-success" onClick={()=> dispatch(fetchReservacion(noReservacion))}>Comprobar</button>
                         </div>
                     </div>
-                    <FormularioRegistro/>
+                    <FormularioRegistro noReservacion={noReservacion}/>
                 </div>
             </div>
             
