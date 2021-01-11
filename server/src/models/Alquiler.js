@@ -20,12 +20,12 @@ const alquilerSchema = new Schema({
     },
     idCliente: {
         type: Schema.ObjectId,
-        // required: true,
+        required: true,
         ref: 'clientes',
     },
     idHabitacion: {
         type: Schema.ObjectId,
-        // required: true,
+        required: true,
         ref: 'habitaciones',
     }
 });
