@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import "./checkout.css";
 import DatosPago from "./DatosPago";
 
-export default function CheckOut({ volver }) {
+export default function CheckOut({ volver, informacion }) {
   const [mostrarContenidoPago, setMostrarContenidoPago] = useState(false);
   return (
     <div>
-      <div className={`check-out ${mostrarContenidoPago ? "formulario" : ""}`}>
+      <div className={`check-out formulario`}>
         <div className="input-contenido">
           <label htmlFor="">No. Reservacion</label>
           <input
             className="form-control"
             type="text"
             placeholder="Numero de reservacion"
+            defaultValue={informacion ? informacion.noReservacion : ''}
           />
         </div>
         <div className="input-contenido">
@@ -21,6 +22,7 @@ export default function CheckOut({ volver }) {
             className="form-control"
             type="text"
             placeholder="Nombre Cliente"
+            defaultValue={informacion ? informacion.nombre : ''}
           />
         </div>
         <div className="input-contenido">
@@ -29,6 +31,7 @@ export default function CheckOut({ volver }) {
             className="form-control"
             type="text"
             placeholder="Fecha de inicio de estadia"
+            defaultValue={informacion ? informacion.fechaEntrada : ''}
           />
         </div>
         <div className="input-contenido">
@@ -37,6 +40,7 @@ export default function CheckOut({ volver }) {
             className="form-control"
             type="text"
             placeholder="Fecha de fin de estadia"
+            defaultValue={informacion ? informacion.fechaSalida : ''}
           />
         </div>
         <div className="input-contenido">
@@ -45,6 +49,7 @@ export default function CheckOut({ volver }) {
             className="form-control"
             type="text"
             placeholder="Adeudo a cobrar"
+            defaultValue='NULL'
           />
         </div>
         <div
@@ -52,14 +57,14 @@ export default function CheckOut({ volver }) {
             mostrarContenidoPago ? "d-none" : ""
           }`}
         >
+          <button className="btn btn-danger" onClick={() => volver()}>
+            Cancelar
+          </button>
           <button
             className="btn btn-success"
             onClick={() => setMostrarContenidoPago(!mostrarContenidoPago)}
           >
             Pasar a pago
-          </button>
-          <button className="btn btn-danger" onClick={() => volver()}>
-            Cancelar
           </button>
         </div>
       </div>

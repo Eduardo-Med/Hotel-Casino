@@ -55,7 +55,7 @@ export default function InfoHabitacion({ ocultarInfo, tipo, informacion,carga })
           <div className="titulo-check text-center">
             <label>Check-Out</label>
           </div>
-          <CheckOut volver={() => setMostrarSalida(!mostrarSalida)} />
+          <CheckOut volver={() => setMostrarSalida(!mostrarSalida)} informacion={informacion} />
         </div>
       )}
     </>
