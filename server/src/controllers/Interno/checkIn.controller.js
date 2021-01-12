@@ -15,7 +15,7 @@ checkInCtrl.getClientAndRental = async(req, res) => {
     res.status(200).send(rental);
 }
 
-//Data save client and reantal
+//Data save client and rental
 checkInCtrl.saveClient = async(req, res) => {
     const {
         nombre,
