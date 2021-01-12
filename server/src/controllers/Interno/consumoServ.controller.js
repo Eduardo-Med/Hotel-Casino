@@ -11,6 +11,7 @@ consumoServCtrl.getconsumption = async(req, res) => {
     res.status(200).send(consumption)
 }
 
+//Save all data by consumption
 consumoServCtrl.saveConsumption = async(req, res) => {
     const {
         nombreServicio,
