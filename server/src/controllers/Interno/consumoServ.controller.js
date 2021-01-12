@@ -20,15 +20,19 @@ consumoServCtrl.saveConsumption = async(req, res) => {
         fecha,
     } = req.body;
     const room = await Habitacion.findOne({ "noCuarto": req.params.noRoom });
-    const consumption = new ConsumoServicio({
-        nombreServicio,
-        precio,
-        detalles,
-        fecha,
-        idHabitacion: room._id
-    });
-    await consumption.save();
-    res.status(200).json({ message: 'Consumption of client saved' });
+    if (room.disponible === false) {
+        const consumption = new ConsumoServicio({
+            nombreServicio,
+            precio,
+            detalles,
+            fecha,
+            idHabitacion: room._id
+        });
+        await consumption.save();
+        res.status(200).json({ message: 'Consumption of client saved' });
+    } else {
+        res.status(200).json({ message: 'the room no have client' });
+    }
 }
 
 module.exports = consumoServCtrl;
