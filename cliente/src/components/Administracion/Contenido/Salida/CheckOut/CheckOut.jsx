@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./checkout.css";
 import DatosPago from "./DatosPago";
 
-export default function CheckOut({ volver, informacion }) {
+export default function CheckOut({ volver, informacion, total }) {
   const [mostrarContenidoPago, setMostrarContenidoPago] = useState(false);
   return (
     <div>
@@ -31,7 +31,7 @@ export default function CheckOut({ volver, informacion }) {
             className="form-control"
             type="text"
             placeholder="Fecha de inicio de estadia"
-            defaultValue={informacion ? informacion.fechaEntrada : ''}
+            defaultValue={informacion ? informacion.fechaEntrada.substr(0,10) : ''}
           />
         </div>
         <div className="input-contenido">
@@ -40,7 +40,7 @@ export default function CheckOut({ volver, informacion }) {
             className="form-control"
             type="text"
             placeholder="Fecha de fin de estadia"
-            defaultValue={informacion ? informacion.fechaSalida : ''}
+            defaultValue={informacion ? informacion.fechaSalida.substr(0,10) : ''}
           />
         </div>
         <div className="input-contenido">
@@ -49,7 +49,7 @@ export default function CheckOut({ volver, informacion }) {
             className="form-control"
             type="text"
             placeholder="Adeudo a cobrar"
-            defaultValue='NULL'
+            defaultValue={total}
           />
         </div>
         <div

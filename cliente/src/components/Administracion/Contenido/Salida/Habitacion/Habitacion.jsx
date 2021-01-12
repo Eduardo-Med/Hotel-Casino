@@ -1,29 +1,33 @@
 import React, {useState} from "react";
 import './habitacion.css'
 import InfoHabitacion from "./InfoHabitacion";
-import {obtenerInformacionHuesped} from '../../../../../middleware/obtenerInformacionHuesped'
+import {obtenerInformacionHuesped,obtenerConsumoHuesped} from '../../../../../middleware/obtenerInformacionHuesped'
 
 export default function Habitacion({numero, tipo, estado}) {
     const [ocultarInfo, setOcultarInfo] = useState(true)
     const [cargarDatos, setCargarDatos] = useState(false)
     const [screenLoader, setScreenLoader] = useState(false)
-    const [datos, setDatos] = useState({noReservacion: '', nombre:'', fechaEntrada: '',fechaSalida: '',cantPersonas: '',correo: '',telefono: ''})
+    const [datosInformacion, setDatosInformacion] = useState({noReservacion: '', nombre:'', fechaEntrada: '',fechaSalida: '',cantPersonas: '',correo: '',telefono: ''})
+    const [datosConsumo, setDatosConsumo] = useState([])
 
     const mostrarInformacion = async ()=>{
         setOcultarInfo(!ocultarInfo)
         if(!cargarDatos && !estado){
             setScreenLoader(true)
-            const resultado = await obtenerInformacionHuesped(numero)
+            const resultadoInformacion = await obtenerInformacionHuesped(numero)
+            const resultadoConsumo = await obtenerConsumoHuesped(numero)
             setScreenLoader(false)
-            setDatos({
-                noReservacion: resultado.data[0].idCliente.noReservacion,
-                nombre: resultado.data[0].idCliente.nombre,
-                fechaEntrada: resultado.data[0].fechaEntrada,
-                fechaSalida: resultado.data[0].fechaSalida,
-                cantPersonas: resultado.data[0].cantPersonas,
-                correo: resultado.data[0].idCliente.correo,
-                telefono: resultado.data[0].idCliente.telefono,
+            setDatosInformacion({
+                noReservacion: resultadoInformacion.data[0].idCliente.noReservacion,
+                nombre: resultadoInformacion.data[0].idCliente.nombre,
+                fechaEntrada: resultadoInformacion.data[0].fechaEntrada,
+                fechaSalida: resultadoInformacion.data[0].fechaSalida,
+                cantPersonas: resultadoInformacion.data[0].cantPersonas,
+                correo: resultadoInformacion.data[0].idCliente.correo,
+                telefono: resultadoInformacion.data[0].idCliente.telefono,
             })
+            setDatosConsumo(resultadoConsumo.data)
+
             setCargarDatos(true)
         }
     }
@@ -48,7 +52,7 @@ export default function Habitacion({numero, tipo, estado}) {
         ?
          <></>
         :
-         <InfoHabitacion ocultarInfo={ocultarInfo} tipo={tipo} informacion={datos} carga={screenLoader}/>
+         <InfoHabitacion ocultarInfo={ocultarInfo} tipo={tipo} informacion={datosInformacion} carga={screenLoader} consumos={datosConsumo}/>
         }
     </div>
 

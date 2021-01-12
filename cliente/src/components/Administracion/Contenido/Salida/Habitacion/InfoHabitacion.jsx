@@ -3,8 +3,9 @@ import CheckOut from "../CheckOut/CheckOut";
 import Actividades from "./Actividades";
 import InfoCliente from "./InfoCliente";
 
-export default function InfoHabitacion({ ocultarInfo, tipo, informacion,carga }) {
+export default function InfoHabitacion({ ocultarInfo, tipo, informacion,carga,consumos }) {
   const [mostrarSalida, setMostrarSalida] = useState(false);
+  let totalPago = 0
   useEffect(() => {
 
   }, [informacion])
@@ -28,12 +29,21 @@ export default function InfoHabitacion({ ocultarInfo, tipo, informacion,carga })
             <h4>
               <strong>Registro de actividades</strong>
             </h4>
-            <Actividades nombre={"Comida En Restaurante"} precio={240} />
-            <Actividades nombre={"Comida En Restaurante"} precio={450} />
-            <Actividades nombre={"Comida En Restaurante"} precio={650} />
-            <Actividades nombre={"Comida En Restaurante"} precio={800} />
+            {
+              !consumos[0] ?
+              <div className="d-flex flex-column mb-2">
+                <div><strong>No a realizado consumo en el hotel </strong><br/></div>
+              </div>
+              :
+              consumos.map((consumo,index)=>{
+                totalPago = totalPago + consumo.precio
+                return(
+                  <Actividades key={index} nombre={consumo.nombreServicio} detalles={consumo.detalles} fecha={consumo.fecha} precio={consumo.precio} />
+                )
+              })
+            }
             <div className="total-pago">
-              <strong>Total a pagar: </strong>$2180
+              <strong>Total a pagar: </strong>${totalPago}
             </div>
           </div>
           <div className="info-extendida-boton">
@@ -55,7 +65,7 @@ export default function InfoHabitacion({ ocultarInfo, tipo, informacion,carga })
           <div className="titulo-check text-center">
             <label>Check-Out</label>
           </div>
-          <CheckOut volver={() => setMostrarSalida(!mostrarSalida)} informacion={informacion} />
+          <CheckOut volver={() => setMostrarSalida(!mostrarSalida)} informacion={informacion} total={totalPago} />
         </div>
       )}
     </>

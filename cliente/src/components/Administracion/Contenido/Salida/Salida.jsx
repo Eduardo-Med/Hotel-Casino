@@ -7,7 +7,7 @@ import './salida.css'
 
 export default function Salida() {
     const habitaciones = useSelector((state) => state.habitacion.habitacion[0])
-    const [tipoHabitacion, setTipoHabitacion] = useState(1) 
+    const [tipoHabitacion, setTipoHabitacion] = useState(0) 
     const [disponibilidad, setDisponibilidad] = useState(1)
     useEffect(() => {
 
