@@ -10,4 +10,5 @@ const {
 router.route('/:noRoom')
     .get(getClientAndRental)
     .delete(deleteRental)
+
 module.exports = router;

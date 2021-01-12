@@ -1,35 +1,35 @@
 const Habitacion = require('../models/Habitacion');
 const Alquiler = require('../models/Alquiler');
 const TipoHabitacion = require('../models/TipoHabitacion');
-const ConsumoTotal = require('../models/ConsumoTotal');
 
 //Method for run all params the rental fot save it, and save the id by client
 //and the different rooms that it rental
-const desocuparHabitacion = async (req, res) => {
-    const habitacion = await Habitacion.find({ "noCuarto": req.params.noRoom }, {})
+const desocuparHabitacion = async(req, res) => {
+    const habitacion = await Habitacion.findOne({ "noCuarto": req.params.noRoom })
     const deleteRental = new Alquiler.find({
-        idHabitacion: habitacion,
+        idHabitacion: habitacion._id,
         "disponible": false
     });
     await deleteRental.delete();
 
     await Habitacion.replaceOne({
-        "_id": habitaciones._id
+        "_id": habitacion._id
     }, {
-        "noCamas": habitaciones.noCamas,
+        "noCamas": habitacion.noCamas,
         "disponible": true,
-        "noCuarto": habitaciones.noCuarto,
-        "idTipo": habitaciones.idTipo
+        "noCuarto": habitacion.noCuarto,
+        "idTipo": habitacion.idTipo
     });
 
-    const tiposHabitaciones = await TipoHabitacion.findById(tipo);
+    const tiposHabitaciones = await TipoHabitacion.findById(habitacion.idTipo);
 
     await TipoHabitacion.replaceOne({
-        "_id": tipo
+        "_id": habitacion.idTipo
     }, {
         "nombre": tiposHabitaciones.nombre,
         "cantidad": (tiposHabitaciones.cantidad + 1)
     })
+    res.statu(200).json({ message: "rental deleted" })
 }
 
-module.exports = desocuparHabitacion, ejecutar;
+module.exports = desocuparHabitacion;
