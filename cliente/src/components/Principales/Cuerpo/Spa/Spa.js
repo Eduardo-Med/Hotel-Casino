@@ -7,14 +7,10 @@ export default function Spa() {
       <h1 className="mt-5 text-center">Spa</h1>
       <div className="restaurante-informacion">
         <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit vero
-          ipsa necessitatibus? Ex corrupti sunt earum esse cumque, expedita quis,
-          obcaecati explicabo commodi doloremque illo.
+        Apenas tenemos un momento para relajarnos, para no hacer nada o para dedicarlo a nosotros mismos. Por ello, el Spa de Hotel-Casino ha aparecido con gran fuerza en nuestras vidas.
         </p>
         <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos quae sit
-          sint accusantium, culpa cupiditate totam. Nobis possimus sapiente maxime
-          quam. Voluptatibus hic quia in.
+        Los tratamientos de spa son esenciales para aislarse del exterior, dejando a un lado el <b>estrés.</b> Un añadido de los spas, es que además de mejorar tu estado físico y mental, también cuentan con tratamientos estéticos todo esto dentro de nuestro Spa.
         </p>
       </div>
       <div className="imagenes-spa">

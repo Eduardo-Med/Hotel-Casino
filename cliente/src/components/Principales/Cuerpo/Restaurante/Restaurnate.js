@@ -7,14 +7,12 @@ export default function Restaurnate() {
       <h1 className="mt-5 text-center">Restaurante</h1>
       <div className="restaurante-informacion">
         <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit vero
-          ipsa necessitatibus? Ex corrupti sunt earum esse cumque, expedita quis,
-          obcaecati explicabo commodi doloremque illo.
+        Nuestro restaurante tiene una capacidad de 120 comensales y de la misma forma cuenta con todo el mobiliario y equipamiento que un restaurante de categoría lo amerita,con muestra decoración y estilo.
+
+
         </p>
         <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos quae sit
-          sint accusantium, culpa cupiditate totam. Nobis possimus sapiente maxime
-          quam. Voluptatibus hic quia in.
+        Contamos con los mas <b>experimentados Cheff de renombre</b> que plasman todo su arte y buen gusto para proporcionarle a nuestro pasajero lo mejor de la comida Mexicana e internacional
         </p>
       </div>
       <div className="imagenes-restaurant">

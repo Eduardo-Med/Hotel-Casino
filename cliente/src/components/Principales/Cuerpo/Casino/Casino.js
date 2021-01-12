@@ -7,14 +7,10 @@ export default function Casino() {
       <h1 className="mt-5 text-center">Casino</h1>
       <div className="restaurante-informacion">
         <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit vero
-          ipsa necessitatibus? Ex corrupti sunt earum esse cumque, expedita quis,
-          obcaecati explicabo commodi doloremque illo.
+          Ven diviertete jugando y sientiendo toda la <b>adrenalina de ganar</b> en el casino de Hotel-Casino, no lo pienses mas asi que apuesta en vivo y con los mejores.
         </p>
         <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos quae sit
-          sint accusantium, culpa cupiditate totam. Nobis possimus sapiente maxime
-          quam. Voluptatibus hic quia in.
+           Contamos con gran variedad de apuestas y diferentes Jackpots al igual que contamos con cambio de efectivo por tokens de apuestas!.
         </p>
       </div>
       <div className="imagenes-restaurant">
