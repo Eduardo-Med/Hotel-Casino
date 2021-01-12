@@ -17,11 +17,8 @@ checkOutCtrl.getClientAndRental = async(req, res) => {
 //Delete Rental
 checkOutCtrl.deleteRental = async(req, res) => {
     const habitacion = await Habitacion.findOne({ "noCuarto": req.params.noRoom })
-    const deleteRental = new Alquiler.find({
-        idHabitacion: habitacion._id,
-        "disponible": false
-    });
-    await deleteRental.delete();
+
+    await Alquiler.deleteOne({ "idHabitacion": habitacion._id });
 
     await Habitacion.replaceOne({
         "_id": habitacion._id
@@ -40,7 +37,7 @@ checkOutCtrl.deleteRental = async(req, res) => {
         "nombre": tiposHabitaciones.nombre,
         "cantidad": (tiposHabitaciones.cantidad + 1)
     })
-    res.statu(200).json({ message: "rental deleted" })
+    res.status(200).json({ message: "rental deleted" })
 }
 
 //--------------------------------------------------------------------
