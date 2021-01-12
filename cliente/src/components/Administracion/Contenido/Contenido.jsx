@@ -3,13 +3,22 @@ import { useDispatch } from "react-redux";
 import fetchHabitacion from "../../../redux/actions/habitacionAction";
 import Registro from "./Registro/Registro";
 import Salida from "./Salida/Salida";
+import io from 'socket.io-client'
 
 export default function Contenido() {
     const dispatch = useDispatch()
     const [pestanaActiva, setPestanaActiva] = useState(false)
+    const ENDPOINT = "http://localhost:4000"
+
+    let socket = io(ENDPOINT)
 
     useEffect(() => {
-      dispatch(fetchHabitacion()) 
+      socket.emit("conectar", "Conectado")
+      socket.emit("actualizarHabs", "Conectado")
+      socket.on("actualizarHabs", function(msg){
+        dispatch(fetchHabitacion())
+      }); 
+
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
   return (

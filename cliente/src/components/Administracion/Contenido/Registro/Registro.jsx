@@ -1,16 +1,19 @@
 import React, {useState} from 'react'
 import './registro.css'
 
+
 import { useDispatch, useSelector } from 'react-redux'
 import fetchReservacion from '../../../../redux/actions/reservacionAction'
 import FormularioRegistro from './FormularioRegistro'
+
+
+
 
 export default function Registro() {
     const dispatch = useDispatch()
     const [noReservacion, setNoReservacion] = useState('')
     const reservacion = useSelector((state) => state.reservacion)
     const registro = useSelector((state) => state.registro)
-
     
     return (
         <div className="registro">
@@ -39,11 +42,11 @@ export default function Registro() {
                         <div className="boton-verificar">
                             <button className="btn btn-success" onClick={()=> dispatch(fetchReservacion(noReservacion))}>Comprobar</button>
                         </div>
+                       
                     </div>
                     <FormularioRegistro noReservacion={noReservacion}/>
                 </div>
             </div>
-            
         </div>
     )
 }

@@ -6,5 +6,9 @@ swal({
     text,
     icon,
     button
+}).then((result) => {
+    if(icon === 'success'){
+       if(result) window.location.reload(false)
+    }
 })
 }

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Habitacion from './Habitacion/Habitacion'
 import {useSelector } from 'react-redux'
 import {verTipoHabitacion} from '../../../../middleware/tipoHabitacion'
@@ -9,6 +9,9 @@ export default function Salida() {
     const habitaciones = useSelector((state) => state.habitacion.habitacion[0])
     const [tipoHabitacion, setTipoHabitacion] = useState(1) 
     const [disponibilidad, setDisponibilidad] = useState(1)
+    useEffect(() => {
+
+    }, [habitaciones])
     return (
         <div className="contenido-salida">
             <div className="salida-titulo"><h5>Habitaciones</h5></div>

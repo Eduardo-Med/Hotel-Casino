@@ -1,9 +1,14 @@
 import axios from 'axios'
 import {alerta} from '../../middleware/alertas'
+import io from 'socket.io-client'
+import fetchHabitacion from './habitacionAction'
 
 export const FETCH_REGISTRO_REQUEST = 'FETCH_REGISTRO_REQUEST'
 export const FETCH_REGISTRO_SUCCESS = 'FETCH_REGISTRO_SUCCESS'
 export const FETCH_REGISTRO_FAILURE = 'FETCH_REGISTRO_FAILURE'
+const ENDPOINT = "http://localhost:4000"
+
+let socket
 
 //actions
 
@@ -46,7 +51,8 @@ const fetchRegistro = (registro) => {
 
     return (dispatch) => {
         dispatch(fetchRegistroRequest());
-        console.log(registro.reservacion)
+        socket = io(ENDPOINT)
+        socket.emit("actualizarHabs", "Conectadooo")
         axios({
                 method: 'post',
                 url: `http://localhost:4000/api/checkIn`,
@@ -67,7 +73,9 @@ const fetchRegistro = (registro) => {
             })
             .then(response =>{
                 dispatch(fetchRegistroSuccess([response]))
-                alerta('Registro Correcto', 'Registro realizado correctamente', 'success', 'Aceptar') 
+                fetchHabitacion()
+                alerta('Registro Correcto', 'Registro realizado correctamente', 'success', 'Aceptar')
+               
             })
             .catch(error => {
                 dispatch(fetchRegistroFailure([error]))
