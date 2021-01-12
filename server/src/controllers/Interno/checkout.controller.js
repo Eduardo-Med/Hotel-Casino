@@ -3,7 +3,7 @@ const checkOutCtrl = {};
 const Cliente = require('../../models/Cliente');
 const Alquiler = require('../../models/Alquiler');
 const Habitacion = require('../../models/Habitacion');
-const TipoHabitacion = require('../models/TipoHabitacion');
+const TipoHabitacion = require('../../models/TipoHabitacion');
 
 //-------------------------CHECKOUT------------------------------------
 //Find a client and rental with the number by room
