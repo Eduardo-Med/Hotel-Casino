@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 const checkIn = require('./routes/Interno/checkIn');
+const checkOut = require('./routes/Interno/checkOut');
 const tipoHabitacion = require('./routes/Interno/tipoHabitacion');
 const habitacion = require('./routes/Interno/habitacion');
 const consumoServ = require('./routes/Interno/consumoServ');
@@ -19,6 +20,7 @@ app.use(bodyParser.json({ limit: '300kb' }));
 
 //routes
 app.use('/api/checkIn', checkIn);
+app.use('/api/checkOut',checkOut);
 app.use('/api/tipoHabitacion', tipoHabitacion);
 app.use('/api/habitacion', habitacion);
 app.use('/api/consumoServ', consumoServ)
