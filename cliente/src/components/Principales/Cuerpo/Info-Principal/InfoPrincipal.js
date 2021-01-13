@@ -9,7 +9,7 @@ export default function InfoPrincipal() {
             <div className="hotel-introduccion" id="Inicio">
                 <div className="informacion-hotel">
                     <h2>Bienvenido Al Hotel-Casino</h2>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium, soluta officiis. Numquam ipsum quod nesciunt reiciendis, architecto iste quaerat et alias, quibusdam similique, exercitationem aspernatur ipsam ducimus labore. Saepe delectus molestias libero repellat, ex, quidem fuga in odio minima aperiam rem dignissimos iste totam ut!</p>
+                    <p>Hotel-Casino cuenta con un total de 80 habitaciones entre las cuales se encuentran simples , dobles matrimoniales y suite al igual que contamos con <b><i>salon de eventos, restaurante, spa, alberca-snacks y casino.</i></b> </p>
                  </div>
                 <div className="reservar-boton">
                     <button className="btn btn-success">Reservar ahora</button>

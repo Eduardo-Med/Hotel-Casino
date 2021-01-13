@@ -4,9 +4,9 @@ import './servicio.css'
 export default function Servicio() {
     return (
         <div className="hotel-informacion">
-        <h2 className="text-center">Contamos Con</h2>
+        <h2 className="text-center">Servicios</h2>
         <div className="info-hi">
-        <p className="text-justify pl-5 pr-5 pt-3 pb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est voluptas eaque quo mollitia asperiores in animi amet atque, porro reiciendis deleniti laudantium autem rem et!</p>
+        <p className="text-justify pl-5 pr-5 pt-3 pb-4">Hotel-Casino cuenta con un gran equipo humano, profesional capacitado y en constante perfeccionamiento, enfocados en entregar día a día, lo mejor de cada uno de ellos, una optima y profesional atención.</p>
         </div>
        <div className="servicios pl-5 ">
             <div className="contenedor-servicios">

@@ -7,14 +7,10 @@ export default function Eventos() {
       <h1 className="mt-5 text-center">Eventos</h1>
       <div className="restaurante-informacion">
         <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit vero
-          ipsa necessitatibus? Ex corrupti sunt earum esse cumque, expedita quis,
-          obcaecati explicabo commodi doloremque illo.
+        El hotel-Casino ofrece sus salas de actos para la celebración de <i>Eventos empresariales, conferencias, reuniones, seminarios, desayunos de trabajo y otros eventos.</i>
         </p>
         <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos quae sit
-          sint accusantium, culpa cupiditate totam. Nobis possimus sapiente maxime
-          quam. Voluptatibus hic quia in.
+        Los profesionales del recinto les ofrecerán su elegante y selecto servicio de banquetería, en el que podrán degustar sus deliciosos platos y disfrutar de una fiesta que <b>recordarán para siempre.</b>
         </p>
       </div>
       <div className="imagenes-restaurant">

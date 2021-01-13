@@ -6,15 +6,10 @@ export default function Alberca() {
     <div className="hotel-alberca p-4" id="Alberca">
       <h1 className="mt-5 text-center">Alberca</h1>
       <div className="alberca-informacion">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit vero
-          ipsa necessitatibus? Ex corrupti sunt earum esse cumque, expedita quis,
-          obcaecati explicabo commodi doloremque illo.
+        <p>Relajate y descansa con actividades para todas las edades y toda la familia, desde poder disfrutar de sabrosas bebidas y alimentos hasta nadar con toda tu familia.
         </p>
         <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos quae sit
-          sint accusantium, culpa cupiditate totam. Nobis possimus sapiente maxime
-          quam. Voluptatibus hic quia in.
+            Disfruta de los mejores momentos estando aqui y sacate fotos increibles para guardarlos como momentos inolvidables.
         </p>
       </div>
       <div className="imagenes-alberca">

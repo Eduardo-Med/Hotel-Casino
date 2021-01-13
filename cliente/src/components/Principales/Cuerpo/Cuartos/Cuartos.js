@@ -1,6 +1,9 @@
 import React from "react";
 import Tarjeta from "../../Otro/Tarjeta";
 import Detalles from "./Detalles"
+import Detalles2 from "./Detalles2"
+import Detalles3 from "./Detalles3"
+import Detalles4 from "./Detalles4"
 import "./cuartos.css";
 
 export default function Cuartos() {
@@ -31,19 +34,19 @@ export default function Cuartos() {
           <div className="tab-pane fade active show" id="doble">
             <div className="inicio-contenido">
                 <Tarjeta titulo="Doble" precio="2500"/>
-                <Detalles/>
+                <Detalles2/>
             </div>
           </div>
           <div className="tab-pane fade" id="matrimonial">
             <div className="inicio-contenido">
                 <Tarjeta titulo="Matrimonial" precio="5000"/>
-                <Detalles/>
+                <Detalles3/>
             </div>
           </div>
           <div className="tab-pane fade" id="suite">
             <div className="inicio-contenido">
                 <Tarjeta titulo="Suite" precio="9000"/>
-                <Detalles/>
+                <Detalles4/>
             </div>
           </div>
         </div>
