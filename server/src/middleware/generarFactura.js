@@ -3,10 +3,11 @@ const Docxtemplater = require('docxtemplater');
 
 const fs = require('fs');
 const path = require('path');
+const { dirname } = require('path');
 
 generateInvoice = (data) => {
     //Load the docx file as a binary
-    const content = fs.readFileSync(path.resolve('C:/Users/Luis Izaguirre/Desktop/caca/Hotel-Casino/server/src' + '/public', 'factura.docx'), 'binary');
+    const content = fs.readFileSync(path.resolve(dirname(__dirname) + '/public', 'factura.docx'), 'binary');
 
     const zip = new PizZip(content);
 
@@ -34,5 +35,5 @@ generateInvoice = (data) => {
         .generate({ type: 'nodebuffer' });
 
     // buf is a nodejs buffer, you can either write it to a file or do anything else with it.
-    fs.writeFileSync(path.resolve('C:/Users/Luis Izaguirre/Desktop/caca/Hotel-Casino/server/src' + '/public', 'FacturaOutput.docx'), buf);
+    fs.writeFileSync(path.resolve(dirname(__dirname) + '/public', 'FacturaS01.docx'), buf);
 }
