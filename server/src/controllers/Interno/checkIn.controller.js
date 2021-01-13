@@ -3,6 +3,7 @@ const checkInCtrl = {};
 const Cliente = require('../../models/Cliente');
 const Alquiler = require('../../models/Alquiler');
 const Habitacion = require('../../models/Habitacion');
+const TipoHabitacion = require('../../models/TipoHabitacion');
 
 const ocuparHabitacion = require('../../middleware/ocuparHabitacion');
 
@@ -13,6 +14,16 @@ checkInCtrl.getClientAndRental = async(req, res) => {
     const rental = await Alquiler.find({ "idHabitacion": room }, { "_id": 0 });
     await Cliente.populate(rental, { path: "idCliente" });
     res.status(200).send(rental);
+}
+
+checkInCtrl.getClient = async(req, res) => {
+    const client = await Cliente.find();
+    res.status(200).send(client);
+}
+
+checkInCtrl.getRental = async(req, res) => {
+    const rental = await Alquiler.find();
+    res.status(200).send(rental)
 }
 
 //Data save client and rental
@@ -41,17 +52,21 @@ checkInCtrl.saveClient = async(req, res) => {
 
     await newSaveClient.save();
 
-    ocuparHabitacion(
-        fechaEntrada,
-        fechaSalida,
-        noHabSencilla,
-        noHabDoble,
-        noHabMatrimonial,
-        noHabSuite,
-        precio,
-        cantPersonas,
-        newSaveClient._id
-    );
+    try {
+        ocuparHabitacion(
+            fechaEntrada,
+            fechaSalida,
+            noHabSencilla,
+            noHabDoble,
+            noHabMatrimonial,
+            noHabSuite,
+            precio,
+            cantPersonas,
+            newSaveClient._id
+        );
+    } catch { error } {
+        res.status(400).json({ message: 'Ya no hay este tipo de habitaciones disponible' });
+    }
 
     res.status(200).json({ message: 'Client and rental saved' });
 }

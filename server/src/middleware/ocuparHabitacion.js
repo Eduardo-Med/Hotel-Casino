@@ -61,46 +61,48 @@ const ejecutar = async(
     idCliente
 ) => {
     if (tipoHabitacion !== 0) {
-        const habitaciones = await Habitacion.find({
-            "idTipo": tipo,
-            "disponible": true,
-        }, {
-            "noCamas": 1,
-            "disponible": 1,
-            "noCuarto": 1,
-            "idTipo": 1
-        });
-
-        for (let i = 0; i < tipoHabitacion; i++) {
-            const newSaveRental = new Alquiler({
-                fechaEntrada,
-                fechaSalida,
-                precio,
-                cantPersonas,
-                idCliente: idCliente,
-                idHabitacion: habitaciones[i]._id
-            });
-            await newSaveRental.save();
-
-            await Habitacion.replaceOne({
-                "_id": habitaciones[i]._id
+        const tiposHabitaciones = await TipoHabitacion.findById(tipo);
+        if (tiposHabitaciones.cantidad !== 0) {
+            const habitaciones = await Habitacion.find({
+                "idTipo": tipo,
+                "disponible": true,
             }, {
-                "noCamas": habitaciones[i].noCamas,
-                "disponible": false,
-                "noCuarto": habitaciones[i].noCuarto,
-                "idTipo": habitaciones[i].idTipo
+                "noCamas": 1,
+                "disponible": 1,
+                "noCuarto": 1,
+                "idTipo": 1
             });
 
-            const tiposHabitaciones = await TipoHabitacion.findById(tipo);
+            for (let i = 0; i < tipoHabitacion; i++) {
+                const newSaveRental = new Alquiler({
+                    fechaEntrada,
+                    fechaSalida,
+                    precio,
+                    cantPersonas,
+                    idCliente: idCliente,
+                    idHabitacion: habitaciones[i]._id
+                });
+                await newSaveRental.save();
 
-            await TipoHabitacion.replaceOne({
-                "_id": tipo
-            }, {
-                "nombre": tiposHabitaciones.nombre,
-                "cantidad": (tiposHabitaciones.cantidad - 1)
-            })
+                await Habitacion.replaceOne({
+                    "_id": habitaciones[i]._id
+                }, {
+                    "noCamas": habitaciones[i].noCamas,
+                    "disponible": false,
+                    "noCuarto": habitaciones[i].noCuarto,
+                    "idTipo": habitaciones[i].idTipo
+                });
+
+                // const tiposHabitaciones = await TipoHabitacion.findById(tipo);
+
+                await TipoHabitacion.replaceOne({
+                    "_id": tipo
+                }, {
+                    "nombre": tiposHabitaciones.nombre,
+                    "cantidad": (tiposHabitaciones.cantidad - 1)
+                })
+            }
         }
-
     }
 }
 

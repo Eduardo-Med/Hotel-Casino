@@ -18,11 +18,11 @@ const ConsumoTotalSchema = new Schema({
         required: true,
         ref: 'habitaciones',
     },
-    idServicio: {
-        type: Schema.ObjectId,
-        required: true,
-        ref: 'consumoservicios',
-    }
+    // idServicio: {
+    //     type: Schema.ObjectId,
+    //     required: true,
+    //     ref: 'consumoservicios',
+    // }
 });
 
 module.exports = model('consumototales', ConsumoTotalSchema);

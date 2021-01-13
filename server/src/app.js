@@ -8,6 +8,8 @@ const checkOut = require('./routes/Interno/checkOut');
 const tipoHabitacion = require('./routes/Interno/tipoHabitacion');
 const habitacion = require('./routes/Interno/habitacion');
 const consumoServ = require('./routes/Interno/consumoServ');
+const consumoTotal = require('./routes/Interno/consumoTotal');
+const cuartoOcupado = require('./routes/Externo/cuartoOcupado');
 
 //settings
 app.set('port', process.env.PORT || 4000);
@@ -19,10 +21,15 @@ app.use(express.json());
 app.use(bodyParser.json({ limit: '300kb' }));
 
 //routes
+//Internal
 app.use('/api/checkIn', checkIn);
-app.use('/api/checkOut',checkOut);
+app.use('/api/checkOut', checkOut);
 app.use('/api/tipoHabitacion', tipoHabitacion);
 app.use('/api/habitacion', habitacion);
-app.use('/api/consumoServ', consumoServ)
+app.use('/api/consumoServ', consumoServ);
+app.use('/api/consumoTotal', consumoTotal);
+
+//External
+app.use('/api/cuartoOcupado', cuartoOcupado);
 
 module.exports = app;
