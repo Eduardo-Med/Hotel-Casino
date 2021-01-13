@@ -31,10 +31,9 @@ export const fetchReservacionFailure = (error) =>{
 const fetchReservacion = (reservacion) =>{
     return (dispatch) => {
         dispatch(fetchReservacionRequest());
-        axios.get(`https://reservaciones.app/api/reservation/${reservacion}`)
+        axios.get(`https://www.reservaciones.app/api/reservation/${reservacion}`)
         .then(response =>{
-            console.log(response)
-            dispatch(fetchReservacionSuccess([response]))
+            dispatch(fetchReservacionSuccess([response.data]))
         })
         .catch(error => {
             dispatch(fetchReservacionFailure([error]))

@@ -33,22 +33,31 @@ export const fetchRegistroFailure = (error) => {
     }
 }
 
+//5ffe39c8d3e9d111006cf2e9
 
 const fetchRegistro = (registro) => {
     const {
-        nombre,
-        telefono,
-        correo,
-        fechaEntrada,
-        fechaSalida,
-        noHabSencilla,
-        noHabDoble,
-        noHabMatrimonial,
-        noHabSuite,
-        cantPersonas,
-    } = registro.reservacion
+        entryDate,
+        leavingDate,
+    } = registro.reservacion.reservation
+    const {
+        simple,
+        double,
+        master,
+        suite
+    } = registro.reservacion.reservation.rooms
+    const {
+        name,
+        maternalSurname,
+        paternalSurname,
+        phone,
+        email
+    } = registro.reservacion.user
     const {noReservacion, precio} = registro
-
+    console.log(registro.reservacion.reservation)
+    console.log(registro.reservacion.reservation.rooms)
+    console.log(registro.reservacion.user)
+    console.log(registro.reservacion)
     return (dispatch) => {
         dispatch(fetchRegistroRequest());
         socket = io(ENDPOINT)
@@ -58,17 +67,17 @@ const fetchRegistro = (registro) => {
                 url: `http://localhost:4000/api/checkIn`,
                 data: {
                     noReservacion,
-                    nombre,
-                    telefono,
-                    correo,
-                    fechaEntrada,
-                    fechaSalida,
-                    noHabSencilla,
-                    noHabDoble,
-                    noHabMatrimonial,
-                    noHabSuite,
+                    nombre:`${name} ${maternalSurname} ${paternalSurname}`,
+                    telefono: phone,
+                    correo: email,
+                    fechaEntrada: entryDate.substr(0,10),
+                    fechaSalida: leavingDate.substr(0,10),
+                    noHabSencilla: simple,
+                    noHabDoble: double,
+                    noHabMatrimonial: master,
+                    noHabSuite:suite,
                     precio,
-                    cantPersonas,
+                    cantPersonas:2,
                 }
             })
             .then(response =>{

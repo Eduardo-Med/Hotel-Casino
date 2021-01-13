@@ -28,6 +28,7 @@ checkInCtrl.getRental = async(req, res) => {
 
 //Data save client and rental
 checkInCtrl.saveClient = async(req, res) => {
+    
     const {
         nombre,
         telefono,
@@ -52,7 +53,7 @@ checkInCtrl.saveClient = async(req, res) => {
 
     await newSaveClient.save();
 
-    try {
+
         ocuparHabitacion(
             fechaEntrada,
             fechaSalida,
@@ -64,11 +65,7 @@ checkInCtrl.saveClient = async(req, res) => {
             cantPersonas,
             newSaveClient._id
         );
-    } catch { error } {
-        res.status(400).json({ message: 'Ya no hay este tipo de habitaciones disponible' });
-    }
-
-    res.status(200).json({ message: 'Client and rental saved' });
+        res.status(200).json({ message: 'Client and rental saved' });   
 }
 
 //--------------------------------------------------------------------

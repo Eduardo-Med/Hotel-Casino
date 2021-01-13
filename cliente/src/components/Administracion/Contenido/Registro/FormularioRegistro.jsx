@@ -12,7 +12,7 @@ export default function FormularioRegistro({noReservacion}) {
     setDatos({
       reservacion,
       noReservacion,
-      precio: 5600
+      precio: reservacion ? reservacion.reservation.total : 0
     })
     // eslint-disable-next-line
   }, [reservacion])
@@ -21,7 +21,6 @@ export default function FormularioRegistro({noReservacion}) {
   return (
     <div className="informacion formulario">
       <div className="input-contenido">
-        <button onClick={()=>console.log(reservacion)}>hola</button>
         <label htmlFor="">Nombre Cliente</label>
         <input
           className="form-control"
@@ -30,7 +29,7 @@ export default function FormularioRegistro({noReservacion}) {
           type="text"
           tabIndex="-1"
           placeholder="Nombre"
-          defaultValue={reservacion ? reservacion.nombre : ""}
+          defaultValue={reservacion ? `${reservacion.user.name} ${reservacion.user.paternalSurname} ${reservacion.user.maternalSurname}`: ""}
         />
       </div>
       <div className="input-contenido">
@@ -42,7 +41,7 @@ export default function FormularioRegistro({noReservacion}) {
           type="text"
           tabIndex="-1"
           placeholder="Correo"
-          defaultValue={reservacion ? reservacion.correo : ""}
+          defaultValue={reservacion ? reservacion.user.email : ""}
         />
         <label htmlFor="">Telefono</label>
         <input
@@ -53,7 +52,7 @@ export default function FormularioRegistro({noReservacion}) {
           type="tel"
           tabIndex="-1"
           placeholder="Telefono"
-          defaultValue={reservacion ? reservacion.telefono : ""}
+          defaultValue={reservacion ? reservacion.user.phone : ""}
         />
       </div>
       <div className="input-contenido">
@@ -63,7 +62,7 @@ export default function FormularioRegistro({noReservacion}) {
           type="date"
           tabIndex="-1"
           placeholder="Fecha de Inicio"
-          defaultValue={reservacion ? reservacion.fechaEntrada : ""}
+          defaultValue={reservacion ? reservacion.reservation.entryDate.substr(0,10) : ""}
         />
         <label htmlFor="">Fin de Estadia</label>
         <input
@@ -71,7 +70,7 @@ export default function FormularioRegistro({noReservacion}) {
           type="date"
           tabIndex="-1"
           placeholder="Fecha de Salida"
-          defaultValue={reservacion ? reservacion.fechaSalida : ""}
+          defaultValue={reservacion ? reservacion.reservation.leavingDate.substr(0,10) : ""}
         />
       </div>
       <div className="input-contenido">
@@ -84,7 +83,7 @@ export default function FormularioRegistro({noReservacion}) {
           tabIndex="-1"
           autoComplete="off"
           placeholder="Sencilla"
-          defaultValue={reservacion ? reservacion.noHabSencilla : ""}
+          defaultValue={reservacion ? reservacion.reservation.rooms.simple : ""}
         />
         <label htmlFor="">Numero de Habitaciones Dobles</label>
         <input
@@ -95,7 +94,7 @@ export default function FormularioRegistro({noReservacion}) {
           tabIndex="-1"
           autoComplete="off"
           placeholder="Doble"
-          defaultValue={reservacion ? reservacion.noHabDoble : ""}
+          defaultValue={reservacion ? reservacion.reservation.rooms.double : ""}
         />
         <label htmlFor="">Numero de Habitaciones Matrimoniales</label>
         <input
@@ -106,7 +105,7 @@ export default function FormularioRegistro({noReservacion}) {
           maxLength="2"
           autoComplete="off"
           placeholder="Matrimoniales"
-          defaultValue={reservacion ? reservacion.noHabMatrimonial : ""}
+          defaultValue={reservacion ? reservacion.reservation.rooms.master  : ""}
         />
         <label htmlFor="">Numero de Habitaciones Suit</label>
         <input
@@ -117,18 +116,7 @@ export default function FormularioRegistro({noReservacion}) {
           tabIndex="-1"
           autoComplete="off"
           placeholder="Suit"
-          defaultValue={reservacion ? reservacion.noHabSuite : ""}
-        />
-        <label htmlFor="">Cantidad de Personas</label>
-        <input
-          className="form-control"
-          type="number"
-          required="required"
-          maxLength="10"
-          autoComplete="off"
-          tabIndex="-1"
-          placeholder="Cantidad de Personas"
-          defaultValue={reservacion ? reservacion.cantPersonas : ""}
+          defaultValue={reservacion ? reservacion.reservation.rooms.suite  : ""}
         />
       </div>
       <div className="boton-registrar">
