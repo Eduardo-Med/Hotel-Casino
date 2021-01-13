@@ -7,24 +7,29 @@ import {
   CarouselCaption
 } from 'reactstrap';
 
+import Recamara from '../../../images/recamara.jpg'
+import Hotel from '../../../images/hotel.jpg'
+import Alberca from '../../../images/recamara.jpg'
+import Restaurante from '../../../images/recamara.jpg'
+ 
 const items = [
   {
-    src: 'https://www.idownimages.com/wp-content/cache/thumb/Hotel-Gondwan-Game-Reserve-Mossel-Bay-Afric-Best-Hotels_2560x1024.jpg',
+    src: Recamara,
     altText: 'Recamara',
     caption: 'Contamos Con Diferentes Tipos de Recamaras'
   },
   {
-    src: 'https://images.wallpapersden.com/image/download/las-vegas-night-hotel_Zmxtbm6UmZqaraWkpJRmbmdlrWZlbWU.jpg',
+    src: Hotel,
     altText: 'Hotel Casino',
     caption: ''
   },
   {
-    src: 'https://www.wallpapertip.com/wmimgs/15-156960_hotels-images-hd.jpg',
+    src: Alberca,
     altText: 'Alberca',
     caption: ''
   },
   {
-    src: 'https://cdn.foodandwineespanol.com/2019/07/Cocina_de_Autor.jpg',
+    src: Restaurante,
     altText: 'Restaurante',
     caption: 'Contamos con servicio de restaurante'
   }

@@ -7,6 +7,7 @@ export default function FormularioRegistro({noReservacion}) {
   const reservacion = useSelector((state) => state.reservacion.reservacion[0]);
   const [datos,setDatos] = useState({info: reservacion,num: noReservacion,precio:0})
 
+
   useEffect(() => {
     setDatos({
       reservacion,
@@ -20,6 +21,7 @@ export default function FormularioRegistro({noReservacion}) {
   return (
     <div className="informacion formulario">
       <div className="input-contenido">
+        <button onClick={()=>console.log(reservacion)}>hola</button>
         <label htmlFor="">Nombre Cliente</label>
         <input
           className="form-control"
