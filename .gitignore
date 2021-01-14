@@ -4,6 +4,7 @@
 /cliente/node_modules
 /server/node_modules
 /server/.env
+/server/.gitignore
 
 /.pnp
 .pnp.js
