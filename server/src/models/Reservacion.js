@@ -15,4 +15,4 @@ const reservacionSchema = new Schema({
     noHabSuite: Number
 });
 
-module.exports = model('reservacion', reservacionSchema);
+module.exports = model('reservaciones', reservacionSchema);
