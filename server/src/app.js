@@ -10,6 +10,7 @@ const habitacion = require('./routes/Interno/habitacion');
 const consumoServ = require('./routes/Interno/consumoServ');
 const consumoTotal = require('./routes/Interno/consumoTotal');
 const cuartoOcupado = require('./routes/Externo/cuartoOcupado');
+const reservacion = require('./routes/Externo/reservacion');
 
 //settings
 app.set('port', process.env.PORT || 4000);
@@ -31,5 +32,6 @@ app.use('/api/consumoTotal', consumoTotal);
 
 //External
 app.use('/api/cuartoOcupado', cuartoOcupado);
+app.use('/api/reservacion', reservacion);
 
 module.exports = app;
