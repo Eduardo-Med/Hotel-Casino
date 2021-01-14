@@ -10,7 +10,7 @@ const ConsumoTotalSchema = new Schema({
         required: true,
     },
     noTarjetas: {
-        type: Number,
+        type: String,
         required: true,
     },
     idHabitacion: {
