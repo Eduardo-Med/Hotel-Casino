@@ -95,12 +95,12 @@ const ejecutar = async(
 
                 // const tiposHabitaciones = await TipoHabitacion.findById(tipo);
 
-                await TipoHabitacion.replaceOne({
-                    "_id": tipo
-                }, {
-                    "nombre": tiposHabitaciones.nombre,
-                    "cantidad": (tiposHabitaciones.cantidad - 1)
-                })
+                // await TipoHabitacion.replaceOne({
+                //     "_id": tipo
+                // }, {
+                //     "nombre": tiposHabitaciones.nombre,
+                //     "cantidad": (tiposHabitaciones.cantidad - 1)
+                // })
             }
         }
     }
