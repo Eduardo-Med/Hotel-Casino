@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {alerta} from '../../middleware/alertas'
+import {alertaSinActualizar,alerta} from '../../middleware/alertas'
 
 export const FETCH_PAGO_REQUEST = 'FETCH_PAGO_REQUEST'
 export const FETCH_PAGO_SUCCESS = 'FETCH_PAGO_SUCCESS'
@@ -29,35 +29,51 @@ export const fetchPagoFailure = (error) => {
 }
 
 
-const fetchPago = (pago) => {
+const fetchPago = (pagoDatos) => {
     const {
-        nombreCliente,
+        // nombreCliente,
         numeroTarjeta,
-        mesVencimiento,
-        anoVencimiento,
-        cvv,
-    } = pago
-
+        // mesVencimiento,
+        // anoVencimiento,
+        // cvv,
+        monto,
+        habitacionNumero
+    } = pagoDatos
+    console.log(habitacionNumero)
     return (dispatch) => {
         dispatch(fetchPagoRequest());
         axios({
                 method: 'post',
-                url: `http://localhost:5000/api/v1/pago`,
+                url: `http://localhost:4000/api/consumoTotal/${habitacionNumero}`,
                 data: {
-                    nombreCliente,
-                    numeroTarjeta,
-                    mesVencimiento,
-                    anoVencimiento,
-                    cvv,
+                    precio: monto,
+                    noTarjetas: `${numeroTarjeta.substr(0,4)}************`,
                 }
             })
-            .then(response =>{
+            axios.get(`http://localhost:4000/api/habitacion`)
+            .then((response) =>{
                 dispatch(fetchPagoSuccess([response]))
-                alerta('Registro Correcto', 'Registro realizado correctamente', 'success', 'Aceptar') 
+                axios({
+                    url: `http://localhost:4000/api/checkOut/download/factura`,
+                    method: 'GET',
+                    responseType: 'blob',
+                }).then((response) => {
+                    const url = window.URL.createObjectURL(new Blob([response.data]));
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.setAttribute('download', 'Factura.docx'); //or any other extension
+                    document.body.appendChild(link);
+                    link.click();
+                    alerta('Pago Correcto', 'Pago realizado correctamente', 'success', 'Aceptar')
+                })
+                .catch(error => {
+                    dispatch(fetchPagoFailure([error]))
+                    alertaSinActualizar('A ocurrido un error', 'No se logro descargar la factura', 'error', 'Aceptar') 
+                })
             })
             .catch(error => {
                 dispatch(fetchPagoFailure([error]))
-                alerta('Registro Incorrecto', 'Ocurrio un error al realizar el registro', 'error', 'Aceptar') 
+                alertaSinActualizar('Pago Incorrecto', 'Ocurrio un error al realizar el pago revice su información', 'error', 'Aceptar') 
             })
     }
 }

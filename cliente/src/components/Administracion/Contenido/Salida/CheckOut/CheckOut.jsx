@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./checkout.css";
 import DatosPago from "./DatosPago";
 
-export default function CheckOut({ volver, informacion, total }) {
+export default function CheckOut({ volver, informacion, total, habitacionNumero }) {
   const [mostrarContenidoPago, setMostrarContenidoPago] = useState(false);
   return (
     <div>
@@ -71,6 +71,8 @@ export default function CheckOut({ volver, informacion, total }) {
       <DatosPago
         mostrar={mostrarContenidoPago}
         cancelar={() => setMostrarContenidoPago(!mostrarContenidoPago)}
+        habitacionNumero = {habitacionNumero}
+        monto = {total}
       />
     </div>
   );

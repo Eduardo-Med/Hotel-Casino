@@ -1,5 +1,5 @@
 const consumoTotalCtrl = {};
-
+const moment  = require('moment')
 const Habitacion = require('../../models/Habitacion');
 const ConsumoTotal = require('../../models/ConsumoTotal');
 
@@ -12,20 +12,22 @@ consumoTotalCtrl.getConsumptionTotal = async(req, res) => {
 consumoTotalCtrl.saveConsumptionTotal = async(req, res) => {
     const {
         precio,
-        fecha,
         noTarjetas,
     } = req.body;
 
+    const now = moment()
     const room = await Habitacion.findOne({ "noCuarto": req.params.noRoom });
 
     const newSaveConsumptionTotal = new ConsumoTotal({
         precio,
-        fecha,
+        fecha:now,
         noTarjetas,
         idHabitacion: room._id
     });
 
     await newSaveConsumptionTotal.save();
+
+    res.status(200).json({"message": "Consumption total of client saved"})
 }
 
 module.exports = consumoTotalCtrl;

@@ -52,7 +52,7 @@ export default function Habitacion({numero, tipo, estado}) {
         ?
          <></>
         :
-         <InfoHabitacion ocultarInfo={ocultarInfo} tipo={tipo} informacion={datosInformacion} carga={screenLoader} consumos={datosConsumo}/>
+         <InfoHabitacion ocultarInfo={ocultarInfo} tipo={tipo} informacion={datosInformacion} carga={screenLoader} consumos={datosConsumo} habitacionNumero={numero}/>
         }
     </div>
 

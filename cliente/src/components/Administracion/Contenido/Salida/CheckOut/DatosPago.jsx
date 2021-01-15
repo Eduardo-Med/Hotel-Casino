@@ -3,7 +3,7 @@ import { useDispatch,useSelector } from "react-redux";
 import fetchPago from "../../../../../redux/actions/pagoAction";
 
 
-export default function DatosPago({ mostrar, cancelar }) {
+export default function DatosPago({ mostrar, cancelar,habitacionNumero,monto }) {
   const pago = useSelector((state) => state.pago)
   const dispatch = useDispatch()
   
@@ -13,6 +13,8 @@ export default function DatosPago({ mostrar, cancelar }) {
     mesVencimiento: "",
     anoVencimiento: "",
     cvv: "",
+    habitacionNumero,
+    monto
   });
 
   const inputTexto = (event) => {

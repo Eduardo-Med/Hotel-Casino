@@ -4,6 +4,12 @@ const Cliente = require('../../models/Cliente');
 const Alquiler = require('../../models/Alquiler');
 const Habitacion = require('../../models/Habitacion');
 const TipoHabitacion = require('../../models/TipoHabitacion');
+const path = require('path');
+const pdf = require('html-pdf');
+const content = require('../../middleware/facturaCSS')
+
+var docxConverter = require('docx-pdf');
+
 
 //-------------------------CHECKOUT------------------------------------
 //Find a client and rental with the number by room
@@ -12,6 +18,29 @@ checkOutCtrl.getClientAndRental = async(req, res) => {
     const rental = await Alquiler.find({ "idHabitacion": room }, { "_id": 0 });
     await Cliente.populate(rental, { path: "idCliente" });
     res.status(200).send(rental);
+}
+
+checkOutCtrl.descargarFactura = async(req, res) => {
+
+
+    // const extFile = path.join(__dirname, '../..', '/public', 'Factura.docx');
+    const outFile = path.join(__dirname, '../..', '/public', 'Factura.pdf');
+    pdf.create(content()).toFile(outFile, function(err, res) {
+        if (err){
+            console.log(err);
+        } else {
+            console.log(res);
+        }
+    });
+    
+    // docxConverter(extFile,outFile,function(err,result){
+    //     if (err) console.log(err);
+    //     else console.log(result); // writes to file for us
+    //   });
+    
+    // const file = path.join(__dirname, '../..', '/public', 'Factura.pdf');
+    setTimeout(()=>res.sendFile(file), 4000);
+    
 }
 
 //Delete Rental

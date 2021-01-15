@@ -11,4 +11,16 @@ swal({
        if(result) window.location.reload(false)
     }
 })
+
+
 }
+
+
+export const alertaSinActualizar = (title, text, icon, button) => {
+    swal({
+      title,
+      text,
+      icon,
+      button,
+    })
+  };
