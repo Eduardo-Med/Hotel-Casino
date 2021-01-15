@@ -1,9 +1,12 @@
 const { Router } = require('express');
 const router = Router();
 
-const { SaveDate } = require('../../controllers/Externo/reservacion.controller');
+const { SaveDate, SaveDateAndRoomsAmount } = require('../../controllers/Externo/reservacion.controller');
 
-router.route('/')
+router.route('/validarfecha')
     .post(SaveDate)
+
+router.route('/guardar')
+    .post(SaveDateAndRoomsAmount)
 
 module.exports = router;
