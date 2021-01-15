@@ -50,25 +50,27 @@ const fetchPago = (pagoDatos) => {
                     noTarjetas: `${numeroTarjeta.substr(0,4)}************`,
                 }
             })
-            axios.get(`http://localhost:4000/api/habitacion`)
             .then((response) =>{
                 dispatch(fetchPagoSuccess([response]))
-                axios({
-                    url: `http://localhost:4000/api/checkOut/download/factura`,
-                    method: 'GET',
-                    responseType: 'blob',
-                }).then((response) => {
-                    const url = window.URL.createObjectURL(new Blob([response.data]));
-                    const link = document.createElement('a');
-                    link.href = url;
-                    link.setAttribute('download', 'Factura.docx'); //or any other extension
-                    document.body.appendChild(link);
-                    link.click();
-                    alerta('Pago Correcto', 'Pago realizado correctamente', 'success', 'Aceptar')
-                })
-                .catch(error => {
-                    dispatch(fetchPagoFailure([error]))
-                    alertaSinActualizar('A ocurrido un error', 'No se logro descargar la factura', 'error', 'Aceptar') 
+                axios.delete(`http://localhost:4000/api/checkOut/${habitacionNumero}`)
+                .then((response) =>{
+                    axios({
+                        url: `http://localhost:4000/api/checkOut/download/factura`,
+                        method: 'GET',
+                        responseType: 'blob',
+                    }).then((response) => {
+                        const url = window.URL.createObjectURL(new Blob([response.data]));
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.setAttribute('download', 'Factura.docx'); //or any other extension
+                        document.body.appendChild(link);
+                        link.click();
+                        alerta('Pago Correcto', 'Pago realizado correctamente', 'success', 'Aceptar')
+                    })
+                    .catch(error => {
+                        dispatch(fetchPagoFailure([error]))
+                        alertaSinActualizar('A ocurrido un error', 'No se logro descargar la factura', 'error', 'Aceptar') 
+                    })
                 })
             })
             .catch(error => {

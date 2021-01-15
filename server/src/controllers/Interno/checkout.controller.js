@@ -23,22 +23,22 @@ checkOutCtrl.getClientAndRental = async(req, res) => {
 checkOutCtrl.descargarFactura = async(req, res) => {
 
 
-    // const extFile = path.join(__dirname, '../..', '/public', 'Factura.docx');
+    const extFile = path.join(__dirname, '../..', '/public', 'Factura.docx');
     const outFile = path.join(__dirname, '../..', '/public', 'Factura.pdf');
-    pdf.create(content()).toFile(outFile, function(err, res) {
-        if (err){
-            console.log(err);
-        } else {
-            console.log(res);
-        }
-    });
+    // pdf.create(content()).toFile(outFile, function(err, res) {
+    //     if (err){
+    //         console.log(err);
+    //     } else {
+    //         console.log(res);
+    //     }
+    // });
     
-    // docxConverter(extFile,outFile,function(err,result){
-    //     if (err) console.log(err);
-    //     else console.log(result); // writes to file for us
-    //   });
+    docxConverter(extFile,outFile,function(err,result){
+        if (err) console.log(err);
+        else console.log(result); // writes to file for us
+      });
     
-    // const file = path.join(__dirname, '../..', '/public', 'Factura.pdf');
+    const file = path.join(__dirname, '../..', '/public', 'Factura.pdf');
     setTimeout(()=>res.sendFile(file), 4000);
     
 }

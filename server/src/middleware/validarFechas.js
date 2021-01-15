@@ -1,7 +1,9 @@
 const Reservacion = require('../models/Reservacion');
 const TipoHabitacion = require('../models/TipoHabitacion');
 
-const validarFecha = async(fechaEntrada) => {
+const registrar = {}
+
+registrar.validarFecha = async(fechaEntrada) => {
     let totalHabitacionesSencillas = 0
     let totalHabitacionesDobles = 0
     let totalHabitacionesMatrimonial = 0
@@ -24,26 +26,30 @@ const validarFecha = async(fechaEntrada) => {
         // const newSaveDate = new Reservacion({ fechaEntrada, fechaSalida });
         // await newSaveDate.save();
         //returnar la cantidad de habitaciones
-        return [{
+        return ([{
             numSencilla: (tipoHabitacion[0].cantidad),
             numDobles: (tipoHabitacion[1].cantidad),
             numMatrimoniales: (tipoHabitacion[2].cantidad),
             numSuit: (tipoHabitacion[3].cantidad)
-        }]
+        }])
     } else {
         reservacion.map((rev, index) => {
                 if (fechados.getTime() > rev.fechaSalida.getTime()) {
-                    // console.log(fechados.getTime())
-                    // console.log(rev.fechaSalida.getTime())
-                    // console.log('n1: ' + totalHabitacionesSencillas)
-                    // console.log('n2: ' + rev.noHabSencilla)
-                    if (rev.nombre === 'Sencilla') {
+                    console.log(fechados.getTime())
+                    console.log(rev.fechaSalida.getTime())
+                    console.log('n1: ' + totalHabitacionesSencillas)
+                    console.log('n2: ' + rev.noHabSencilla)
+                    console.log('n2: ' + rev.nombre)
+                    if (rev.noHabSencilla !== 0) {
                         totalHabitacionesSencillas = totalHabitacionesSencillas + rev.noHabSencilla;
-                    } else if (rev.nombre === 'Doble') {
+                    } 
+                    if (rev.noHabDoble !== 0) {
                         totalHabitacionesDobles = totalHabitacionesDobles + rev.noHabDoble;
-                    } else if (rev.nombre === 'Matrimonial') {
+                    } 
+                    if (rev.noHabMatrimonial !== 0) {
                         totalHabitacionesMatrimonial = totalHabitacionesMatrimonial + rev.noHabMatrimonial;
-                    } else if (rev.nombre === 'Suite') {
+                    } 
+                    if (rev.noHabSuite !== 0) {
                         totalHabitacionesSuit = totalHabitacionesSuit + rev.noHabSuite;
                     }
                 }
@@ -56,7 +62,7 @@ const validarFecha = async(fechaEntrada) => {
         numSencilla: (tipoHabitacion[0].cantidad + totalHabitacionesSencillas),
         numDobles: (tipoHabitacion[1].cantidad + totalHabitacionesDobles),
         numMatrimoniales: (tipoHabitacion[2].cantidad + totalHabitacionesMatrimonial),
-        numSuit: (tipoHabitacion[3] + totalHabitacionesSuit)
+        numSuit: (tipoHabitacion[3].cantidad + totalHabitacionesSuit)
     }]
 
 
@@ -73,7 +79,7 @@ const validarFecha = async(fechaEntrada) => {
 
 }
 
-const cantidadHabitaciones = async(fechaEntrada, fechaSalida, noHabSencilla, noHabDoble, noHabMatrimonial, noHabSuite) => {
+registrar.cantidadHabitaciones = async(fechaEntrada, fechaSalida, noHabSencilla, noHabDoble, noHabMatrimonial, noHabSuite) => {
 
     const newSaveDate = new Reservacion({
         fechaEntrada,
@@ -93,24 +99,26 @@ const cantidadHabitaciones = async(fechaEntrada, fechaSalida, noHabSencilla, noH
     });
 
     await TipoHabitacion.replaceOne({ "_id": '5ff53f88f922680e0c313eea' }, {
-        'cantidad': (tipoHabitacion[0].cantidad - noHabDoble),
+        'cantidad': (tipoHabitacion[1].cantidad - noHabDoble),
         'nombre': "Doble"
     });
 
     await TipoHabitacion.replaceOne({ "_id": '5ff53f8ff922680e0c313eeb' }, {
-        'cantidad': (tipoHabitacion[0].cantidad - noHabMatrimonial),
+        'cantidad': (tipoHabitacion[2].cantidad - noHabMatrimonial),
         'nombre': "Matrimonial"
     });
 
     await TipoHabitacion.replaceOne({ "_id": '5ff53f97f922680e0c313eec' }, {
-        'cantidad': (tipoHabitacion[0].cantidad - noHabSuite),
+        'cantidad': (tipoHabitacion[3].cantidad - noHabSuite),
         'nombre': "Suite"
     });
 
     // const tipoHabitacion2 = await TipoHabitacion.find({}, { 'cantidad': 1, '_id': 0 });
 
-    return tipoHabitacion
+    const tipoHabitacionCambiado = await TipoHabitacion.find({}, { 'cantidad': 1, '_id': 0 });
+
+    return tipoHabitacionCambiado
 
 }
 
-module.exports = validarFecha, cantidadHabitaciones;
+module.exports = registrar

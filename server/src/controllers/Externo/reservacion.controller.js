@@ -2,21 +2,21 @@ const reservacionCtrl = {};
 
 const Reservacion = require("../../models/Reservacion");
 
-const validarFecha = require("../../middleware/validarFechas");
+const {validarFecha,cantidadHabitaciones} = require("../../middleware/validarFechas");
 
-reservacionCtrl.SaveDate = (req, res) => {
+reservacionCtrl.SaveDate = async (req, res) => {
     const {
         fechaEntrada,
 
     } = req.body;
-    const numHabitaciones = validarFecha(
-        fechaEntrada,
+    const numHabitaciones = await validarFecha(
+        fechaEntrada
     );
 
-    res.json({ numHabitaciones })
+    res.send({ numHabitaciones })
 };
 
-reservacionCtrl.SaveDateAndRoomsAmount = (req, res) => {
+reservacionCtrl.SaveDateAndRoomsAmount = async (req, res) => {
     const {
         fechaEntrada,
         fechaSalida,
@@ -26,7 +26,7 @@ reservacionCtrl.SaveDateAndRoomsAmount = (req, res) => {
         noHabSuite,
     } = req.body
 
-    const cantHabitacion = cantidadHabitaciones(
+    const cantHabitacion = await cantidadHabitaciones(
         fechaEntrada,
         fechaSalida,
         noHabSencilla,
@@ -35,7 +35,7 @@ reservacionCtrl.SaveDateAndRoomsAmount = (req, res) => {
         noHabSuite,
     )
 
-    res.send(cantHabitacion);
+    res.json({cantHabitacion});
 };
 
 module.exports = reservacionCtrl;
