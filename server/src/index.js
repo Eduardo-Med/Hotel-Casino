@@ -3,7 +3,7 @@ require('dotenv').config();
 const app = require('./app');
 const cors = require('cors');
 const http = require('http').Server(app);
-const io = require('socket.io')(http, {cors: {origin: "http://localhost:3000",methods: ["GET", "POST"]}});
+const io = require('socket.io')(http, {cors: {origin: "https://hotel-casino.herokuapp.com/",methods: ["GET", "POST"]}});
 
 require('./database');
 
