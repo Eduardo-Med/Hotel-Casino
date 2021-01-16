@@ -8,7 +8,7 @@ import io from 'socket.io-client'
 export default function Contenido() {
     const dispatch = useDispatch()
     const [pestanaActiva, setPestanaActiva] = useState(false)
-    const ENDPOINT = "http://localhost:4000"
+    const ENDPOINT = process.env.ENDPOINT
 
     let socket = io(ENDPOINT)
 
