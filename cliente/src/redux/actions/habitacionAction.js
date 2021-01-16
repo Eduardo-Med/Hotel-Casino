@@ -3,6 +3,7 @@ import axios from 'axios'
 export const FETCH_HABITACION_REQUEST = 'FETCH_HABITACION_REQUEST'
 export const FETCH_HABITACION_SUCCESS = 'FETCH_HABITACION_SUCCESS'
 export const FETCH_HABITACION_FAILURE = 'FETCH_HABITACION_FAILURE'
+const base_url = process.env.REACT_APP_API_HOTEL
 
 //actions
 
@@ -31,7 +32,7 @@ export const fetchHabitacionFailure = (error) =>{
 const fetchHabitacion = () =>{
     return (dispatch) => {
         dispatch(fetchHabitacionRequest());
-        axios.get(`http://localhost:4000/api/habitacion`)
+        axios.get(`${base_url}/habitacion`)
         .then(response =>{
             dispatch(fetchHabitacionSuccess([response.data]))
         })

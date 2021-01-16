@@ -14,16 +14,20 @@ export default function Spa() {
         </p>
       </div>
       <div className="imagenes-spa">
-        <div className="conjunto-imagenes">
+        <div className="conjunto-imagenes mb-5">
           <img src="https://www.codigounico.com/wp-content/uploads/sites/2/2017/08/la-vuelta-al-mundo-en-9-spas-de-lujo-16.jpg" alt="mesas"/>
           <img src="https://i.pinimg.com/originals/c4/d1/22/c4d122431676362be4c66be02cb4bc01.jpg" alt="mesas"/>
           <img src="https://diccionarioactual.com/wp-content/uploads/2017/03/spa-768x576.jpg" alt="mesas"/>
           <img src="https://cuponassets.cuponatic-latam.com/backendMx/uploads/imagenes_descuentos/67648/afadc0a5025412204b2cbea5f45f65a4d645e66d.XL2.jpg" alt="mesas"/>
-          <button className="btn btn-success mt-4 boton-informacion">Mas información</button>
-        </div>
-       </div>
-       <div className="boton-informacion2">
-          <button className="btn btn-success mt-4 btn-lg btn-block">Mas información</button>
+          {process.env.REACT_APP_SPA_MENU && <a className="text-white text-decoration-none" href={process.env.REACT_APP_SPA_MENU }><button className="btn btn-success mt-4 boton-informacion">Mas información </button></a>}
+          </div>
+      </div>
+      <div className="boton-informacion2">
+          {process.env.REACT_APP_SPA_MENU && 
+          <a className="text-white text-decoration-none" href={process.env.REACT_APP_SPA_MENU }>
+            <button className="btn btn-success mt-4 btn-lg btn-block">Mas información</button>
+          </a>
+          }
         </div>
     </div>
   );

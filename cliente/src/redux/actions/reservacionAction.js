@@ -3,6 +3,7 @@ import axios from 'axios'
 export const FETCH_RESERVACION_REQUEST = 'FETCH_RESERVACION_REQUEST'
 export const FETCH_RESERVACION_SUCCESS = 'FETCH_RESERVACION_SUCCESS'
 export const FETCH_RESERVACION_FAILURE = 'FETCH_RESERVACION_FAILURE'
+const base_url = process.env.REACT_APP_API_RESERVACION
 
 //actions
 
@@ -31,7 +32,7 @@ export const fetchReservacionFailure = (error) =>{
 const fetchReservacion = (reservacion) =>{
     return (dispatch) => {
         dispatch(fetchReservacionRequest());
-        axios.get(`https://www.reservaciones.app/api/reservation/${reservacion}`)
+        axios.get(`${base_url}/${reservacion}`)
         .then(response =>{
             dispatch(fetchReservacionSuccess([response.data]))
         })

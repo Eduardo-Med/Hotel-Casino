@@ -25,8 +25,6 @@ checkOutCtrl.descargarFactura = async(req, res) => {
     pdf.create(content(consumos,informacion,monto,noTarjetas)).toFile(outFile, function(err, res) {
         if (err){
             console.log(err);
-        } else {
-            console.log(res);
         }
     });
       

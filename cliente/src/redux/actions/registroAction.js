@@ -6,7 +6,8 @@ import fetchHabitacion from './habitacionAction'
 export const FETCH_REGISTRO_REQUEST = 'FETCH_REGISTRO_REQUEST'
 export const FETCH_REGISTRO_SUCCESS = 'FETCH_REGISTRO_SUCCESS'
 export const FETCH_REGISTRO_FAILURE = 'FETCH_REGISTRO_FAILURE'
-const ENDPOINT = "http://localhost:4000"
+const ENDPOINT = process.env.ENDPOINT
+const base_url = process.env.REACT_APP_API_HOTEL
 
 let socket
 
@@ -54,17 +55,13 @@ const fetchRegistro = (registro) => {
         email
     } = registro.reservacion.user
     const {noReservacion, precio} = registro
-    console.log(registro.reservacion.reservation)
-    console.log(registro.reservacion.reservation.rooms)
-    console.log(registro.reservacion.user)
-    console.log(registro.reservacion)
     return (dispatch) => {
         dispatch(fetchRegistroRequest());
         socket = io(ENDPOINT)
         socket.emit("actualizarHabs", "Conectadooo")
         axios({
                 method: 'post',
-                url: `http://localhost:4000/api/checkIn`,
+                url: `${base_url}/checkIn`,
                 data: {
                     noReservacion,
                     nombre:`${name} ${maternalSurname} ${paternalSurname}`,

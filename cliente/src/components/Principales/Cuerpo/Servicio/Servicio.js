@@ -31,7 +31,7 @@ export default function Servicio() {
                     Spa
                 </div>
                 <div className="item">
-                <i class="fas fa-money-check-alt"></i>
+                <i className="fas fa-money-check-alt"></i>
                     Promociones
                 </div>
             </div>

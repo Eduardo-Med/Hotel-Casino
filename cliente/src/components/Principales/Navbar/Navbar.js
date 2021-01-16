@@ -11,31 +11,31 @@ export default function Navbar() {
         </button>
         <div className="collapse navbar-collapse opciones" id="navbarColor01">
           <ul className="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#Inicio">Inicio
-                <span class="sr-only">(current)</span>
+            <li className="nav-item active">
+              <a className="nav-link" href="#Inicio">Inicio
+                <span className="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#Habitacion">Habitaciones</a>
+            <li className="nav-item">
+              <a className="nav-link" href="#Habitacion">Habitaciones</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#Restaurante">Restaurante</a>
+            <li className="nav-item">
+              <a className="nav-link" href="#Restaurante">Restaurante</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#Spa">Spa</a>
+            <li className="nav-item">
+              <a className="nav-link" href="#Spa">Spa</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#Casino">Casino</a>
+            <li className="nav-item">
+              <a className="nav-link" href="#Casino">Casino</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#Eventos">Eventos</a>
+            <li className="nav-item">
+              <a className="nav-link" href="#Eventos">Eventos</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#Alberca">Alberca</a>
+            <li className="nav-item">
+              <a className="nav-link" href="#Alberca">Alberca</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contacto">Contacto</a>
+            <li className="nav-item">
+              <a className="nav-link" href="#contacto">Contacto</a>
             </li>
           </ul>
         </div>

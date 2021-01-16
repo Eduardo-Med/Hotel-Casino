@@ -1,5 +1,7 @@
 import axios from 'axios'
-import {alertaSinActualizar,alerta} from '../../middleware/alertas'
+import {alertaSinActualizar} from '../../middleware/alertas'
+const base_url = process.env.REACT_APP_API_HOTEL
+
 
 export const FETCH_PAGO_REQUEST = 'FETCH_PAGO_REQUEST'
 export const FETCH_PAGO_SUCCESS = 'FETCH_PAGO_SUCCESS'
@@ -58,16 +60,16 @@ const fetchPago = (pagoDatos) => {
         dispatch(fetchPagoRequest());
         axios({
                 method: 'post',
-                url: `http://localhost:4000/api/consumoTotal/${habitacionNumero}`,
+                url: `${base_url}/consumoTotal/${habitacionNumero}`,
                 data: {
                     precio: monto,
                     noTarjetas: `${numeroTarjeta.substr(0,4)}************`,
                 }
             })
             .then((response) =>{
-                // axios.delete(`http://localhost:4000/api/checkOut/${habitacionNumero}`)
+                // axios.delete(`${base_url}/checkOut/${habitacionNumero}`)
                 axios({
-                    url: `http://localhost:4000/api/checkOut/download/factura`,
+                    url: `${base_url}/checkOut/download/factura`,
                     method: 'POST',
                     data: {
                         consumos,

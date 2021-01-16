@@ -19,13 +19,13 @@ export default function Menu() {
                 <h1>Menu</h1>
                 <i className={`fas fa-caret-square-down fa-2x ml-5 ${oculatarMenu ? 'mobile-menu-boton1' : 'mobile-menu-boton2' }`}></i>
             </div>
-            <OpcionMenu opcion={oculatarMenu ? 'mobile-opcion-activado' : 'mobile-opcion-desactivado'}nombre="Reservaciones" imagen={Reservaciones}/>
-            <OpcionMenu opcion={oculatarMenu ? 'mobile-opcion-activado' : 'mobile-opcion-desactivado'}nombre="Eventos" imagen={Eventos}/>
-            <OpcionMenu opcion={oculatarMenu ? 'mobile-opcion-activado' : 'mobile-opcion-desactivado'}nombre="Casino" imagen={Casino}/>
-            <OpcionMenu opcion={oculatarMenu ? 'mobile-opcion-activado' : 'mobile-opcion-desactivado'}nombre="Restaurante" imagen={Restaurante}/>
-            <OpcionMenu opcion={oculatarMenu ? 'mobile-opcion-activado' : 'mobile-opcion-desactivado'}nombre="Spa" imagen={Spa}/>
-            <OpcionMenu opcion={oculatarMenu ? 'mobile-opcion-activado' : 'mobile-opcion-desactivado'}nombre="Alberca Y Snack" imagen={Alberca}/>
-            <OpcionMenu opcion={oculatarMenu ? 'mobile-opcion-activado' : 'mobile-opcion-desactivado'}nombre="Promociones" imagen={Promociones}/>
+            <OpcionMenu opcion={oculatarMenu ? 'mobile-opcion-activado' : 'mobile-opcion-desactivado'} link={process.env.REACT_APP_RESERVACION_MENU_ADMIN} nombre="Reservaciones" imagen={Reservaciones}/>
+            <OpcionMenu opcion={oculatarMenu ? 'mobile-opcion-activado' : 'mobile-opcion-desactivado'} link={process.env.REACT_APP_EVENTOS_MENU_ADMIN} nombre="Eventos" imagen={Eventos}/>
+            <OpcionMenu opcion={oculatarMenu ? 'mobile-opcion-activado' : 'mobile-opcion-desactivado'} link={process.env.REACT_APP_CASINO_MENU_ADMIN} nombre="Casino" imagen={Casino}/>
+            <OpcionMenu opcion={oculatarMenu ? 'mobile-opcion-activado' : 'mobile-opcion-desactivado'} link={process.env.REACT_APP_RESTAURANTE_MENU_ADMIN} nombre="Restaurante" imagen={Restaurante}/>
+            <OpcionMenu opcion={oculatarMenu ? 'mobile-opcion-activado' : 'mobile-opcion-desactivado'} link={process.env.REACT_APP_SPA_MENU_ADMIN} nombre="Spa" imagen={Spa}/>
+            <OpcionMenu opcion={oculatarMenu ? 'mobile-opcion-activado' : 'mobile-opcion-desactivado'} link={process.env.REACT_APP_ALBERCA_MENU_ADMIN} nombre="Alberca Y Snack" imagen={Alberca}/>
+            <OpcionMenu opcion={oculatarMenu ? 'mobile-opcion-activado' : 'mobile-opcion-desactivado'} link={process.env.REACT_APP_PROMOCIONES_MENU_ADMIN} nombre="Promociones" imagen={Promociones}/>
         </div>
     )
 }

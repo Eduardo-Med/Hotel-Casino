@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function OpcionMenu({nombre,imagen,opcion}) {
+export default function OpcionMenu({nombre,imagen,opcion,link}) {
   return (
-    <div className={`menu_1 ${opcion}`}>
+    <a href={link} className={`menu_1 ${opcion}`}>
       <h3 className="">{nombre}</h3>
       <img src={imagen} alt={nombre}/>
-    </div>
+    </a>
   );
 }
