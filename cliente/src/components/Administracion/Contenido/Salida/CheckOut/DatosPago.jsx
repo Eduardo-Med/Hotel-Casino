@@ -3,7 +3,7 @@ import { useDispatch,useSelector } from "react-redux";
 import fetchPago from "../../../../../redux/actions/pagoAction";
 
 
-export default function DatosPago({ mostrar, cancelar,habitacionNumero,monto }) {
+export default function DatosPago({ mostrar, cancelar,habitacionNumero,monto,consumos,informacion }) {
   const pago = useSelector((state) => state.pago)
   const dispatch = useDispatch()
   
@@ -14,7 +14,9 @@ export default function DatosPago({ mostrar, cancelar,habitacionNumero,monto }) 
     anoVencimiento: "",
     cvv: "",
     habitacionNumero,
-    monto
+    monto,
+    consumos,
+    informacion
   });
 
   const inputTexto = (event) => {
@@ -39,7 +41,10 @@ export default function DatosPago({ mostrar, cancelar,habitacionNumero,monto }) 
     <div className={`pago-servicio ${!mostrar ? "d-none" : ""}` }>
       {(pago.loading) &&
         <div className="full-screen">
-          <div className="loader3"></div>
+          <div className="d-flex flex-column">
+            <div className="loader3"></div>
+            <div className="mensaje-carga"><strong>Procesando Pago Porfavor Espere un momento</strong></div>
+          </div>
         </div>
       }
       <div className="titulo-check text-center">

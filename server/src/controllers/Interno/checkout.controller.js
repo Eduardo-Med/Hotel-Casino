@@ -8,8 +8,6 @@ const path = require('path');
 const pdf = require('html-pdf');
 const content = require('../../middleware/facturaCSS')
 
-var docxConverter = require('docx-pdf');
-
 
 //-------------------------CHECKOUT------------------------------------
 //Find a client and rental with the number by room
@@ -22,24 +20,19 @@ checkOutCtrl.getClientAndRental = async(req, res) => {
 
 checkOutCtrl.descargarFactura = async(req, res) => {
 
-
-    const extFile = path.join(__dirname, '../..', '/public', 'Factura.docx');
+    const {consumos,informacion,monto,noTarjetas} = req.body
     const outFile = path.join(__dirname, '../..', '/public', 'Factura.pdf');
-    // pdf.create(content()).toFile(outFile, function(err, res) {
-    //     if (err){
-    //         console.log(err);
-    //     } else {
-    //         console.log(res);
-    //     }
-    // });
-    
-    docxConverter(extFile,outFile,function(err,result){
-        if (err) console.log(err);
-        else console.log(result); // writes to file for us
-      });
-    
+    pdf.create(content(consumos,informacion,monto,noTarjetas)).toFile(outFile, function(err, res) {
+        if (err){
+            console.log(err);
+        } else {
+            console.log(res);
+        }
+    });
+      
     const file = path.join(__dirname, '../..', '/public', 'Factura.pdf');
     setTimeout(()=>res.sendFile(file), 4000);
+    
     
 }
 

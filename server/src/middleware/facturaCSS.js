@@ -1,21 +1,25 @@
+const path = require("path");
+const moment  = require('moment')
 
-
-const content = ()=>{
-
-    return( 
-    `
-    <html>
+const content = (consumos, informacion,monto,noTarjetas) => {
+    const now = new moment().format("DD-MM-YYYY")
+    const max = 754234 
+    const min = 113400
+    const {noReservacion,nombre,telefono} = informacion
+  return `
+  <html>
 
 <head>
 <meta http-equiv=Content-Type content="text/html; charset=windows-1252">
-
 <style>
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 75px;
+    }
 <!--
+ /* Font Definitions */
  @font-face
 	{font-family:"Cambria Math";
 	panose-1:2 4 5 3 5 4 6 3 2 4;
@@ -30,6 +34,7 @@ body{
 	mso-generic-font-family:swiss;
 	mso-font-pitch:variable;
 	mso-font-signature:-469750017 -1073732485 9 0 511 0;}
+ /* Style Definitions */
  p.MsoNormal, li.MsoNormal, div.MsoNormal
 	{mso-style-unhide:no;
 	mso-style-qformat:yes;
@@ -94,8 +99,9 @@ div.WordSection1
 </style>
 <!--[if gte mso 10]>
 <style>
+ /* Style Definitions */
  table.MsoNormalTable
-	{mso-style-name:"Tabla normal";
+	{mso-style-name:"Table Normal";
 	mso-tstyle-rowband-size:0;
 	mso-tstyle-colband-size:0;
 	mso-style-noshow:yes;
@@ -121,7 +127,7 @@ div.WordSection1
 <![endif]-->
 </head>
 
-<body lang=ES-MX style='tab-interval:35.4pt;word-wrap:break-word'>
+<body lang=ES-MX style='tab-interval:35.4pt'>
 
 <div class=WordSection1>
 
@@ -132,462 +138,979 @@ style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-fam
 <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=642
  style='width:481.45pt;border-collapse:collapse;mso-yfti-tbllook:1184'>
  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:24.0pt'>
-  <td width=169 colspan=2 rowspan=3 valign=top style='width:127.1pt;border:
+  <td width=197 colspan=2 rowspan=3 valign=top style='width:148.0pt;border:
   solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
-  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
-  color:black;mso-fareast-language:ES-MX'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-family:"Arial",sans-serif;mso-fareast-font-family:
+  "Times New Roman";color:black;mso-fareast-language:ES-MX'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:6.05pt;line-height:normal'><span style='font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  ES-MX;mso-no-proof:yes'><img width=164 height=124
-  src="Factura%20(6)_archivos/image002.png" v:shapes="Imagen_x0020_1"><![endif]></span><span
+  margin-left:6.05pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX;mso-no-proof:yes'><![if !vml]><img width=164 height=124
+  src="https://i.ibb.co/mBnFvtQ/Whats-App-Image-2020-11-26-at-11-04-21-AM.jpg" v:shapes="Imagen_x0020_1"><![endif]></span><span
   style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
   "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
   </td>
-  <td width=168 valign=top style='width:126.25pt;border:solid black 1.0pt;
+  <td width=144 valign=top style='width:1.5in;border:solid black 1.0pt;
   border-left:none;mso-border-left-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
   height:24.0pt'>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:6.05pt;line-height:normal'><b><span style='font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  ES-MX'>Fecha:&nbsp;</span></b><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
-  mso-fareast-font-family:"Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  margin-left:6.05pt;margin-bottom:.0001pt;line-height:normal'><b><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>Fecha:&nbsp;</span></b><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
   </td>
-  <td width=304 valign=top style='width:228.1pt;border:solid black 1.0pt;
+  <td width=301 colspan=3 valign=top style='width:225.45pt;border:solid black 1.0pt;
   border-left:none;mso-border-left-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
   height:24.0pt'>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:5.95pt;line-height:normal'><span style='font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  ES-MX'>(1)</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
-  mso-fareast-font-family:"Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${now}</span><span style='font-size:
+  12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+  mso-fareast-language:ES-MX'><o:p></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:1;height:24.0pt'>
-  <td width=168 valign=top style='width:126.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
-  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <td width=144 valign=top style='width:1.5in;border-top:none;border-left:none;
+  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;mso-border-top-alt:
+  solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
+  height:24.0pt'>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:6.05pt;line-height:normal'><b><span style='font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  ES-MX'>No. Factura:&nbsp;</span></b><span style='font-size:12.0pt;font-family:
-  "Times New Roman",serif;mso-fareast-font-family:"Times New Roman";mso-fareast-language:
-  ES-MX'><o:p></o:p></span></p>
-  </td>
-  <td width=304 valign=top style='width:228.1pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
-  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
-  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:5.95pt;line-height:normal'><span style='font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  ES-MX'>(2)</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
-  mso-fareast-font-family:"Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
-  </td>
- </tr>
- <tr style='mso-yfti-irow:2;height:23.25pt'>
-  <td width=168 valign=top style='width:126.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
-  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:23.25pt'>
-  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:6.05pt;line-height:normal'><b><span style='font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  ES-MX'>No. <span class=SpellE>reservacion</span>:&nbsp;</span></b><span
+  margin-left:6.05pt;margin-bottom:.0001pt;line-height:normal'><b><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>No. Factura:&nbsp;</span></b><span
   style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
   "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
   </td>
-  <td width=304 valign=top style='width:228.1pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  <td width=301 colspan=3 valign=top style='width:225.45pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${Math.floor(Math.random() * (max - min) + min)}</span><span style='font-size:
+  12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+  mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;height:23.25pt'>
+  <td width=144 valign=top style='width:1.5in;border-top:none;border-left:none;
+  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;mso-border-top-alt:
+  solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
+  height:23.25pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:6.05pt;margin-bottom:.0001pt;line-height:normal'><b><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>No. <span class=SpellE>reservacion</span>:&nbsp;</span></b><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=301 colspan=3 valign=top style='width:225.45pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
   padding:5.0pt 5.0pt 5.0pt 5.0pt;height:23.25pt'>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:5.95pt;line-height:normal'><span style='font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  ES-MX'>(3)</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
-  mso-fareast-font-family:"Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${noReservacion}</span><span style='font-size:
+  12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+  mso-fareast-language:ES-MX'><o:p></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:3;height:24.0pt'>
-  <td width=169 colspan=2 valign=top style='width:127.1pt;border:solid black 1.0pt;
+  <td width=197 colspan=2 valign=top style='width:148.0pt;border:solid black 1.0pt;
   border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
   height:24.0pt'>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:6.1pt;line-height:normal'><span style='font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  ES-MX'>Datos del hotel</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
-  mso-fareast-font-family:"Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  margin-left:6.1pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>Datos del hotel</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
   </td>
-  <td width=472 colspan=2 rowspan=4 valign=top style='width:354.35pt;
+  <td width=445 colspan=4 rowspan=4 valign=top style='width:333.45pt;
   border-top:none;border-left:none;border-bottom:solid black 1.0pt;border-right:
   solid black 1.0pt;mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:
   solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'></td>
  </tr>
  <tr style='mso-yfti-irow:4;height:24.0pt'>
-  <td width=169 colspan=2 valign=top style='width:127.1pt;border:solid black 1.0pt;
+  <td width=197 colspan=2 valign=top style='width:148.0pt;border:solid black 1.0pt;
   border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
   height:24.0pt'></td>
  </tr>
  <tr style='mso-yfti-irow:5;height:24.0pt'>
-  <td width=169 colspan=2 valign=top style='width:127.1pt;border:solid black 1.0pt;
+  <td width=197 colspan=2 valign=top style='width:148.0pt;border:solid black 1.0pt;
   border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
   height:24.0pt'></td>
  </tr>
  <tr style='mso-yfti-irow:6;height:24.0pt'>
-  <td width=169 colspan=2 valign=top style='width:127.1pt;border:solid black 1.0pt;
+  <td width=197 colspan=2 valign=top style='width:148.0pt;border:solid black 1.0pt;
   border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
   height:24.0pt'></td>
  </tr>
  <tr style='mso-yfti-irow:7;height:24.0pt'>
-  <td width=169 colspan=2 valign=top style='width:127.1pt;border:solid black 1.0pt;
+  <td width=197 colspan=2 valign=top style='width:148.0pt;border:solid black 1.0pt;
   border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
   height:24.0pt'>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:6.05pt;line-height:normal'><b><span style='font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  ES-MX'>Nombre:&nbsp;</span></b><span style='font-size:12.0pt;font-family:
-  "Times New Roman",serif;mso-fareast-font-family:"Times New Roman";mso-fareast-language:
-  ES-MX'><o:p></o:p></span></p>
+  margin-left:6.05pt;margin-bottom:.0001pt;line-height:normal'><b><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>Nombre:&nbsp;</span></b><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
   </td>
-  <td width=472 colspan=2 valign=top style='width:354.35pt;border-top:none;
+  <td width=445 colspan=4 valign=top style='width:333.45pt;border-top:none;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
   padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:5.95pt;line-height:normal'><span style='font-size:12.0pt;
-  font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
-  mso-fareast-language:ES-MX'>{<span class=SpellE>first_name</span>}<o:p></o:p></span></p>
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><span class=SpellE>${nombre}</span><o:p></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:8;height:23.25pt'>
-  <td width=169 colspan=2 valign=top style='width:127.1pt;border:solid black 1.0pt;
+  <td width=197 colspan=2 valign=top style='width:148.0pt;border:solid black 1.0pt;
   border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
   height:23.25pt'>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:6.05pt;line-height:normal'><b><span style='font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  ES-MX'>Direccion:&nbsp;</span></b><span style='font-size:12.0pt;font-family:
-  "Times New Roman",serif;mso-fareast-font-family:"Times New Roman";mso-fareast-language:
-  ES-MX'><o:p></o:p></span></p>
+  margin-left:6.05pt;margin-bottom:.0001pt;line-height:normal'><b><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>Direccion:&nbsp;</span></b><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
   </td>
-  <td width=472 colspan=2 valign=top style='width:354.35pt;border-top:none;
+  <td width=445 colspan=4 valign=top style='width:333.45pt;border-top:none;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
   padding:5.0pt 5.0pt 5.0pt 5.0pt;height:23.25pt'>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:5.95pt;line-height:normal'><span style='font-size:12.0pt;
-  font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
-  mso-fareast-language:ES-MX'>{<span class=SpellE>last_name</span>}<o:p></o:p></span></p>
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><span class=SpellE>Calz. de los Ángeles 14, Montebello, 83249 Hermosillo, Son.</span><o:p></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:9;height:24.0pt'>
-  <td width=169 colspan=2 valign=top style='width:127.1pt;border:solid black 1.0pt;
+  <td width=197 colspan=2 valign=top style='width:148.0pt;border:solid black 1.0pt;
   border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
   height:24.0pt'>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:5.75pt;line-height:normal'><b><span style='font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  ES-MX'>Ciudad de provincia:&nbsp;</span></b><span style='font-size:12.0pt;
-  font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
-  mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  margin-left:5.75pt;margin-bottom:.0001pt;line-height:normal'><b><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>Ciudad de provincia:&nbsp;</span></b><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
   </td>
-  <td width=472 colspan=2 valign=top style='width:354.35pt;border-top:none;
+  <td width=445 colspan=4 valign=top style='width:333.45pt;border-top:none;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
   padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:5.95pt;line-height:normal'><span style='font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  ES-MX'>(6)</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
-  mso-fareast-font-family:"Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>Hermosillo Sonora</span><span style='font-size:
+  12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+  mso-fareast-language:ES-MX'><o:p></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:10;height:24.0pt'>
-  <td width=169 colspan=2 valign=top style='width:127.1pt;border:solid black 1.0pt;
+  <td width=197 colspan=2 valign=top style='width:148.0pt;border:solid black 1.0pt;
   border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
   height:24.0pt'>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:5.5pt;line-height:normal'><b><span style='font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  ES-MX'>Telefono:&nbsp;</span></b><span style='font-size:12.0pt;font-family:
-  "Times New Roman",serif;mso-fareast-font-family:"Times New Roman";mso-fareast-language:
-  ES-MX'><o:p></o:p></span></p>
+  margin-left:5.5pt;margin-bottom:.0001pt;line-height:normal'><b><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>Telefono:&nbsp;</span></b><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
   </td>
-  <td width=472 colspan=2 valign=top style='width:354.35pt;border-top:none;
+  <td width=445 colspan=4 valign=top style='width:333.45pt;border-top:none;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
   padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:5.95pt;line-height:normal'><span style='font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  ES-MX'>(7)</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
-  mso-fareast-font-family:"Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${telefono}</span><span style='font-size:
+  12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+  mso-fareast-language:ES-MX'><o:p></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:11;height:24.0pt'>
-  <td valign=top style='border:solid black 1.0pt;border-top:none;mso-border-top-alt:
-  solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
-  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:5.75pt;line-height:normal'><b><span style='font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  ES-MX'>Consumo</span></b><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
-  mso-fareast-font-family:"Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
-  </td>
-  <td width=81 valign=top style='width:60.6pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;mso-border-top-alt:
-  solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
+  <td width=197 colspan=2 valign=top style='width:148.0pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
   height:24.0pt'>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:6.05pt;line-height:normal'><b><span style='font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  ES-MX'>Descripcion&nbsp;</span></b><span style='font-size:12.0pt;font-family:
-  "Times New Roman",serif;mso-fareast-font-family:"Times New Roman";mso-fareast-language:
-  ES-MX'><o:p></o:p></span></p>
+  margin-left:5.5pt;margin-bottom:.0001pt;line-height:normal'><b><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>Numero Tarjeta<o:p></o:p></span></b></p>
   </td>
-  <td width=168 valign=top style='width:126.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  <td width=445 colspan=4 valign=top style='width:333.45pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
   padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:6.05pt;line-height:normal'><b><span style='font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  ES-MX'>Precio&nbsp;</span></b><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
-  mso-fareast-font-family:"Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
-  </td>
-  <td width=304 valign=top style='width:228.1pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
-  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
-  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:6.0pt;line-height:normal'><b><span style='font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  ES-MX'>Importe</span></b><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
-  mso-fareast-font-family:"Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${noTarjetas}<o:p></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:12;height:24.0pt'>
-  <td valign=top style='border:solid black 1.0pt;border-top:none;mso-border-top-alt:
-  solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
-  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:5.95pt;line-height:normal'><span style='font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  ES-MX'>(8)&nbsp;</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
-  mso-fareast-font-family:"Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
-  </td>
-  <td width=81 valign=top style='width:60.6pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;mso-border-top-alt:
-  solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
+  <td width=129 valign=top style='width:96.9pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
   height:24.0pt'>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:5.95pt;line-height:normal'><span style='font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  ES-MX'>(9)&nbsp;</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
-  mso-fareast-font-family:"Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  margin-left:5.75pt;margin-bottom:.0001pt;line-height:normal'><b><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>Consumo</span></b><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
   </td>
-  <td width=168 valign=top style='width:126.25pt;border-top:none;border-left:
+  <td width=254 colspan=3 valign=top style='width:190.6pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:6.05pt;margin-bottom:.0001pt;line-height:normal'><b><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>Descripcion&nbsp;</span></b><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
   padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:5.95pt;line-height:normal'><span style='font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  ES-MX'>(10)&nbsp;</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
-  mso-fareast-font-family:"Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  margin-left:6.05pt;margin-bottom:.0001pt;line-height:normal'><b><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>Precio&nbsp;</span></b><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
   </td>
-  <td width=304 valign=top style='width:228.1pt;border-top:none;border-left:
+  <td width=127 valign=top style='width:94.95pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
   padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:5.95pt;line-height:normal'><span style='font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  ES-MX'>(11)</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
-  mso-fareast-font-family:"Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  margin-left:6.0pt;margin-bottom:.0001pt;line-height:normal'><b><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>Importe</span></b><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:13;height:24.0pt'>
-  <td valign=top style='border:solid black 1.0pt;border-top:none;mso-border-top-alt:
-  solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'></td>
-  <td width=81 valign=top style='width:60.6pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;mso-border-top-alt:
-  solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
-  height:24.0pt'></td>
-  <td width=168 valign=top style='width:126.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
-  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'></td>
-  <td width=304 valign=top style='width:228.1pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
-  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'></td>
- </tr>
- <tr style='mso-yfti-irow:14;height:24.0pt'>
-  <td valign=top style='border:solid black 1.0pt;border-top:none;mso-border-top-alt:
-  solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'></td>
-  <td width=81 valign=top style='width:60.6pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;mso-border-top-alt:
-  solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
-  height:24.0pt'></td>
-  <td width=168 valign=top style='width:126.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
-  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'></td>
-  <td width=304 valign=top style='width:228.1pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
-  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'></td>
- </tr>
- <tr style='mso-yfti-irow:15;height:24.0pt'>
-  <td valign=top style='border:solid black 1.0pt;border-top:none;mso-border-top-alt:
-  solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'></td>
-  <td width=81 valign=top style='width:60.6pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;mso-border-top-alt:
-  solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
-  height:24.0pt'></td>
-  <td width=168 valign=top style='width:126.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
-  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'></td>
-  <td width=304 valign=top style='width:228.1pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
-  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'></td>
- </tr>
- <tr style='mso-yfti-irow:16;height:23.25pt'>
-  <td valign=top style='border:solid black 1.0pt;border-top:none;mso-border-top-alt:
-  solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;height:23.25pt'></td>
-  <td width=81 valign=top style='width:60.6pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;mso-border-top-alt:
-  solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
-  height:23.25pt'></td>
-  <td width=168 valign=top style='width:126.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
-  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:23.25pt'></td>
-  <td width=304 valign=top style='width:228.1pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
-  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:23.25pt'></td>
- </tr>
- <tr style='mso-yfti-irow:17;height:24.0pt'>
-  <td valign=top style='border:solid black 1.0pt;border-top:none;mso-border-top-alt:
-  solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'></td>
-  <td width=81 valign=top style='width:60.6pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;mso-border-top-alt:
-  solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
-  height:24.0pt'></td>
-  <td width=168 valign=top style='width:126.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
-  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'></td>
-  <td width=304 valign=top style='width:228.1pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
-  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'></td>
- </tr>
- <tr style='mso-yfti-irow:18;height:24.0pt'>
-  <td valign=top style='border:solid black 1.0pt;border-top:none;mso-border-top-alt:
-  solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'></td>
-  <td width=81 valign=top style='width:60.6pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;mso-border-top-alt:
-  solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
-  height:24.0pt'></td>
-  <td width=168 valign=top style='width:126.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
-  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'></td>
-  <td width=304 valign=top style='width:228.1pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
-  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'></td>
- </tr>
- <tr style='mso-yfti-irow:19;height:24.0pt'>
-  <td valign=top style='border:solid black 1.0pt;border-top:none;mso-border-top-alt:
-  solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'></td>
-  <td width=81 valign=top style='width:60.6pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;mso-border-top-alt:
-  solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
-  height:24.0pt'></td>
-  <td width=168 valign=top style='width:126.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
-  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'></td>
-  <td width=304 valign=top style='width:228.1pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
-  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'></td>
- </tr>
- <tr style='mso-yfti-irow:20;height:24.0pt'>
-  <td valign=top style='border:solid black 1.0pt;border-top:none;mso-border-top-alt:
-  solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'></td>
-  <td width=81 valign=top style='width:60.6pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;mso-border-top-alt:
-  solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
-  height:24.0pt'></td>
-  <td width=168 valign=top style='width:126.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
-  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'></td>
-  <td width=304 valign=top style='width:228.1pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
-  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'></td>
- </tr>
- <tr style='mso-yfti-irow:21;height:24.0pt'>
-  <td valign=top style='border:solid black 1.0pt;border-top:none;mso-border-top-alt:
-  solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
-  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
-  "Times New Roman";mso-fareast-language:ES-MX'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=81 valign=top style='width:60.6pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;mso-border-top-alt:
-  solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
-  height:24.0pt'>
-  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
-  "Times New Roman";mso-fareast-language:ES-MX'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=168 valign=top style='width:126.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
-  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
-  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
-  "Times New Roman";mso-fareast-language:ES-MX'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=304 valign=top style='width:228.1pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
-  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
-  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
-  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
-  "Times New Roman";mso-fareast-language:ES-MX'><o:p>&nbsp;</o:p></span></p>
-  </td>
- </tr>
- <tr style='mso-yfti-irow:22;mso-yfti-lastrow:yes;height:24.0pt'>
-  <td colspan=3 valign=top style='border:solid black 1.0pt;border-top:none;
-  mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
+  <td width=129 valign=top style='width:96.9pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
   height:24.0pt'>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:5.5pt;line-height:normal'><b><span style='font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  ES-MX'>Total:&nbsp;</span></b><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
-  mso-fareast-font-family:"Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[0] ? consumos[0].nombreServicio: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
   </td>
-  <td width=304 valign=top style='width:228.1pt;border-top:none;border-left:
+  <td width=254 colspan=3 valign=top style='width:190.6pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[0] ? consumos[0].detalles: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
   padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:5.95pt;line-height:normal'><span style='font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  ES-MX'>(12)</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
-  mso-fareast-font-family:"Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[0] ? `$ ${consumos[0].precio}` : ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=127 valign=top style='width:94.95pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[0] ? `$ ${consumos[0].precio}` : ''}</span><span style='font-size:
+  12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+  mso-fareast-language:ES-MX'><o:p></o:p></span></p>
   </td>
  </tr>
+ <tr style='mso-yfti-irow:13;height:24.0pt'>
+  <td width=129 valign=top style='width:96.9pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
+  height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[1] ? consumos[1].nombreServicio: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=254 colspan=3 valign=top style='width:190.6pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[1] ? consumos[1].detalles: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[1] ? `$ ${consumos[1].precio}` : ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=127 valign=top style='width:94.95pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[1] ? `$ ${consumos[1].precio}` : ''}</span><span style='font-size:
+  12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+  mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:13;height:24.0pt'>
+  <td width=129 valign=top style='width:96.9pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
+  height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[2] ? consumos[2].nombreServicio: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=254 colspan=3 valign=top style='width:190.6pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[2] ? consumos[2].detalles: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[2] ? `$ ${consumos[2].precio}` : ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=127 valign=top style='width:94.95pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[2] ? `$ ${consumos[2].precio}` : ''}</span><span style='font-size:
+  12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+  mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:13;height:24.0pt'>
+  <td width=129 valign=top style='width:96.9pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
+  height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[3] ? consumos[3].nombreServicio: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=254 colspan=3 valign=top style='width:190.6pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[3] ? consumos[3].detalles: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[3] ? `$ ${consumos[3].precio}` : ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=127 valign=top style='width:94.95pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[3] ? `$ ${consumos[3].precio}` : ''}</span><span style='font-size:
+  12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+  mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:13;height:24.0pt'>
+  <td width=129 valign=top style='width:96.9pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
+  height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[4] ? consumos[4].nombreServicio: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=254 colspan=3 valign=top style='width:190.6pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[4] ? consumos[4].detalles: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[4] ? `$ ${consumos[4].precio}` : ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=127 valign=top style='width:94.95pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[4] ? `$ ${consumos[4].precio}` : ''}</span><span style='font-size:
+  12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+  mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:13;height:24.0pt'>
+  <td width=129 valign=top style='width:96.9pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
+  height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[5] ? consumos[5].nombreServicio: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=254 colspan=3 valign=top style='width:190.6pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[5] ? consumos[5].detalles: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[5] ? `$ ${consumos[5].precio}` : ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=127 valign=top style='width:94.95pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[5] ? `$ ${consumos[5].precio}` : ''}</span><span style='font-size:
+  12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+  mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:13;height:24.0pt'>
+  <td width=129 valign=top style='width:96.9pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
+  height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[6] ? consumos[6].nombreServicio: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=254 colspan=3 valign=top style='width:190.6pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[6] ? consumos[6].detalles: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[6] ? `$ ${consumos[6].precio}` : ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=127 valign=top style='width:94.95pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[6] ? `$ ${consumos[6].precio}` : ''}</span><span style='font-size:
+  12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+  mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:13;height:24.0pt'>
+  <td width=129 valign=top style='width:96.9pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
+  height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[7] ? consumos[7].nombreServicio: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=254 colspan=3 valign=top style='width:190.6pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[7] ? consumos[7].detalles: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[7] ? `$ ${consumos[7].precio}` : ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=127 valign=top style='width:94.95pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[7] ? `$ ${consumos[7].precio}` : ''}</span><span style='font-size:
+  12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+  mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:13;height:24.0pt'>
+  <td width=129 valign=top style='width:96.9pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
+  height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[8] ? consumos[8].nombreServicio: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=254 colspan=3 valign=top style='width:190.6pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[8] ? consumos[8].detalles: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[8] ? `$ ${consumos[8].precio}` : ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=127 valign=top style='width:94.95pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[8] ? `$ ${consumos[8].precio}` : ''}</span><span style='font-size:
+  12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+  mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:13;height:24.0pt'>
+  <td width=129 valign=top style='width:96.9pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
+  height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[9] ? consumos[9].nombreServicio: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=254 colspan=3 valign=top style='width:190.6pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[9] ? consumos[9].detalles: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[9] ? `$ ${consumos[9].precio}` : ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=127 valign=top style='width:94.95pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[9] ? `$ ${consumos[9].precio}` : ''}</span><span style='font-size:
+  12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+  mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:13;height:24.0pt'>
+  <td width=129 valign=top style='width:96.9pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
+  height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[10] ? consumos[10].nombreServicio: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=254 colspan=3 valign=top style='width:190.6pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[10] ? consumos[10].detalles: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[10] ? `$ ${consumos[10].precio}` : ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=127 valign=top style='width:94.95pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[10] ? `$ ${consumos[10].precio}` : ''}</span><span style='font-size:
+  12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+  mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:13;height:24.0pt'>
+  <td width=129 valign=top style='width:96.9pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
+  height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[11] ? consumos[11].nombreServicio: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=254 colspan=3 valign=top style='width:190.6pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[11] ? consumos[11].detalles: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[11] ? `$ ${consumos[11].precio}` : ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=127 valign=top style='width:94.95pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[11] ? `$ ${consumos[11].precio}` : ''}</span><span style='font-size:
+  12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+  mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:13;height:24.0pt'>
+  <td width=129 valign=top style='width:96.9pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
+  height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[12] ? consumos[12].nombreServicio: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=254 colspan=3 valign=top style='width:190.6pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[12] ? consumos[12].detalles: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[12] ? `$ ${consumos[12].precio}` : ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=127 valign=top style='width:94.95pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[12] ? `$ ${consumos[12].precio}` : ''}</span><span style='font-size:
+  12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+  mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:13;height:24.0pt'>
+  <td width=129 valign=top style='width:96.9pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
+  height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[13] ? consumos[13].nombreServicio: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=254 colspan=3 valign=top style='width:190.6pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[13] ? consumos[13].detalles: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[13] ? `$ ${consumos[13].precio}` : ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=127 valign=top style='width:94.95pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[13] ? `$ ${consumos[13].precio}` : ''}</span><span style='font-size:
+  12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+  mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:13;height:24.0pt'>
+  <td width=129 valign=top style='width:96.9pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
+  height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[14] ? consumos[14].nombreServicio: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=254 colspan=3 valign=top style='width:190.6pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[14] ? consumos[14].detalles: ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[14] ? `$ ${consumos[14].precio}` : ''}&nbsp;</span><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=127 valign=top style='width:94.95pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${consumos[14] ? `$ ${consumos[14].precio}` : ''}</span><span style='font-size:
+  12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+  mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:16;mso-yfti-lastrow:yes;height:24.0pt'>
+  <td width=383 colspan=4 valign=top style='width:287.5pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
+  height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.5pt;margin-bottom:.0001pt;line-height:normal'><b><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>Total:&nbsp;</span></b><span
+  style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+  "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+  <td width=259 colspan=2 valign=top style='width:193.95pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>$ ${monto}</span><span style='font-size:
+  12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+  mso-fareast-language:ES-MX'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <![if !supportMisalignedColumns]>
+ <tr height=0>
+  <td width=129 style='border:none'></td>
+  <td width=68 style='border:none'></td>
+  <td width=144 style='border:none'></td>
+  <td width=42 style='border:none'></td>
+  <td width=132 style='border:none'></td>
+  <td width=127 style='border:none'></td>
+ </tr>
+ <![endif]>
 </table>
 
 <p class=MsoNormal><o:p>&nbsp;</o:p></p>
@@ -596,8 +1119,10 @@ style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-fam
 
 </body>
 
-</html>    
-    `)
-}
+</html>
 
-module.exports = content
+  ` 
+  
+};
+
+module.exports = content;

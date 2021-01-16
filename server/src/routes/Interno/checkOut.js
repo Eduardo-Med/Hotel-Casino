@@ -13,6 +13,6 @@ router.route('/:noRoom')
     .delete(deleteRental)
 
 router.route('/download/factura')
-    .get(descargarFactura)
+    .post(descargarFactura)
 
 module.exports = router;

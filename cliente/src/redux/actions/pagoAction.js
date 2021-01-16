@@ -31,15 +31,29 @@ export const fetchPagoFailure = (error) => {
 
 const fetchPago = (pagoDatos) => {
     const {
-        // nombreCliente,
+        nombreCliente,
         numeroTarjeta,
-        // mesVencimiento,
-        // anoVencimiento,
-        // cvv,
+        mesVencimiento,
+        anoVencimiento,
+        cvv,
         monto,
-        habitacionNumero
+        habitacionNumero,
+        consumos,
+        informacion
     } = pagoDatos
-    console.log(habitacionNumero)
+    let mensaje
+    if((!nombreCliente || nombreCliente.length < 3) || (!numeroTarjeta || numeroTarjeta.length !== 16) || !mesVencimiento || !anoVencimiento || (cvv.length < 3 ||!cvv)){
+        if(cvv.length < 3 ||!cvv) mensaje='Porfavor Revise El Cvv'
+        if(!anoVencimiento) mensaje='Porfavor Inserte El Año De Vencimiento'
+        if(!mesVencimiento) mensaje='Porfavor Inserte El Mes De Vencimiento'
+        if(!numeroTarjeta || numeroTarjeta.length !== 16) mensaje='Porfavor Revise el Numero De Tarjeta'
+        if(!nombreCliente || nombreCliente.length < 3) mensaje='Porfavor Revise El Nombre'
+        return (dispatch) => {
+            dispatch(fetchPagoFailure([]));
+            alertaSinActualizar('Pago Incorrecto', `Ocurrio Un Error ${mensaje}`, 'error', 'Aceptar')
+        }
+    }
+    
     return (dispatch) => {
         dispatch(fetchPagoRequest());
         axios({
@@ -51,26 +65,26 @@ const fetchPago = (pagoDatos) => {
                 }
             })
             .then((response) =>{
-                dispatch(fetchPagoSuccess([response]))
-                axios.delete(`http://localhost:4000/api/checkOut/${habitacionNumero}`)
-                .then((response) =>{
-                    axios({
-                        url: `http://localhost:4000/api/checkOut/download/factura`,
-                        method: 'GET',
-                        responseType: 'blob',
-                    }).then((response) => {
-                        const url = window.URL.createObjectURL(new Blob([response.data]));
-                        const link = document.createElement('a');
-                        link.href = url;
-                        link.setAttribute('download', 'Factura.docx'); //or any other extension
-                        document.body.appendChild(link);
-                        link.click();
-                        alerta('Pago Correcto', 'Pago realizado correctamente', 'success', 'Aceptar')
-                    })
-                    .catch(error => {
-                        dispatch(fetchPagoFailure([error]))
-                        alertaSinActualizar('A ocurrido un error', 'No se logro descargar la factura', 'error', 'Aceptar') 
-                    })
+                // axios.delete(`http://localhost:4000/api/checkOut/${habitacionNumero}`)
+                axios({
+                    url: `http://localhost:4000/api/checkOut/download/factura`,
+                    method: 'POST',
+                    data: {
+                        consumos,
+                        informacion,
+                        monto,
+                        noTarjetas: `${numeroTarjeta.substr(0,4)}************`
+                    },
+                    responseType: 'blob',
+                }).then((response) => {
+                    const url = window.URL.createObjectURL(new Blob([response.data]));
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.setAttribute('download', 'Factura.pdf'); //or any other extension
+                    document.body.appendChild(link);
+                    link.click();
+                    dispatch(fetchPagoSuccess([response]))
+                    alertaSinActualizar('Pago Correcto', 'Pago realizado correctamente', 'success', 'Aceptar')
                 })
             })
             .catch(error => {
