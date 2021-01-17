@@ -227,7 +227,7 @@ style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-fam
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
   margin-left:6.1pt;margin-bottom:.0001pt;line-height:normal'><span
   style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
-  color:black;mso-fareast-language:ES-MX'>Datos del hotel</span><span
+  color:black;mso-fareast-language:ES-MX'></span><span
   style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
   "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
   </td>
