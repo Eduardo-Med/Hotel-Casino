@@ -17,6 +17,10 @@ const content = (consumos, informacion, monto, noTarjetas) => {
         justify-content: center;
         align-items: center;
     }
+    table{
+      width: 20% !important;
+      height: 20%!important;
+    }
 <!--
  /* Font Definitions */
  @font-face
