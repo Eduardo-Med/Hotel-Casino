@@ -1,12 +1,12 @@
 const path = require("path");
-const moment  = require('moment')
+const moment = require('moment')
 
-const content = (consumos, informacion,monto,noTarjetas) => {
-    const now = new moment().format("DD-MM-YYYY")
-    const max = 754234 
-    const min = 113400
-    const {noReservacion,nombre,telefono} = informacion
-  return `
+const content = (consumos, informacion, monto, noTarjetas) => {
+        const now = new moment().format("DD-MM-YYYY")
+        const max = 754234
+        const min = 113400
+        const { noReservacion, nombre, telefono } = informacion
+        return `
   <html>
 
 <head>
@@ -16,7 +16,6 @@ const content = (consumos, informacion,monto,noTarjetas) => {
         display: flex;
         justify-content: center;
         align-items: center;
-        padding-left: 75px;
     }
 <!--
  /* Font Definitions */
