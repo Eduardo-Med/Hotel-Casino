@@ -16,6 +16,7 @@ const content = (consumos, informacion, monto, noTarjetas) => {
         display: flex;
         justify-content: center;
         align-items: center;
+        padding-left: 5px;
     }
     table{
       width: 20% !important;
