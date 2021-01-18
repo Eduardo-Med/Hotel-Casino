@@ -29,7 +29,7 @@ checkOutCtrl.descargarFactura = async(req, res) => {
     });
 
     const file = path.join(__dirname, '../..', '/public', 'Factura.pdf');
-    setTimeout(() => res.sendFile(file), 8000);
+    setTimeout(() => res.sendFile(file), 6500);
 
 
 }
