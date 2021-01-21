@@ -2,7 +2,7 @@ const conexionBancoCtrl = {};
 
 const fetch = require('node-fetch');
 
-conexionBancoCtrl.connetionBank = () => {
+conexionBancoCtrl.connetionBank = (req, res) => {
 
     const info = {
       AccountCompanyId: 5,
@@ -24,7 +24,11 @@ conexionBancoCtrl.connetionBank = () => {
     })
     .then((res) => res.json())
     .then((result) => {
-      console.log(result);
+      if(result.error){
+        res.status(400).json(result.error);
+      }else{
+        res.status(200).json(result);
+      }
     }).catch((e) => {
       console.log(e);
     })
