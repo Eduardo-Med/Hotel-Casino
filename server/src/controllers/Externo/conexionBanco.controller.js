@@ -2,7 +2,7 @@ const conexionBancoCtrl = {};
 
 const fetch = require('node-fetch');
 
-conexionBancoCtrl.connetionBank = (req, res) => {
+conexionBancoCtrl.connetionBank = () => {
 
     const info = {
       AccountCompanyId: 5,
