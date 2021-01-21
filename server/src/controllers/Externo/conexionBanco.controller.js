@@ -35,8 +35,10 @@ conexionBancoCtrl.connetionBank = (req, res) => {
     .then((result) => {
       if(result.error){
         res.status(400).json(result.error);
+        console.log(result.error);
       }else{
         res.status(200).json(result);
+        console.log(result);
       }
     }).catch((e) => {
       console.log(e);
