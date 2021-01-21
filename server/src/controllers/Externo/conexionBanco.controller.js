@@ -4,6 +4,15 @@ const fetch = require('node-fetch');
 
 conexionBancoCtrl.connetionBank = (req, res) => {
 
+    const {
+      Amount,
+      CardNumber,
+      Cvv,
+      Month,
+      Year,
+      Name
+    } = req.body
+
     const info = {
       AccountCompanyId: 5,
       Amount,
@@ -13,7 +22,7 @@ conexionBancoCtrl.connetionBank = (req, res) => {
       Month,
       Year,
       Name
-    };
+    }
     
     fetch('http://bankith.gear.host/api/bank/', {
       method: 'POST',
