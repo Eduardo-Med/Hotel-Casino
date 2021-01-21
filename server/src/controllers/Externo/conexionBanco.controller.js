@@ -8,6 +8,7 @@ conexionBancoCtrl.connetionBank = (req, res) => {
       Amount,
       CardNumber,
       Cvv,
+      Description,
       Month,
       Year,
       Name
@@ -18,7 +19,7 @@ conexionBancoCtrl.connetionBank = (req, res) => {
       Amount,
       CardNumber,
       Cvv,
-      Description: "Pago del hotel",
+      Description,
       Month,
       Year,
       Name
@@ -34,7 +35,7 @@ conexionBancoCtrl.connetionBank = (req, res) => {
     .then((res) => res.json())
     .then((result) => {
       if(result.error){
-        res.status(412).json(result.error);
+        res.status(400).json(result.error);
         console.log(result.error);
       }else{
         res.status(200).json(result);
