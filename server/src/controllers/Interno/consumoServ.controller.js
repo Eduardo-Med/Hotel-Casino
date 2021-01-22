@@ -29,9 +29,9 @@ consumoServCtrl.saveConsumption = async(req, res) => {
             idHabitacion: room._id
         });
         await consumption.save();
-        res.status(200).json({ message: 'Consumption of client saved' });
+        res.status(200).json({ "message": 'Consumption of client saved' });
     } else {
-        res.status(200).json({ message: 'the room no have client' });
+        res.status(400).json({ "message": 'the room no have client' });
     }
 }
 

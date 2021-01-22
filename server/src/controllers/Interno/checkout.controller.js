@@ -20,18 +20,18 @@ checkOutCtrl.getClientAndRental = async(req, res) => {
 
 checkOutCtrl.descargarFactura = async(req, res) => {
 
-    const {consumos,informacion,monto,noTarjetas} = req.body
+    const { consumos, informacion, monto, noTarjetas } = req.body
     const outFile = path.join(__dirname, '../..', '/public', 'Factura.pdf');
-    pdf.create(content(consumos,informacion,monto,noTarjetas)).toFile(outFile, function(err, res) {
-        if (err){
+    pdf.create(content(consumos, informacion, monto, noTarjetas)).toFile(outFile, function(err, res) {
+        if (err) {
             console.log(err);
         }
     });
-      
+
     const file = path.join(__dirname, '../..', '/public', 'Factura.pdf');
-    setTimeout(()=>res.sendFile(file), 4000);
-    
-    
+    setTimeout(() => res.sendFile(file), 6500);
+
+
 }
 
 //Delete Rental

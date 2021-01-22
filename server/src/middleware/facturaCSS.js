@@ -1,5 +1,5 @@
 const path = require("path");
-const moment  = require('moment')
+const moment = require('moment')
 
 const obtenerConsumos =(consumos)=>{
   const rows = consumos.map((consumo) =>{
@@ -73,9 +73,7 @@ const content = (consumos, informacion,monto,noTarjetas) => {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 0 !important;
-        height: 0!important;
-        padding-left: 75px;
+        padding-left: 5px;
     }
     table{
       width: 20% !important;

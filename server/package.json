@@ -19,6 +19,7 @@
         "html-pdf": "^2.2.0",
         "moment": "^2.29.1",
         "mongoose": "^5.11.8",
+        "node-fetch": "^2.6.1",
         "pizzip": "^3.0.6",
         "socket.io": "^3.0.5"
     },
