@@ -25,7 +25,7 @@ conexionBancoCtrl.connetionBank = (req, res) => {
       Name
     }
     
-    fetch('http://bankith.gear.host/api/bank/', {
+    fetch(process.env.BANK, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
