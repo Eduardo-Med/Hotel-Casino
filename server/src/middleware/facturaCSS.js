@@ -23,7 +23,7 @@ const obtenerConsumos =(consumos)=>{
       <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
       margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
       style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
-      color:black;mso-fareast-language:ES-MX'>${consumo.detalles}&nbsp;</span><span
+      color:black;mso-fareast-language:ES-MX'>${consumo.detalles} el dia ${consumo.fecha}&nbsp;</span><span
       style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
       "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
       </td>
@@ -340,7 +340,7 @@ style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-fam
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
   margin-left:6.05pt;margin-bottom:.0001pt;line-height:normal'><b><span
   style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
-  color:black;mso-fareast-language:ES-MX'>Direccion:&nbsp;</span></b><span
+  color:black;mso-fareast-language:ES-MX'>Dirección:&nbsp;</span></b><span
   style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
   "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
   </td>
@@ -437,7 +437,7 @@ style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-fam
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
   margin-left:6.05pt;margin-bottom:.0001pt;line-height:normal'><b><span
   style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
-  color:black;mso-fareast-language:ES-MX'>Descripcion&nbsp;</span></b><span
+  color:black;mso-fareast-language:ES-MX'>Descripción&nbsp;</span></b><span
   style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
   "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
   </td>
