@@ -23,7 +23,7 @@ const obtenerConsumos =(consumos)=>{
       <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
       margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
       style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
-      color:black;mso-fareast-language:ES-MX'>${consumo.detalles} el dia ${consumo.fecha}&nbsp;</span><span
+      color:black;mso-fareast-language:ES-MX'>${consumo.detalles}. La fecha del ${consumo.fecha.substr(0,10)}&nbsp;</span><span
       style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
       "Times New Roman";mso-fareast-language:ES-MX'><o:p></o:p></span></p>
       </td>
