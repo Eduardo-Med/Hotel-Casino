@@ -42,7 +42,7 @@ checkOutCtrl.deleteRental = async(req, res) => {
 
     await CosunsumoTotal.deleteOne({ "idHabitacion": habitacion._id });
 
-    await CosunsumoServ.delete({ "idHabitacion": habitacion._id });
+    await CosunsumoServ.remove({ "idHabitacion": habitacion._id });
 
     await Alquiler.deleteOne({ "idHabitacion": habitacion._id });
 
