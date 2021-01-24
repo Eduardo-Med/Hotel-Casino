@@ -58,7 +58,7 @@ const obtenerConsumos =(consumos)=>{
 
 
 
-const content = (consumos, informacion,monto,noTarjetas) => {
+const content = (consumos, informacion,monto,noTarjetas,habitacionNumero) => {
     const now = new moment().format("DD-MM-YYYY")
     const max = 754234 
     const min = 113400
@@ -286,7 +286,7 @@ style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-fam
   border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
   height:24.0pt'>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-  margin-left:6.1pt;margin-bottom:.0001pt;line-height:normal'><span
+  margin-left:6.1pt;margin-bottom:.0001pt;line-height:normal'><strong>Sello de pagado:</strong><span
   style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
   color:black;mso-fareast-language:ES-MX'></span><span
   style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
@@ -417,6 +417,25 @@ style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-fam
   margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
   style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
   color:black;mso-fareast-language:ES-MX'>${noTarjetas}<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:11;height:24.0pt'>
+  <td width=197 colspan=2 valign=top style='width:148.0pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black 1.0pt;padding:5.0pt 5.0pt 5.0pt 5.0pt;
+  height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.5pt;margin-bottom:.0001pt;line-height:normal'><b><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>No. Habitacion<o:p></o:p></span></b></p>
+  </td>
+  <td width=445 colspan=4 valign=top style='width:333.45pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black 1.0pt;mso-border-left-alt:solid black 1.0pt;
+  padding:5.0pt 5.0pt 5.0pt 5.0pt;height:24.0pt'>
+  <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+  margin-left:5.95pt;margin-bottom:.0001pt;line-height:normal'><span
+  style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  color:black;mso-fareast-language:ES-MX'>${habitacionNumero}<o:p></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:12;height:24.0pt'>

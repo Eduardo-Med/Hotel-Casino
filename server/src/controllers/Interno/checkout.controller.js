@@ -20,9 +20,9 @@ checkOutCtrl.getClientAndRental = async(req, res) => {
 
 checkOutCtrl.descargarFactura = async(req, res) => {
 
-    const { consumos, informacion, monto, noTarjetas } = req.body
+    const { consumos, informacion, monto, noTarjetas, habitacionNumero } = req.body
     const outFile = path.join(__dirname, '../..', '/public', 'Factura.pdf');
-    pdf.create(content(consumos, informacion, monto, noTarjetas)).toFile(outFile, function(err, res) {
+    pdf.create(content(consumos, informacion, monto, noTarjetas,habitacionNumero)).toFile(outFile, function(err, res) {
         if (err) {
             console.log(err);
         }
