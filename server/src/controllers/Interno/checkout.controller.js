@@ -4,6 +4,8 @@ const Cliente = require('../../models/Cliente');
 const Alquiler = require('../../models/Alquiler');
 const Habitacion = require('../../models/Habitacion');
 const TipoHabitacion = require('../../models/TipoHabitacion');
+const CosunsumoServ = require('../../models/ConsumoServicio');
+const CosunsumoTotal = require('../../models/ConsumoTotal');
 const path = require('path');
 const pdf = require('html-pdf');
 const content = require('../../middleware/facturaCSS')
@@ -37,6 +39,10 @@ checkOutCtrl.descargarFactura = async(req, res) => {
 //Delete Rental
 checkOutCtrl.deleteRental = async(req, res) => {
     const habitacion = await Habitacion.findOne({ "noCuarto": req.params.noRoom })
+
+    await CosunsumoTotal.deleteOne({ "idHabitacion": habitacion._id });
+
+    await CosunsumoServ.delete({ "idHabitacion": habitacion._id });
 
     await Alquiler.deleteOne({ "idHabitacion": habitacion._id });
 
