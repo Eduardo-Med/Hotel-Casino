@@ -15,7 +15,7 @@ conexionBancoCtrl.connetionBank = (req, res) => {
     } = req.body
 
     const info = {
-      AccountCompanyId: 22,
+      AccountCompanyId: 15,
       Amount,
       CardNumber,
       Cvv,
