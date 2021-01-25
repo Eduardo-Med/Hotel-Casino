@@ -6,6 +6,7 @@ const Habitacion = require('../../models/Habitacion');
 const TipoHabitacion = require('../../models/TipoHabitacion');
 const CosunsumoServ = require('../../models/ConsumoServicio');
 const CosunsumoTotal = require('../../models/ConsumoTotal');
+const Reservacion = require('../../models/Reservacion');
 const path = require('path');
 const pdf = require('html-pdf');
 const content = require('../../middleware/facturaCSS')
@@ -33,18 +34,24 @@ checkOutCtrl.descargarFactura = async(req, res) => {
     const file = path.join(__dirname, '../..', '/public', 'Factura.pdf');
     setTimeout(() => res.sendFile(file), 6500);
 
-
 }
 
 //Delete Rental
 checkOutCtrl.deleteRental = async(req, res) => {
-    const habitacion = await Habitacion.findOne({ "noCuarto": req.params.noRoom })
+
+    const {idReservacion} = req.body;
+
+    const habitacion = await Habitacion.findOne({ "noCuarto": req.params.noRoom });
+
+    const reservacion = await Reservacion.findOne({ "_id": idReservacion});
 
     await CosunsumoTotal.deleteOne({ "idHabitacion": habitacion._id });
 
     await CosunsumoServ.remove({ "idHabitacion": habitacion._id });
 
     await Alquiler.deleteOne({ "idHabitacion": habitacion._id });
+
+    await Reservacion.deleteOne({ "_id": reservacion._id});
 
     await Habitacion.replaceOne({
         "_id": habitacion._id
@@ -62,8 +69,8 @@ checkOutCtrl.deleteRental = async(req, res) => {
     }, {
         "nombre": tiposHabitaciones.nombre,
         "cantidad": (tiposHabitaciones.cantidad + 1)
-    })
-    res.status(200).json({ message: "rental deleted" })
+    });
+    res.status(200).json({ message: "rental deleted" });
 }
 
 //--------------------------------------------------------------------
