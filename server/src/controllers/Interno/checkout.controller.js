@@ -39,25 +39,13 @@ checkOutCtrl.descargarFactura = async(req, res) => {
 //Delete Rental
 checkOutCtrl.deleteRental = async(req, res) => {
 
-    const {fechaEntrada, fechaSalida} = req.body;
-
     const habitacion = await Habitacion.findOne({ "noCuarto": req.params.noRoom });
-
-    const reservacion = await Reservacion.findOne({
-        "fechaEntrada": fechaEntrada, 
-        "fechaSalida": fechaSalida
-    });
 
     await CosunsumoTotal.deleteOne({ "idHabitacion": habitacion._id });
 
     await CosunsumoServ.deleteMany({ "idHabitacion": habitacion._id });
 
     await Alquiler.deleteOne({ "idHabitacion": habitacion._id });
-
-    await Reservacion.deleteOne({ 
-        "fechaEntrada": reservacion.fechaEntrada, 
-        "fechaSalida": reservacion.fechaSalida
-    });
 
     await Habitacion.replaceOne({
         "_id": habitacion._id

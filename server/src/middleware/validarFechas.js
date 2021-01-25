@@ -1,6 +1,8 @@
 const Reservacion = require('../models/Reservacion');
 const TipoHabitacion = require('../models/TipoHabitacion');
 
+const {caducar} = require('../middleware/caducarReservacion');
+
 const registrar = {}
 
 registrar.validarFecha = async(fechaEntrada) => {
@@ -67,6 +69,8 @@ registrar.cantidadHabitaciones = async(fechaEntrada, fechaSalida, noHabSencilla,
         noHabSuite
     });
     await newSaveDate.save();
+
+    await caducar();
 
     const tipoHabitacion = await TipoHabitacion.find({}, { 'cantidad': 1, '_id': 0 });
 
