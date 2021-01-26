@@ -70,8 +70,6 @@ registrar.cantidadHabitaciones = async(fechaEntrada, fechaSalida, noHabSencilla,
     });
     await newSaveDate.save();
 
-    await caducar();
-
     const tipoHabitacion = await TipoHabitacion.find({}, { 'cantidad': 1, '_id': 0 });
 
     await TipoHabitacion.replaceOne({ "_id": '5ff53f7ef922680e0c313ee9' }, {
