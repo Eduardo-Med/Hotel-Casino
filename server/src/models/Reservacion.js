@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const reservacionSchema = new Schema({
+    idReservacion: String,
     fechaEntrada: {
         type: Date,
         required: true,
