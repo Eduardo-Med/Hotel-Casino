@@ -43,6 +43,8 @@ reservacionCtrl.SaveDateAndRoomsAmount = async(req, res) => {
 reservacionCtrl.DeleteReservation = async (req, res) => {
 
     await Reservacion.deleteOne({ "idReservacion": req.params.idRes });
+
+    res.status(200).send({message: "Deleted Reservation"});
     
 }
 
