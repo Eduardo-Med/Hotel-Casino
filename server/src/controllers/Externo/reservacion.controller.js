@@ -40,4 +40,10 @@ reservacionCtrl.SaveDateAndRoomsAmount = async(req, res) => {
     res.json({ cantHabitacion });
 };
 
+reservacionCtrl.DeleteReservation = async (req, res) => {
+
+    await Reservacion.deleteOne({ "idReservacion": req.params.idRes });
+    
+}
+
 module.exports = reservacionCtrl;
