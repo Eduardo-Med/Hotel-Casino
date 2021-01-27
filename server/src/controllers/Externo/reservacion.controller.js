@@ -18,6 +18,7 @@ reservacionCtrl.SaveDate = async(req, res) => {
 
 reservacionCtrl.SaveDateAndRoomsAmount = async(req, res) => {
     const {
+        idReservacion,
         fechaEntrada,
         fechaSalida,
         noHabSencilla,
@@ -27,6 +28,7 @@ reservacionCtrl.SaveDateAndRoomsAmount = async(req, res) => {
     } = req.body
 
     const cantHabitacion = await cantidadHabitaciones(
+        idReservacion,
         fechaEntrada,
         fechaSalida,
         noHabSencilla,
