@@ -58,9 +58,10 @@ registrar.validarFecha = async(fechaEntrada) => {
 
 }
 
-registrar.cantidadHabitaciones = async(fechaEntrada, fechaSalida, noHabSencilla, noHabDoble, noHabMatrimonial, noHabSuite) => {
+registrar.cantidadHabitaciones = async(idReservacion, fechaEntrada, fechaSalida, noHabSencilla, noHabDoble, noHabMatrimonial, noHabSuite) => {
 
     const newSaveDate = new Reservacion({
+        idReservacion,
         fechaEntrada,
         fechaSalida,
         noHabSencilla,
