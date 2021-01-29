@@ -15,7 +15,7 @@ export default function Eventos() {
       </div>
       <div className="imagenes-restaurant mb-5">
           <div className="conjunto-imagenes">
-            <img src="https://twblog.com.mx/wp-content/uploads/2018/12/IMG_8252.jpg" alt="mesas"/>
+            <img src="https://cadenaser00.epimg.net/emisora/imagenes/2016/08/26/radio_bierzo/1472189953_703573_1472190246_noticia_normal.jpg" alt="mesas"/>
             <img src="https://www.eventoscentralhoteles.com/web/wp-content/uploads/2015/02/Septimo_Zocalo_Central-16.jpg" alt="mesas"/>
             <img src="https://hotelchipinque.com/wp-content/uploads/2019/07/event-1.jpg" alt="mesas"/>
             <img src="https://www.clikisalud.net/wp-content/uploads/2018/06/reglas-evitar-comer-de-mas-fiestas-eventos-sociales.jpg" alt="mesas"/>

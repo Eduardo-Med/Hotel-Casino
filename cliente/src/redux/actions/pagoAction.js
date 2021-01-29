@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {alertaSinActualizar} from '../../middleware/alertas'
+import fetchHabitacion from './habitacionAction'
 const base_url = process.env.REACT_APP_API_HOTEL
 
 
@@ -43,6 +44,8 @@ const fetchPago = (pagoDatos) => {
         consumos,
         informacion
     } = pagoDatos
+
+    console.log(informacion.noReservacion)
     let mensaje
     if((!nombreCliente || nombreCliente.length < 3) || (!numeroTarjeta || numeroTarjeta.length !== 16) || !mesVencimiento || !anoVencimiento || (cvv.length < 3 ||!cvv)){
         if(cvv.length < 3 ||!cvv) mensaje='Porfavor Revise El Cvv'
@@ -59,15 +62,28 @@ const fetchPago = (pagoDatos) => {
     return (dispatch) => {
         dispatch(fetchPagoRequest());
         axios({
+            method: 'post',
+            url: `${base_url}/bankith`,
+            data: {
+                Name: nombreCliente,
+                CardNumber: numeroTarjeta,
+                Year: parseInt(anoVencimiento),
+                Month: parseInt(mesVencimiento),
+                Cvv: parseInt(cvv),
+                Amount: parseInt(monto),
+                Description: `Pago de Salida del hotel de ${informacion.nombre} de la habitacion ${habitacionNumero}`
+            }
+        })
+        .then((response) =>{
+            axios({
                 method: 'post',
                 url: `${base_url}/consumoTotal/${habitacionNumero}`,
                 data: {
                     precio: monto,
-                    noTarjetas: `${numeroTarjeta.substr(0,4)}************`,
+                    noTarjetas: `************${numeroTarjeta.substr(12,16)}`,
                 }
             })
-            .then((response) =>{
-                // axios.delete(`${base_url}/checkOut/${habitacionNumero}`)
+            .then((response) => {
                 axios({
                     url: `${base_url}/checkOut/download/factura`,
                     method: 'POST',
@@ -75,24 +91,39 @@ const fetchPago = (pagoDatos) => {
                         consumos,
                         informacion,
                         monto,
-                        noTarjetas: `${numeroTarjeta.substr(0,4)}************`
+                        habitacionNumero,
+                        noTarjetas: `************${numeroTarjeta.substr(12,16)}`
                     },
                     responseType: 'blob',
                 }).then((response) => {
                     const url = window.URL.createObjectURL(new Blob([response.data]));
                     const link = document.createElement('a');
                     link.href = url;
-                    link.setAttribute('download', 'Factura.pdf'); //or any other extension
+                    link.setAttribute('download', `Factura-Habitacion-${habitacionNumero}.pdf`); //or any other extension
                     document.body.appendChild(link);
                     link.click();
                     dispatch(fetchPagoSuccess([response]))
+                    axios.delete(`${base_url}/checkOut/${habitacionNumero}`).then((response => {
+                        axios.delete(`https://www.reservaciones.app/api/reservation/${informacion.noReservacion}`)
+                        axios.delete(`https://hotel-casino-backend.herokuapp.com/api/reservacion/borrar/${informacion.noReservacion}`)
+                        dispatch(fetchHabitacion())
+                    }))
                     alertaSinActualizar('Pago Correcto', 'Pago realizado correctamente', 'success', 'Aceptar')
                 })
+                .catch(error => {
+                    dispatch(fetchPagoFailure([error]))
+                    alertaSinActualizar('Pago Incorrecto', 'Ocurrio un error al realizar el pago revice su información', 'error', 'Aceptar') 
+                })
             })
-            .catch(error => {
+            .catch(error =>{
                 dispatch(fetchPagoFailure([error]))
                 alertaSinActualizar('Pago Incorrecto', 'Ocurrio un error al realizar el pago revice su información', 'error', 'Aceptar') 
             })
+        })
+        .catch(error =>{
+            dispatch(fetchPagoFailure([error.response]))
+            alertaSinActualizar('Pago Incorrecto', `${error.response.data}` , 'error', 'Aceptar') 
+        })
     }
 }
 

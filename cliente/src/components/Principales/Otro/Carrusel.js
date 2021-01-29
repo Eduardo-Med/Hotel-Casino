@@ -9,8 +9,8 @@ import {
 
 import Recamara from '../../../images/recamara.jpg'
 import Hotel from '../../../images/hotel.jpg'
-import Alberca from '../../../images/recamara.jpg'
-import Restaurante from '../../../images/recamara.jpg'
+import Alberca from '../../../images/alberca.jpg'
+import Restaurante from '../../../images/restaurnate.jpg'
  
 const items = [
   {

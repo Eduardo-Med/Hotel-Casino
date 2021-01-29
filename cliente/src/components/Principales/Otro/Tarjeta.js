@@ -12,7 +12,7 @@ export default function Tarjeta({titulo,precio}) {
             <h5>Por noche</h5>
         </div>
       </div>
-      <div className="card-header"> <a className="text-white text-decoration-none" href="https://www.reservaciones.app/"><button className="btn btn-success btn-block btn-lg">Reservar</button></a></div>
+      <div className="card-header"> <a className="text-white text-decoration-none" href="https://www.reservaciones.app/reservation"><button className="btn btn-success btn-block btn-lg">Reservar</button></a></div>
     </div>
   );
 }

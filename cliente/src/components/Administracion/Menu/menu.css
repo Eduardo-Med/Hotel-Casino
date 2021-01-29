@@ -30,12 +30,12 @@
     .mobile-menu-boton1{
         transform: rotate(-90deg);
         margin: 0px !important;
-        transition: all 1s;
+        transition: transform 1s;
     }
 
     .mobile-menu-boton2{
         transform: rotate(0);
-        transition: all 1s;
+        transition: transform 1s;
     }
 
     .mobile-opcion-activado{

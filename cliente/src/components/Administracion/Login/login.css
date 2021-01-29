@@ -1,0 +1,22 @@
+.login{
+    width: 100vw;
+    height: 100vh;
+    background-image: url('https://i.ibb.co/hVrhYR1/a1836dc0e2d3ee2bb8e1c67ce0bbacf9.jpg');
+    background-repeat: no-repeat; 
+    background-position: center; 
+    background-size: cover;
+}
+.caja-login {
+    background-color: white;
+    width:400px;
+    height:100vh;
+    padding: 50px;
+    margin-left: 10%;
+    border-radius: 0 0 5px 5px;
+    border-radius: 0;
+}
+
+.effect2
+{
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}

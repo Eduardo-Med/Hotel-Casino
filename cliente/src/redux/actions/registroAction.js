@@ -64,7 +64,7 @@ const fetchRegistro = (registro) => {
                 url: `${base_url}/checkIn`,
                 data: {
                     noReservacion,
-                    nombre:`${name} ${maternalSurname} ${paternalSurname}`,
+                    nombre:`${name} ${paternalSurname} ${maternalSurname}`,
                     telefono: phone,
                     correo: email,
                     fechaEntrada: entryDate.substr(0,10),

@@ -15,7 +15,7 @@ export default function Spa() {
       </div>
       <div className="imagenes-spa">
         <div className="conjunto-imagenes mb-5">
-          <img src="https://www.codigounico.com/wp-content/uploads/sites/2/2017/08/la-vuelta-al-mundo-en-9-spas-de-lujo-16.jpg" alt="mesas"/>
+          <img src="https://image.freepik.com/foto-gratis/arreglo-spa-velas-toalla_23-2148290943.jpg" alt="mesas"/>
           <img src="https://i.pinimg.com/originals/c4/d1/22/c4d122431676362be4c66be02cb4bc01.jpg" alt="mesas"/>
           <img src="https://diccionarioactual.com/wp-content/uploads/2017/03/spa-768x576.jpg" alt="mesas"/>
           <img src="https://cuponassets.cuponatic-latam.com/backendMx/uploads/imagenes_descuentos/67648/afadc0a5025412204b2cbea5f45f65a4d645e66d.XL2.jpg" alt="mesas"/>

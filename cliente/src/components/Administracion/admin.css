@@ -5,8 +5,6 @@
     }
     
 
-
-
     .contenido{
         background-color: white;
         height: 70vh;
@@ -22,7 +20,7 @@
         margin-top: 0;
         margin-bottom: 0;
     }
-
+ 
     .boton-registro{
         border-radius: 0 !important;
         width: 50vw;
@@ -30,7 +28,7 @@
     .boton-habitaciones{
         border-radius: 0 !important;
         width: 50vw;
-        transition: all 100s;
+        /* transition: all 100s; */
     }
 
     .boton-habitaciones:disabled{

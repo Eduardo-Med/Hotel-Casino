@@ -12,7 +12,7 @@ export default function InfoPrincipal() {
                     <p>Hotel-Casino cuenta con un total de 80 habitaciones entre las cuales se encuentran simples , dobles matrimoniales y suite al igual que contamos con <b><i>salon de eventos, restaurante, spa, alberca-snacks y casino.</i></b> </p>
                  </div>
                 <div className="reservar-boton">
-                    <button className="btn btn-success">Reservar ahora</button>
+                    <a href="https://www.reservaciones.app/reservation" className="text-white text-decoration-none"><button className="btn btn-success">Reservar ahora</button></a>
                 </div>
             </div>
         </div>

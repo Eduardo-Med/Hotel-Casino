@@ -1,5 +1,49 @@
 /* rgb(252, 127, 47) */
 
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #1d191f
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(252, 127, 47) ;
+  border-radius: 15px
+}
+
+:root {
+  scrollbar-color: rgb(252, 127, 47)  #1D191F !important;
+  scrollbar-width: thin !important;
+}
+
+
+.salir{
+  cursor: pointer;
+}
+
+.salir i{
+ color: #b11c1c
+}
+
+.salir:hover i{
+ color: #d32424
+}
+
+body{
+  overflow-x: hidden;
+}
+ 
+html{
+  scroll-behavior: smooth;
+}
+
+.admin-hotel{
+  line-height: 40px;
+}
+.hotel{
+  line-height: 24px;
+}
+
 .btn-success{
   background-color: rgb(252, 127, 47) !important;
   border-color: rgb(252, 127, 47) !important

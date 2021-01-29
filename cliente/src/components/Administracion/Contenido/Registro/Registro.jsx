@@ -40,7 +40,10 @@ export default function Registro() {
                         />
                         <label htmlFor="" className={`mensaje-error ${reservacion.error ? '' : 'd-none'}`}>Numero de Reservacion Incorrecto, Intentelo de nuevo mas tarde</label>
                         <div className="boton-verificar">
-                            <button className="btn btn-success" onClick={()=> dispatch(fetchReservacion(noReservacion))}>Comprobar</button>
+                            <button className="btn btn-success" 
+                            onClick={()=> dispatch(fetchReservacion(noReservacion))}
+                            disabled={noReservacion.length > 0 ? false : true}
+                            >Comprobar</button>
                         </div>
                        
                     </div>

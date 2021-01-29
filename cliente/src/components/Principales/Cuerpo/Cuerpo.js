@@ -26,7 +26,7 @@ export default function Cuerpo() {
             <div className="hotel-footer p-4">
                 <h1 className="text-center" id="contacto">Contacto</h1>
                 <div className="text-center mt-4">
-                    <h6><strong>Direccion: </strong> Calle Siempre Viva 2015, Hidalgo</h6>
+                    <h6><strong>Direccion: </strong> Calz. de los Ángeles 14, Montebello, 83249 Hermosillo, Son.</h6>
                     <h6><strong>Tel: </strong> (522) 654-4575457</h6>
                     <h6><strong>Correo: </strong>hotelcasino@hotmail.com</h6>
                 </div>
